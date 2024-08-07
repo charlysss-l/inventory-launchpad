@@ -1,0 +1,80 @@
+  {/*Container*/}
+.inventory-container {
+    margin-left: 250px; 
+    padding: 25px;
+    border-radius: 8px;
+    display: flex;
+    justify-items: center;
+    flex-direction: column;
+    width: 50%;
+    border: 3px solid #d9d8d7a9;
+    box-shadow: 0 15px 15px rgba(0, 0, 0, 0.1);
+
+  }
+  {/*Heading: Products*/}
+  .inventory-heading {
+    margin-bottom: 20px;
+    font-size: 25px;
+    color: #1b3970;
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: bolder;
+  }
+  
+    {/*Space on top of each data*/}
+  .inventory-table {
+    width: 100%;
+    border-collapse: collapse; /* Keep borders clean */
+    margin-bottom: 20px   ;
+  }
+  
+   {/*Space on top of each data*/}
+  .title,
+  .inventory-table td {
+    padding: 20px;
+    text-align: center;
+    vertical-align: middle;
+    border-bottom: 1px solid #ddd; /* Separate rows */
+
+  }
+  
+  .title {
+    font-weight: bold;
+    color: #667085;
+    font-family:Arial, Helvetica, sans-serif;
+    font-size: 20px;
+  }
+  
+.data{
+    color: 424D47;
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: bold;
+}
+  .inventory-pagination {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+
+
+{/*Pagination Button*/}
+  .inventory-button {
+    background-color: #98a286;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  
+  .inventory-button:hover {
+    background-color: #7a8462;
+  }
+  
+  .inventory-page-info {
+    font-size: 14px;
+    color: #333;
+  }
+  
