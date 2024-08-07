@@ -10,8 +10,13 @@ const Sidebar = () => {
       <NavLink to={'/inventory'} className="sidebar">Inventory</NavLink>
       <NavLink to={'/borrow'} className="sidebar">Borrow</NavLink>
       <NavLink to={'/setting'} className="sidebar">Setting</NavLink>
+      <NavLink to={'/signup'} className="sidebar">Sign Up</NavLink>
+      
+
     </nav>
   </header>
+
+ 
 
   )
 }
