@@ -6,11 +6,13 @@ import Inventory from './pages/Employee_Inventory/Inventory'
 import Borrow from './pages/Employee_Borrow/Borrow'
 import Setting from './pages/Setting/Setting'
 import Product from './pages/Product'
+import Header from './components/Header/Header'
 import Footer from './components/Footer/Footer'
 const App = () => {
   return (
   <main className="container">
     <BrowserRouter>
+    <Header/>
     <Sidebar/>
      <Routes>
         <Route path="/" element={<Dashboard/>}/>
