@@ -1,0 +1,17 @@
+
+.sidebar{
+    background-color: rgb(49, 171, 55);
+    color: white;
+    display: flex;
+    flex-direction: column;
+    margin: 10px 10px;
+    text-transform: uppercase;
+    padding: 10px;
+    border: 1px solid black;
+    cursor: cursor;
+    text-decoration: none;
+}
+
+.sidebar:hover{
+    transition: 1s ease;
+}
