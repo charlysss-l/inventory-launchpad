@@ -6,7 +6,7 @@ import Inventory from './pages/Employee_Inventory/Inventory'
 import Borrow from './pages/Employee_Borrow/Borrow'
 import Setting from './pages/Setting/Setting'
 import Product from './pages/Product'
-import Footer from './components/Footer/Footer'
+
 const App = () => {
   return (
   <main className="container">
@@ -21,7 +21,7 @@ const App = () => {
         <Route path="/setting" element={<Setting/>}/>
         {/*<Route path="/login" element={<Login/>}/>*/}
      </Routes>
-     <Footer/>
+    
     </BrowserRouter>
   </main>
   )
