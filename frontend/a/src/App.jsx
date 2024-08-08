@@ -5,7 +5,6 @@ import Dashboard from './pages/Employee_Dashboard/Dashboard'
 import Inventory from './pages/Employee_Inventory/Inventory'
 import Borrow from './pages/Employee_Borrow/Borrow'
 import Setting from './pages/Setting/Setting'
-import Product from './pages/Product'
 import Header from './components/Header/Header'
 
 
@@ -18,7 +17,6 @@ const App = () => {
      <Routes>
         <Route path="/" element={<Dashboard/>}/>
         <Route path="/inventory" element={<Inventory/>}>
-          <Route path=":productId" element={<Product/>}/>
         </Route>
         <Route path="/borrow" element={<Borrow/>}/>
         <Route path="/setting" element={<Setting/>}/>
