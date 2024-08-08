@@ -7,7 +7,6 @@ import Borrow from './pages/Employee_Borrow/Borrow'
 import Setting from './pages/Setting/Setting'
 import Header from './components/Header/Header'
 
-
 const App = () => {
   return (
   <main className="container">

@@ -55,8 +55,9 @@ app.post('/addproduct', async (req, res) => {
             id = 1;
         }
 
+        // Create a new product with the calculated id
         const product = new Product({
-            product_id: id,
+            product_id: id,  // Use the id variable
             product_name: req.body.product_name,
             product_brand: req.body.product_brand,
             product_quantity: req.body.product_quantity,
@@ -92,11 +93,17 @@ app.listen(port, (err) => {
 });
 
 //get all or fetch or render
-app.get('/allproductsS', async(req,res) => {
-    let products = await Product.find({})
-    console.log('all products fetched')
-    res.send(products)
-})
+app.get('/allproducts', async (req, res) => {
+    try {
+        const products = await Product.find({});
+        console.log('All products fetched successfully');
+        res.status(200).json(products); // Use res.json for sending JSON response
+    } catch (error) {
+        console.error('Error fetching products:', error);
+        res.status(500).json({ message: 'Error fetching products' }); // Send an error response if something goes wrong
+    }
+});
+
 
 
 // const { MongoClient, ServerApiVersion } = require('mongodb');
