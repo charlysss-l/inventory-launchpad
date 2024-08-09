@@ -104,6 +104,24 @@ app.get('/allproducts', async (req, res) => {
     }
 });
 
+//creating api for remove products
+app.post('/removeproduct', async (req, res) => {
+    try {
+        await Product.findOneAndDelete({ product_id: req.body.product_id });
+        console.log("Product removed");
+        res.json({
+            success: true,
+            product_id: req.body.product_id,
+        });
+    } catch (error) {
+        console.error("Error removing product:", error);
+        res.status(500).json({
+            success: false,
+            message: 'Failed to remove product',
+        });
+    }
+});
+
 
 
 // const { MongoClient, ServerApiVersion } = require('mongodb');
