@@ -21,6 +21,7 @@ import { NavLink } from 'react-router-dom';
                             <th className="title">Date Purchased</th>
                             <th className="title">Update</th>
                             <th className="title">Delete</th>
+                            <h1>sample</h1>
                         </tr>
                     </thead>
                     <tbody>
