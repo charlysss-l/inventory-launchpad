@@ -14,15 +14,16 @@ const AddProduct = () => {
         setAddProducts({...addProducts, [e.target.name]:e.target.value})
     }
 
-    const submitHandler = async() => {
-        axios.post('http://localhost:3000/addproduct', addProducts).then(res =>{
+    const submitHandler = async(e) => {
+        e.preventDefault()
+        axios.post('http://localhost:3000/add-product', addProducts).then(res =>{
             console.log(res)
             alert('product added')
             setAddProducts({
                 product_name: "",
                 product_brand: "",
                 product_quantity: "",
-                product_brand: "",
+                product_category: "",
                 product_datePurchased: "",
             })
         }).catch(errr => {
@@ -38,26 +39,26 @@ return (
             <div className = "content">
                 <div className = "input-box">
                     <label htmlFor = "product"> Name: </label>
-                    <input type="text" placeholder="Enter Product Name" name="product" onChange={changeHanlder} value={addProducts.product_name}/>
+                    <input type="text" placeholder="Enter Product Name" name="product_name" onChange={changeHanlder} value={addProducts.product_name}/>
                 </div>
                 <div className = "input-box">
                     <label htmlFor = "brand"> Brand: </label>
-                    <input type="text" placeholder="Enter Brand" name="brand" onChange={changeHanlder} value={addProducts.product_brand}/>
+                    <input type="text" placeholder="Enter Brand" name="product_brand" onChange={changeHanlder} value={addProducts.product_brand}/>
                 </div>
                 <div className = "input-box">
                     <label htmlFor = "quantity"> Quantity: </label>
-                    <input type="number" placeholder="Enter Quantity" name="quantity" onChange={changeHanlder} value={addProducts.product_quantity}/>
+                    <input type="number" placeholder="Enter Quantity" name="product_quantity" onChange={changeHanlder} value={addProducts.product_quantity}/>
                 </div>
                 <div className = "input-box">
                     <label htmlFor = "category"> Category: </label>
-                    <input type="text" placeholder="Enter Category" name="category" onChange={changeHanlder} value={addProducts.product_category}/>
+                    <input type="text" placeholder="Enter Category" name="product_category" onChange={changeHanlder} value={addProducts.product_category}/>
                 </div>
                 <div className = "input-box">
                     <label htmlFor = "date"> Date purchased: </label>
-                    <input type="date" placeholder="Enter Date Purchased" name="date" onChange={changeHanlder} value={addProducts.product_datePurchased}/>
+                    <input type="date" placeholder="Enter Date Purchased" name="product_datePurchased" onChange={changeHanlder} value={addProducts.product_datePurchased}/>
                 </div>
                 <div className="button-container"> 
-                    <button type="submit" onClick={() => submitHandler()}> ADD PRODUCT </button>
+                    <button type="submit" onClick={(e) => submitHandler(e)}> ADD PRODUCT </button>
                 </div>
             </div>
         </form>

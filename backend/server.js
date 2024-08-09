@@ -41,7 +41,7 @@ const Product = mongoose.model("Product",{
 })
 
 
-app.post('/addproduct', async (req, res) => {
+app.post('/add-product', async (req, res) => {
     try {
         // Retrieve the last product
         let lastProduct = await Product.findOne({}).sort({ product_id: -1 }).limit(1);
