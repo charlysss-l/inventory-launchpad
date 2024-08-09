@@ -1,12 +1,14 @@
-
+.con{
+  padding: 10%;
+}
   .inventory-container {
     margin: auto;
     padding: 25px;
     border-radius: 8px;
-    width: 50%;
-    border: 3px solid #be650ca9;
+    width: 60%;
+    border: 3px solid #D7D9D9;
     box-shadow: 0 15px 15px rgba(0, 0, 0, 0.1);
-    
+    padding: 100px;
   }
   
   .inventory-heading {
