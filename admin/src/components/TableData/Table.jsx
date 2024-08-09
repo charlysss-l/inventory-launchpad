@@ -33,7 +33,7 @@ import { NavLink } from 'react-router-dom';
                                 <td className="data">{item.product_category}</td>
                                 <td className="data">{item.product_datePurchased}</td>
                                 <button type="submit" className="edit">Edit</button>
-                                <button type="submit" className="delete">Delete</button>
+                                <button type="submit" className="delete">Delete gumagana na to</button>
                             </tr>
                         ))}
                     </tbody>
