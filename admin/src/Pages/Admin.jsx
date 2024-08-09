@@ -8,12 +8,14 @@ import Admin_Employee from './Employee/Admin_Employee'
 import AddProduct from '../components/AddProduct/AddProduct'
 import Admin_Borrow from './Borrow/Admin_Borrow'
 import Admin_Setting from './Setting/Admin_Setting'
+import Header from '../components/Header/Header'
 import './Admin.css'
 const Admin = () => {
   return (
     // add sidebar and header components dito pare
-<div className="admin-page">
+<main className="admin-page">
 <Sidebar/>
+<Header />
      <Routes>
      <Route path="/admin" element={<Admin_Dashboard />}/>
         <Route path="/admin/inventory" element={<Admin_Inventory />}/>
@@ -22,7 +24,7 @@ const Admin = () => {
         <Route path="/admin/setting" element={<Admin_Setting/>}/>
         <Route path="/admin/addProduct" element={<AddProduct />}/>
      </Routes>
-</div>
+</main>
 
     
   )

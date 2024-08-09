@@ -7,6 +7,8 @@
     flex-direction: column;
     justify-content: space-between;
     border-top-right-radius: 80px;
+    z-index: 2;
+    position: fixed;
 }
 
 .logo{
