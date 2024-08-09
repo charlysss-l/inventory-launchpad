@@ -1,6 +1,11 @@
-  /* {Container} */
+body{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+}
   .inventory-container {
-    margin-left: 250px; 
+    margin: auto;
     padding: 25px;
     border-radius: 8px;
     display: flex;
@@ -9,9 +14,10 @@
     width: 80%;
     border: 3px solid #d9d8d7a9;
     box-shadow: 0 15px 15px rgba(0, 0, 0, 0.1);
+    z-index: 1;
 
   }
-  /* {Heading: Products} */
+
   .inventory-heading {
     margin-bottom: 20px;
     font-size: 25px;
@@ -20,20 +26,20 @@
     font-weight: bolder;
   }
   
-    /* {Space on top of each data} */
+
   .inventory-table {
     width: 100%;
-    border-collapse: collapse; /* Keep borders clean */
+    border-collapse: collapse; 
     margin-bottom: 20px   ;
   }
   
-   /* {Space on top of each data} */
+
   .title,
   .inventory-table td {
     padding: 20px;
     text-align: center;
     vertical-align: middle;
-    border-bottom: 1px solid #ddd; /* Separate rows */
+    border-bottom: 1px solid #ddd; 
 
   }
   
@@ -57,7 +63,7 @@
   
 
 
-/* {Pagination Button} */
+
   .inventory-button {
     background-color: #98a286;
     color: #fff;
