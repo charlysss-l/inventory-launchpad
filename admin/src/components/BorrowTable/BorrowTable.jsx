@@ -1,4 +1,4 @@
-
+import './BorrowTable.css'
 import { NavLink } from 'react-router-dom';
 const removeProduct = async (product_id) => {
     await fetch('http://localhost:3000/removeproduct', {
@@ -13,26 +13,27 @@ const removeProduct = async (product_id) => {
         resp.ok? alert('Are you sure you want to remove the product?') : alert("Failed to remove the product")
     })
 }
-    const EmployeeTable = ({ products }) => {
+    const BorrowTable = ({ products }) => {
         return (
-            <div className="connt">
-  <div className="employee-container">
+            <div className="connta">
+  <div className="borrow-container">
 
-<div className="inventory-heading">
-    <h3>Employee</h3>
-    <NavLink to={'/admin/addProduct'} className="pages">Add Employee</NavLink>
+<div className="borrow-heading">
+    <h3>Borrow Approval</h3>
+    <NavLink to={'/admin/addProduct'} className="pages">Add Borrow</NavLink>
  </div>
 
- <table className="inventory-table">
+ <table className="borrow-table">
         <thead>
             <tr>
-                <th className="title">Employee ID</th>
+                <th className="title">Request ID</th>
                 <th className="title">Name</th>
-                <th className="title">Role</th>
                 <th className="title">Company</th>
-                <th className="title">Email</th>
-                <th className="title">Edit</th>
-                <th className="title">Delete</th>
+                <th className="title">Product ID</th>
+                <th className="title">Quantity</th>
+                <th className="title">Purpose</th>
+                <th className="title">Request Date</th>
+                <th className="title">Status</th>
             </tr>
         </thead>
         <tbody>
@@ -43,8 +44,12 @@ const removeProduct = async (product_id) => {
                     <td className="data">{item.product_brand}</td>
                     <td className="data">{item.product_quantity}</td>
                     <td className="data">{item.product_category}</td>
-                    <td className="data"> <button type="submit" className="edit">Edit</button></td>
-                    <td className="data"><button type="submit" onClick={() => {removeProduct(item.product_id)}} className="delete">Delete</button></td>
+                    <td className="data">{item.product_category}</td>
+                    <td className="data">{item.product_category}</td>
+                    <td className="button"> 
+                        <button type="submit" className="edit">Accept</button>
+                        <button type="submit" onClick={() => {removeProduct(item.product_id)}} className="delete">Decline</button>
+                    </td>
                   
                 </tr>
             ))}
@@ -62,4 +67,4 @@ const removeProduct = async (product_id) => {
         );
     };
 
-    export default EmployeeTable;
+    export default BorrowTable;
