@@ -1,21 +1,24 @@
-import React from 'react'
-import {NavLink} from 'react-router-dom'
-import './Sidebar.css'
+
+import { NavLink } from 'react-router-dom';
+import './Sidebar.css';
+
 const Sidebar = () => {
   return (
     <div className="side_container">
-    <nav className="nav_side">
-      <h1 className="logo">Launchpad</h1>
-      <NavLink to={'/admin'} className="sidebar">Dashboard</NavLink>
-      <NavLink to={'/admin/inventory'} className="sidebar">Inventory</NavLink>
-      <NavLink to={'/admin/borrow'} className="sidebar">Employee</NavLink>
-      <NavLink to={'/admin/borrow'} className="sidebar">Borrow</NavLink>
-      <NavLink to={'/admin/setting'} className="sidebar">Setting</NavLink>
-      <NavLink to={'/admin/addProduct'} className="sidebar">Add Product</NavLink>
-    </nav>
-  </div>
+      <div className="choices">
+        <h1 className="logo">Launchpad</h1>
+        <NavLink to={'/admin'} className="pages">Dashboard</NavLink>
+        <NavLink to={'/admin/inventory'} className="pages">Inventory</NavLink>
+        <NavLink to={'/admin/employee'} className="pages">Employee</NavLink>
+        <NavLink to={'/admin/borrow'} className="pages">Borrow</NavLink>
+      </div>
 
-  )
+      <div className="bottom">
+        <a href={'/admin/setting'} className="bottom-link">Setting</a>
+        <a href={'/admin/logout'} className="bottom-link">Logout</a>
+      </div>
+    </div>
+  );
 }
 
-export default Sidebar
+export default Sidebar;
