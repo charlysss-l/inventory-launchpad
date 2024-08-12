@@ -7,7 +7,6 @@ import Borrow from './pages/Employee_Borrow/Borrow'
 import Setting from './pages/Setting/Setting'
 import Header from './components/Header/Header'
 import BorrowProduct from './components/Borrow/borrowProduct'
-import './App.css'
 
 const App = () => {
   return (
