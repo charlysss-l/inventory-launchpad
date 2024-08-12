@@ -1,5 +1,4 @@
 
-import './Table.css'
 import { NavLink } from 'react-router-dom';
 const removeProduct = async (product_id) => {
     await fetch('http://localhost:3000/removeproduct', {
@@ -14,26 +13,25 @@ const removeProduct = async (product_id) => {
         resp.ok? alert('Are you sure you want to remove the product?') : alert("Failed to remove the product")
     })
 }
-    const Table = ({ products }) => {
+    const EmployeeTable = ({ products }) => {
         return (
-            <div className="conn">
-  <div className="inventory-container">
+            <div className="connt">
+  <div className="employee-container">
 
 <div className="inventory-heading">
-    <h3>Products</h3>
-    <NavLink to={'/admin/addProduct'} className="pages">Add Product</NavLink>
+    <h3>Employee</h3>
+    <NavLink to={'/admin/addProduct'} className="pages">Add Employee</NavLink>
  </div>
 
  <table className="inventory-table">
         <thead>
             <tr>
-                <th className="title">Product_ID</th>
+                <th className="title">Employee ID</th>
                 <th className="title">Name</th>
-                <th className="title">Brand</th>
-                <th className="title">Quantity</th>
-                <th className="title">Category</th>
-                <th className="title">Date Purchased</th>
-                <th className="title">Update</th>
+                <th className="title">Role</th>
+                <th className="title">Company</th>
+                <th className="title">Email</th>
+                <th className="title">Edit</th>
                 <th className="title">Delete</th>
             </tr>
         </thead>
@@ -45,7 +43,6 @@ const removeProduct = async (product_id) => {
                     <td className="data">{item.product_brand}</td>
                     <td className="data">{item.product_quantity}</td>
                     <td className="data">{item.product_category}</td>
-                    <td className="data">{item.product_datePurchased}</td>
                     <td className="data"> <button type="submit" className="edit">Edit</button></td>
                     <td className="data"><button type="submit" onClick={() => {removeProduct(item.product_id)}} className="delete">Delete</button></td>
                   
@@ -65,6 +62,4 @@ const removeProduct = async (product_id) => {
         );
     };
 
-    export default Table;
-
-
+    export default EmployeeTable;
