@@ -33,7 +33,7 @@ const removeProduct = async (product_id) => {
                 <th className="title">Quantity</th>
                 <th className="title">Purpose</th>
                 <th className="title">Request Date</th>
-                <th className="title">Status</th>
+                <th className="title">Statu</th>
             </tr>
         </thead>
         <tbody>
