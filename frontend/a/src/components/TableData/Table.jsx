@@ -23,7 +23,6 @@ import './Table.css'
                 <th className="title">Quantity</th>
                 <th className="title">Category</th>
                 <th className="title">Date Purchased</th>
-                <th className="title">Borrow</th>
             </tr>
         </thead>
         <tbody>
