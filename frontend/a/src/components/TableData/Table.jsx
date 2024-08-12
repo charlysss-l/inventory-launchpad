@@ -10,7 +10,7 @@ import './Table.css'
 
 <div className="inventory-heading">
     <h3>Borrow</h3>
-    <NavLink to={'/admin/addProduct'} className="pages">Borrow</NavLink>
+    <NavLink to={'/borrowProduct'} className="pages">Borrow</NavLink>
  </div>
 
 

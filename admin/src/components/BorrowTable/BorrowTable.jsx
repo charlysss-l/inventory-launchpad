@@ -20,32 +20,27 @@ const removeProduct = async (product_id) => {
 
 <div className="borrow-heading">
     <h3>Borrow Approval</h3>
-    <NavLink to={'/admin/addProduct'} className="pages">Add Borrow</NavLink>
+    <NavLink to={'/admin/addBorrow'} className="pages">Add Borrow</NavLink>
  </div>
 
  <table className="borrow-table">
         <thead>
             <tr>
-                <th className="title">Request ID</th>
+                <th className="title">Borrow ID</th>
                 <th className="title">Name</th>
-                <th className="title">Company</th>
-                <th className="title">Product ID</th>
                 <th className="title">Quantity</th>
-                <th className="title">Purpose</th>
                 <th className="title">Request Date</th>
-                <th className="title">Status</th>
+                <th className="title">Purpose</th>
             </tr>
         </thead>
         <tbody>
             {products.map((item, index) => (
                 <tr key={index}>
-                    <td className="data">{item.product_id}</td>
-                    <td className="data">{item.product_name}</td>
-                    <td className="data">{item.product_brand}</td>
-                    <td className="data">{item.product_quantity}</td>
-                    <td className="data">{item.product_category}</td>
-                    <td className="data">{item.product_category}</td>
-                    <td className="data">{item.product_category}</td>
+                    <td className="data">{item.borrowId}</td>
+                    <td className="data">{item.borrowName}</td>
+                    <td className="data">{item.borrowQuantity}</td>
+                    <td className="data">{item.borrowDate}</td>
+                    <td className="data">{item.purpose}</td>
                     <td className="button"> 
                         <button type="submit" className="edit">Accept</button>
                         <button type="submit" onClick={() => {removeProduct(item.product_id)}} className="delete">Decline</button>

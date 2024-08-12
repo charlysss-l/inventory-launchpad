@@ -1,5 +1,5 @@
 import { addProduct, removeProduct, fetchProduct } from './products.js';
-
+import { addBorrowProduct, fetchborrowProduct } from './borrowProduct.js';
 import express from 'express';
 import mongoose from 'mongoose';
 import cors from 'cors';
@@ -25,11 +25,14 @@ app.listen(port, (err) => {
   }
 });
 
-
+//adding products - admin
 app.post('/add-product', addProduct )
 app.get('/allproducts', fetchProduct)
 app.post('/removeproduct', removeProduct);
 
+//borrowing products - user
+app.post('/add-borrow-product',addBorrowProduct)
+app.get('/allborrowproducts', fetchborrowProduct)
 
 
 // const { MongoClient, ServerApiVersion } = require('mongodb');
