@@ -6,6 +6,7 @@ import Inventory from './pages/Employee_Inventory/Inventory'
 import Borrow from './pages/Employee_Borrow/Borrow'
 import Setting from './pages/Setting/Setting'
 import Header from './components/Header/Header'
+import BorrowProduct from './components/Borrow/borrowProduct'
 
 const App = () => {
   return (
@@ -20,6 +21,7 @@ const App = () => {
         <Route path="/borrow" element={<Borrow/>}/>
         <Route path="/setting" element={<Setting/>}/>
         {/*<Route path="/login" element={<Login/>}/>*/}
+        <Route path='/borrowProduct' element={<BorrowProduct />} />
      </Routes>
     
     </BrowserRouter>
