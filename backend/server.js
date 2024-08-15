@@ -1,4 +1,4 @@
-import { addProduct, removeProduct, fetchProduct } from './products.js';
+import { addProduct, removeProduct, fetchProduct, editProduct } from './products.js';
 
 import express from 'express';
 import mongoose from 'mongoose';
@@ -29,6 +29,7 @@ app.listen(port, (err) => {
 app.post('/add-product', addProduct )
 app.get('/allproducts', fetchProduct)
 app.post('/removeproduct', removeProduct);
+app.put('/editProduct', editProduct)
 
 
 

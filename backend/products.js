@@ -24,6 +24,18 @@ const Product = mongoose.model("Product",{
         type: Date,
         required: true,
     },
+    product_price:{
+        type: Number,
+        required: true,
+    },
+    product_totalPrice:{
+        type: Number,
+        required: true,
+    },
+    product_supplier:{
+        type: String,
+        required: true,
+    }
 })
 
 export const addProduct = async (req,res) => {
@@ -48,6 +60,9 @@ export const addProduct = async (req,res) => {
             product_quantity: req.body.product_quantity,
             product_category: req.body.product_category,
             product_datePurchased: req.body.product_datePurchased,
+            product_price: req.body.product_price,
+            product_totalPrice: req.body.product_totalPrice,
+            product_supplier: req.body.product_supplier,
         });
 
         console.log('Product to save:', product);
@@ -82,16 +97,47 @@ export const removeProduct = async (req, res) => {
     }
 }
 
-//get all or fetch or render
- export const fetchProduct = async (req, res) => {
-    try {
-        const products = await Product.find({});
-        console.log('All products fetched successfully');
-        res.status(200).json(products); // Use res.json for sending JSON response
-    } catch (error) {
-        console.error('Error fetching products:', error);
-        res.status(500).json({ message: 'Error fetching products' }); // Send an error response if something goes wrong
+    //get all or fetch or render
+    export const fetchProduct = async (req, res) => {
+        try {
+            const products = await Product.find({});
+            console.log('All products fetched successfully');
+            res.status(200).json(products); // Use res.json for sending JSON response
+        } catch (error) {
+            console.error('Error fetching products:', error);
+            res.status(500).json({ message: 'Error fetching products' }); // Send an error response if something goes wrong
+        }
     }
-}
 
 
+// Edit product
+export const editProduct = async (req, res) => {
+    try {
+      const { product_id } = req.body;
+  
+      if (!product_id) {
+        return res.status(400).json({ success: false, message: "Please provide a product ID" });
+      }
+  
+      const product = await Product.findOne({ product_id });
+  
+      if (!product) {
+        return res.status(404).json({ success: false, message: "Product not found" });
+      }
+  
+      product.product_name = req.body.product_name;
+      product.product_brand = req.body.product_brand;
+      product.product_quantity = req.body.product_quantity;
+      product.product_category = req.body.product_category;
+      product.product_datePurchased = req.body.product_datePurchased;
+      product.product_price = req.body.product_price;
+      product.product_totalPrice = req.body.product_totalPrice;
+      product.product_supplier = req.body.product_supplier;
+  
+      await product.save();
+      res.json({ success: true, product_name: req.body.product_name });
+    } catch (error) {
+      console.error("Error editing product:", error);
+      res.status(500).json({ success: false, message: "Failed to edit product" });
+    }
+  };

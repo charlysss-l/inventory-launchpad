@@ -8,6 +8,8 @@ const AddProduct = () => {
         product_quantity: "",
         product_category: "",
         product_datePurchased: "",
+        product_price: "",
+        product_totalPrice: "",
     })
 
     const changeHanlder = (e)=>{
@@ -25,6 +27,9 @@ const AddProduct = () => {
                 product_quantity: "",
                 product_category: "",
                 product_datePurchased: "",
+                product_price: "",
+                product_totalPrice: "",
+                product_supplier: "",
             })
         }).catch(errr => {
             console.log(errr)
@@ -57,7 +62,20 @@ return (
                     <label htmlFor = "date"> Date purchased: </label>
                     <input type="date" placeholder="Enter Date Purchased" name="product_datePurchased" onChange={changeHanlder} value={addProducts.product_datePurchased}/>
                 </div>
+                <div className = "input-box">
+                    <label htmlFor = "date"> Total: </label>
+                    <input type="number" placeholder="Enter Date Purchased" name="product_price" onChange={changeHanlder} value={addProducts.product_price}/>
+                </div>
+                <div className = "input-box">
+                    <label htmlFor = "date"> Total Price: </label>
+                    <input type="number" placeholder="Enter Date Purchased" name="product_totalPrice" onChange={changeHanlder} value={addProducts.product_totalPrice}/>
+                </div>
+                <div className = "input-box">
+                    <label htmlFor = "date"> Supplier: </label>
+                    <input type="text" placeholder="Enter Date Purchased" name="product_supplier" onChange={changeHanlder} value={addProducts.product_supplier}/>
+                </div>
                 <div className="button-container"> 
+                    {/* dapat babalik sa invenroty admin after massubmit product. Figure out ko pa */}
                     <button type="submit" onClick={(e) => submitHandler(e)}> ADD PRODUCT </button>
                 </div>
             </div>
