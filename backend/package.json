@@ -9,6 +9,7 @@
     "start": "node server",
     "dev": "nodemon server"
   },
+  "type": "module",
   "name": "backend",
   "version": "1.0.0",
   "main": "server.js",

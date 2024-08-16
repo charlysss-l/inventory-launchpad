@@ -1,4 +1,5 @@
     import React from 'react';
+    import {NavLink} from 'react-router-dom'
 import './Table.css'
 
     const Table = ({ products }) => {
@@ -8,8 +9,10 @@ import './Table.css'
   <div className="inventory-container">
 
 <div className="inventory-heading">
-    <h3>Products</h3>
+    <h3>Borrow</h3>
+    <NavLink to={'/admin/addProduct'} className="pages">Borrow</NavLink>
  </div>
+
 
  <table className="inventory-table">
         <thead>
@@ -20,7 +23,6 @@ import './Table.css'
                 <th className="title">Quantity</th>
                 <th className="title">Category</th>
                 <th className="title">Date Purchased</th>
-                <th className="title">Borrow</th>
             </tr>
         </thead>
         <tbody>
@@ -32,25 +34,23 @@ import './Table.css'
                     <td className="data">{item.product_quantity}</td>
                     <td className="data">{item.product_category}</td>
                     <td className="data">{item.product_datePurchased}</td>
-                    <td className="button"> 
-                        <button type="submit" className="borrow">Borrow</button>
-                    </td>
                 </tr>
             ))}
         </tbody>
     </table>
-{/* figure out pa if pagination or isang table nlng scroll scroll nlng */}
-{/* <div className="inventory-pagination">
-<button className="inventory-button">Previous</button>
-<span className="inventory-page-info">Page 1 of 10</span>
-<button className="inventory-button">Next</button>
-</div> */}
 </div>
             </div>
           
         );
     };
-
-    export default Table;
-
-
+    
+export default Table;
+    
+    
+    
+    {/* figure out pa if pagination or isang table nlng scroll scroll nlng */}
+    {/* <div className="inventory-pagination">
+    <button className="inventory-button">Previous</button>
+    <span className="inventory-page-info">Page 1 of 10</span>
+    <button className="inventory-button">Next</button>
+    </div> */}
