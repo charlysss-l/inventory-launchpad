@@ -1,4 +1,5 @@
 import { addProduct, removeProduct, fetchProduct, editProduct } from './products.js';
+import { addBorrowProduct, removeBorrowProduct, fetchBorrowProduct } from './borrowProduct.js';
 
 import express from 'express';
 import mongoose from 'mongoose';
@@ -31,6 +32,9 @@ app.get('/allproducts', fetchProduct)
 app.post('/removeproduct', removeProduct);
 app.put('/editProduct', editProduct)
 
+app.post('/add-borrow-products', addBorrowProduct)
+app.post('/remove-borrow-products', removeBorrowProduct)
+app.get('/all-borrow-products', fetchBorrowProduct)
 
 
 // const { MongoClient, ServerApiVersion } = require('mongodb');

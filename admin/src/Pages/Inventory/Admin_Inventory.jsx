@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import axios from 'axios';
-import Table from '../../components/TableData/Table';
+import Table from '../../components/TableData/productTable';
 
 const Admin_Inventory = () => {
   const [loading, setLoading] = useState(true);

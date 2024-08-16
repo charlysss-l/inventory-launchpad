@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import axios from 'axios';
-import Table from '../../components/BorrowTable/BorrowTable';
+import BorrowTable from '../../components/TableData/borrowProductTable';
 
 const Admin_Borrow = () => {
   const [loading, setLoading] = useState(true);
@@ -10,7 +10,7 @@ const Admin_Borrow = () => {
     const fetchData = async () => {
       setLoading(true);
       try {
-        const { data: response } = await axios.get('http://localhost:3000/allproducts');
+        const { data: response } = await axios.get('http://localhost:3000/all-borrow-products');
         setData(response);
       } catch (error) {
         console.error(error.message);
@@ -25,7 +25,7 @@ const Admin_Borrow = () => {
     <div>
       {loading && <div>Loading...</div>}
       {!loading && (
-        <Table products={data} />
+        <BorrowTable products={data} />
       )}
     </div>
   );

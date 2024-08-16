@@ -1,5 +1,5 @@
 
-import './Table.css'
+import './productTable.css'
 import { NavLink } from 'react-router-dom';
 const removeProduct = async (product_id) => {
     await fetch('http://localhost:3000/removeproduct', {
@@ -14,7 +14,7 @@ const removeProduct = async (product_id) => {
         resp.ok? alert('Are you sure you want to remove the product?') : alert("Failed to remove the product")
     })
 }
-    const Table = ({ products }) => {
+    const productTable = ({ products }) => {
         return (
             <div className="conn">
   <div className="inventory-container">
@@ -46,26 +46,20 @@ const removeProduct = async (product_id) => {
                     <td className="data">{item.product_quantity}</td>
                     <td className="data">{item.product_category}</td>
                     <td className="data">{item.product_datePurchased}</td>
-                    <td className="data"> <button type="submit" className="edit">Edit</button></td>
+                    <td className="data"><NavLink to={`/admin/editProduct/${item.product_id}`} className="editprod">Edit Product</NavLink></td>
                     <td className="data"><button type="submit" onClick={() => {removeProduct(item.product_id)}} className="delete">Delete</button></td>
                   
                 </tr>
             ))}
         </tbody>
     </table>
-{/* figure out pa if pagination or isang table nlng scroll scroll nlng */}
-{/* <div className="inventory-pagination">
-<button className="inventory-button">Previous</button>
-<span className="inventory-page-info">Page 1 of 10</span>
-<button className="inventory-button">Next</button>
-</div> */}
 </div>
             </div>
           
         );
     };
     
-    export default Table;
+    export default productTable;
     
     
     {/* figure out pa if pagination or isang table nlng scroll scroll nlng */}

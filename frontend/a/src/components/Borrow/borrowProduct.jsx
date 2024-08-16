@@ -4,7 +4,7 @@ const borrowProduct = () => {
   return (
     <div>
         {/* borrow form */}
-       <h1>lore</h1>
+       <h1>lorem200</h1>
     </div>
   )
 }
