@@ -1,9 +1,34 @@
-import React from 'react'
+import { useEffect, useState } from 'react';
+import axios from 'axios';
+import Table from '../../components/EmployeeTable/EmployeeTable';
 
 const Admin_Employee = () => {
-  return (
-    <div>Admin_Employee</div>
-  )
-}
+  const [loading, setLoading] = useState(true);
+  const [data, setData] = useState([]);
 
-export default Admin_Employee
+  useEffect(() => {
+    const fetchData = async () => {
+      setLoading(true);
+      try {
+        const { data: response } = await axios.get('http://localhost:3000/allproducts');
+        setData(response);
+      } catch (error) {
+        console.error(error.message);
+      }
+      setLoading(false);
+    };
+
+    fetchData();
+  }, []);
+
+  return (
+    <div>
+      {loading && <div>Loading...</div>}
+      {!loading && (
+        <Table products={data} />
+      )}
+    </div>
+  );
+};
+
+export default Admin_Employee 

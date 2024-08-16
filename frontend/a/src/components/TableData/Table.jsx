@@ -20,6 +20,7 @@ import './Table.css'
                 <th className="title">Quantity</th>
                 <th className="title">Category</th>
                 <th className="title">Date Purchased</th>
+                <th className="title">Borrow</th>
             </tr>
         </thead>
         <tbody>
@@ -31,6 +32,9 @@ import './Table.css'
                     <td className="data">{item.product_quantity}</td>
                     <td className="data">{item.product_category}</td>
                     <td className="data">{item.product_datePurchased}</td>
+                    <td className="button"> 
+                        <button type="submit" className="borrow">Borrow</button>
+                    </td>
                 </tr>
             ))}
         </tbody>

@@ -1,14 +1,28 @@
 
 import './Table.css'
 import { NavLink } from 'react-router-dom';
+const removeProduct = async (product_id) => {
+    await fetch('http://localhost:3000/removeproduct', {
+        method: 'POST',
+        headers: {
+            Accept: 'application/json',
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({product_id:product_id})
+        
+    }).then((resp)=> {
+        resp.ok? alert('Are you sure you want to remove the product?') : alert("Failed to remove the product")
+    })
+}
     const Table = ({ products }) => {
         return (
-            <div className="inventory-container">
+            <div className="conn">
+  <div className="inventory-container">
 
-            <div className="inventory-heading">
-                <h3>Products</h3>
-                <NavLink to={'/admin/addProduct'} className="pages">Add Product</NavLink>
-             </div>
+<div className="inventory-heading">
+    <h3>Products</h3>
+    <NavLink to={'/admin/addProduct'} className="pages">Add Product</NavLink>
+ </div>
 
              <table className="inventory-table">
                     <thead>
@@ -34,7 +48,7 @@ import { NavLink } from 'react-router-dom';
                                 <td className="data">{item.product_category}</td>
                                 <td className="data">{item.product_datePurchased}</td>
                                 <button type="submit" className="edit">Edit</button>
-                                <button type="submit" className="delete">Delete gumagana na to</button>
+                                <button type="submit" className="delete">Delete</button>
                             </tr>
                         ))}
                     </tbody>
