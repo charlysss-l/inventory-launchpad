@@ -9,6 +9,7 @@ import AddProduct from '../components/AddProduct/AddProduct'
 import Admin_Borrow from './Borrow/Admin_Borrow'
 import Admin_Setting from './Setting/Admin_Setting'
 import Header from '../components/Header/Header'
+import EditProduct from '../components/EditProduct/EditProduct'
 import './Admin.css'
 const Admin = () => {
   return (
@@ -23,6 +24,7 @@ const Admin = () => {
         <Route path="/admin/borrow" element={<Admin_Borrow/>}/>
         <Route path="/admin/setting" element={<Admin_Setting/>}/>
         <Route path="/admin/addProduct" element={<AddProduct />}/>
+        <Route path="/admin/editProduct/:product_id" element={<EditProduct />}/>
      </Routes>
 </main>
 

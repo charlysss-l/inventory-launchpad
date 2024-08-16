@@ -24,7 +24,6 @@ const Borrow = () => {
             <td className="data">Asus</td>
             <td className="data">13</td>
             <td className="data">Peripherals</td>
-           <button> Borrow</button>
           </tr>
           <tr>
             <td className="data">000</td>
@@ -32,7 +31,6 @@ const Borrow = () => {
             <td className="data">Asus</td>
             <td className="data">13</td>
             <td className="data">Peripherals</td>
-           <button> Borrow</button>
           </tr>
           <tr>
             <td className="data">000</td>
@@ -40,7 +38,6 @@ const Borrow = () => {
             <td className="data">Asus</td>
             <td className="data">13</td>
             <td className="data">Peripherals</td>
-           <button> Borrow</button>
           </tr>
          
         </tbody>
