@@ -12,6 +12,10 @@ import Header from '../components/Header/Header'
 import EditProduct from '../components/EditProduct/EditProduct'
 import AddBorrowProduct from '../components/AddBorrowProduct/AddBorrowProduct'
 import './Admin.css'
+import Login from './Auth/login/login'
+import Signup from './Auth/signup/signup'
+
+
 const Admin = () => {
   return (
     // add sidebar and header components dito pare
@@ -19,7 +23,9 @@ const Admin = () => {
 <Sidebar/>
 <Header />
      <Routes>
-     <Route path="/admin" element={<Admin_Dashboard />}/>
+        <Route path=''></Route>
+        <Route></Route>
+        <Route path="/admin" element={<Admin_Dashboard />}/>
         <Route path="/admin/inventory" element={<Admin_Inventory />}/>
         <Route path="/admin/employee" element={<Admin_Employee />}/>
         <Route path="/admin/borrow" element={<Admin_Borrow/>}/>

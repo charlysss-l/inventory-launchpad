@@ -8,11 +8,24 @@ import cors from 'cors';
 const app = express();
 const port = 3000;
 
+//singup
+import bodyParser from 'body-parser';
+import userRoutes from './src/routes/signup.js'; // Import your route
+
+app.use(bodyParser.json()); // Parse JSON bodies
+app.use('/user', userRoutes); // Use the user routes
+
+
 app.use(express.json());
 app.use(cors());
 
+
+//mongoDB connection using mongoose
 mongoose.connect('mongodb+srv://teamlaunchpadinventory:teamlaunchpadinventory@cluster0.bdcqs.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0').then(() => console.log('Connected to MongoDB'))
 .catch((err) => console.error('Failed to connect to MongoDB', err));
+
+
+
 
 app.get('/', (req, res) => {
   res.send('Express app is running');
@@ -25,6 +38,9 @@ app.listen(port, (err) => {
     console.log(`Server running on port ${port}`);
   }
 });
+
+
+
 
 
 app.post('/add-product', addProduct )

@@ -7,6 +7,8 @@ import Borrow from './pages/Employee_Borrow/Borrow'
 import Setting from './pages/Setting/Setting'
 import Header from './components/Header/Header'
 import BorrowProduct from './components/Borrow/borrowProduct'
+import Login from './pages/Auth/login/login'
+import Signup from './pages/Auth/signup/signup'
 
 const App = () => {
   return (
@@ -15,6 +17,8 @@ const App = () => {
     <Header/>
     <Sidebar/>
      <Routes>
+        <Route path='/login' element={<Login />}></Route>
+        <Route path='/signup' element={<Signup />}></Route>
         <Route path="/" element={<Dashboard/>}/>
         <Route path="/inventory" element={<Inventory/>}>
         </Route>

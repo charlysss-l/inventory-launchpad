@@ -24,6 +24,8 @@ const Header = () => {
  <NavLink to="/profile">
  <img src={Avatar} alt="Profile" />
  </NavLink>
+ <NavLink to="/login">Login</NavLink>
+ <NavLink to="/signup">Signup</NavLink>
  </div>
     </header>
   );
