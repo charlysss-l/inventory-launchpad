@@ -10,18 +10,21 @@ import createAdminAccount from './src/scripts/admin.js';
 createAdminAccount()
 
 
-//singup
+//singup route login route imports
 import bodyParser from 'body-parser';
-import userRoutes from './src/routes/signup.js';
+import userRoute from './src/routes/signup.js';
+import loginRoute from './src/routes/login.js'
 
 const app = express();
 const port = 3000;
 
+//sign roure
 app.use(cors())
 app.use(bodyParser.json());
-app.use('/user', userRoutes);
+app.use('/user', userRoute);
 
-
+//login route
+app.use('/authLogin', loginRoute)
 
 app.use(express.json());
 
