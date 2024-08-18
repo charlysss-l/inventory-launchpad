@@ -1,5 +1,5 @@
 import jwt from 'jsonwebtoken'
-import { createSecretKey } from '../configuration/jwtConfig'
+import { secretKey } from '../configuration/jwtConfig'
 
 const generatedToken = (user) => {
     const payload = {
@@ -7,7 +7,7 @@ const generatedToken = (user) => {
         email: user.email,
         role: user.role
     }
-    return jwt.sign(payload, this.createSecretKey, {expiresIn: '1h'})
+    return jwt.sign(payload, secretKey, {expiresIn: '1h'})
 }
 
 export default generatedToken
