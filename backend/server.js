@@ -3,28 +3,27 @@ import { addBorrowProduct, removeBorrowProduct, fetchBorrowProduct } from './bor
 
 import express from 'express';
 import mongoose from 'mongoose';
-import cors from 'cors';
+import cors from 'cors'
+
+//singup
+import bodyParser from 'body-parser';
+import userRoutes from './src/routes/signup.js';
 
 const app = express();
 const port = 3000;
 
-//singup
-import bodyParser from 'body-parser';
-import userRoutes from './src/routes/signup.js'; // Import your route
+app.use(cors())
+app.use(bodyParser.json());
+app.use('/user', userRoutes);
 
-app.use(bodyParser.json()); // Parse JSON bodies
-app.use('/user', userRoutes); // Use the user routes
 
 
 app.use(express.json());
-app.use(cors());
 
 
 //mongoDB connection using mongoose
 mongoose.connect('mongodb+srv://teamlaunchpadinventory:teamlaunchpadinventory@cluster0.bdcqs.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0').then(() => console.log('Connected to MongoDB'))
 .catch((err) => console.error('Failed to connect to MongoDB', err));
-
-
 
 
 app.get('/', (req, res) => {

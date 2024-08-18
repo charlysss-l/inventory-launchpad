@@ -24,7 +24,6 @@ const App = () => {
         </Route>
         <Route path="/borrow" element={<Borrow/>}/>
         <Route path="/setting" element={<Setting/>}/>
-        {/*<Route path="/login" element={<Login/>}/>*/}
         <Route path='/borrowProduct' element={<BorrowProduct />} />
      </Routes>
     

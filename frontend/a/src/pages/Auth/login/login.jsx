@@ -4,7 +4,7 @@ const login = () => {
   return (
     <>
       <section className='container'>
-        <div>Login</div>
+        <div>Signup/Register</div>
         <div className="content">
         <form action="POST">
           <div className="input-box">
