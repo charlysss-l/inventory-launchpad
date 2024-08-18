@@ -5,6 +5,11 @@ import express from 'express';
 import mongoose from 'mongoose';
 import cors from 'cors'
 
+//adminAccount
+import createAdminAccount from './src/scripts/admin.js';
+createAdminAccount()
+
+
 //singup
 import bodyParser from 'body-parser';
 import userRoutes from './src/routes/signup.js';
