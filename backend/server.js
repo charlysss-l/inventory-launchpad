@@ -12,21 +12,25 @@ createAdminAccount()
 
 //singup route login route imports
 import bodyParser from 'body-parser';
-import userRoute from './src/routes/signup.js';
+import signupRoute from './src/routes/signup.js';
 import loginRoute from './src/routes/login.js'
+import userRoute from './src/routes/user.js'
 
 const app = express();
 const port = 3000;
+app.use(express.json());
 
 //sign roure
 app.use(cors())
 app.use(bodyParser.json());
-app.use('/user', userRoute);
+app.use('/user', signupRoute);
 
 //login route
 app.use('/auth', loginRoute)
 
-app.use(express.json());
+//users route // get?
+app.use('/api', userRoute)
+
 
 
 //mongoDB connection using mongoose
@@ -34,7 +38,7 @@ mongoose.connect('mongodb+srv://teamlaunchpadinventory:teamlaunchpadinventory@cl
 .catch((err) => console.error('Failed to connect to MongoDB', err));
 
 
-app.get('/', (req, res) => {
+app.get('/ROUTE', (req, res) => {
   res.send('Express app is running');
 });
 
