@@ -1,13 +1,13 @@
-import authService from '../services/login'
+import loGin from '../services/login.js'; // Correct import statement
 
-export const login = async (req,res) => {
+const Login = async (req, res) => {
     try {
-        const {email,password} = req.body
-        const token = await authService.login(email, password)
-        res.json({token: token})
+        const { email, password } = req.body; // Destructure email and password from request body
+        const token = await loGin(email, password); // Pass email and password to loGin
+        res.json({ token: token }); // Send token in the response
     } catch (error) {
-        res.status(401).json({message: "Invalid credentials"})
+        res.status(401).json({ message: "Invalid credentials" }); // Return error message
     }
-}
+};
 
-// export default {login}
+export default Login;

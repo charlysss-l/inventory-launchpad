@@ -24,7 +24,7 @@ app.use(bodyParser.json());
 app.use('/user', userRoute);
 
 //login route
-app.use('/authLogin', loginRoute)
+app.use('/auth', loginRoute)
 
 app.use(express.json());
 
