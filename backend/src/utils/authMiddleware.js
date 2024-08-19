@@ -9,20 +9,25 @@ const authenticateToken = (req, res, next) => {
         return res.status(401).json({message: 'unauthorized: missing token'})
     }
     const [bearer, token] = authHeader.split(" ")
-    if(bearer !== "Bearer" || !token){
+    if(bearer !== "bearer" || !token){
         return res.status(401).json({message: "unauthorized: invalid token format"})
     }
 
     jwt.verify(token, secretKey, (err, user) => {
-        if(err){
-            return res.status(403).json({message: 'forbidden: invalid token'})
+        if (err) {
+            return res.status(403).json({ message: 'Forbidden: invalid token' });
         }
-    })
+        req.user = user; // Attach user info to the request object
+        next(); // Call next middleware or route handler
+    });
 }
 
-export default {authenticateToken}
+export const verifyToken = (token) => {
+    return jwt.verify(token, secretKey)
+}
 
 
+export default authenticateToken
 // import jwt from 'jsonwebtoken';
 // import { secretKey } from '../configuration/jwtConfig.js';
 

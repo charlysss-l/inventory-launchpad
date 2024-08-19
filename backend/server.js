@@ -14,7 +14,6 @@ createAdminAccount()
 import bodyParser from 'body-parser';
 import signupRoute from './src/routes/signup.js';
 import loginRoute from './src/routes/login.js'
-import userRoute from './src/routes/user.js'
 
 const app = express();
 const port = 3000;
@@ -28,6 +27,7 @@ app.use('/user', signupRoute);
 //login route
 app.use('/auth', loginRoute)
 
+import userRoute from './src/routes/user.js'
 //users route // get?
 app.use('/api', userRoute)
 

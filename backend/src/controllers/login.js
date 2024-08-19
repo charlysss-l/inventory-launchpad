@@ -10,4 +10,14 @@ const Login = async (req, res) => {
     }
 };
 
+export const refreshToken = async (req, res) => {
+    try {
+        const { token } = req.body; // Destructure email and password from request body
+        const newToken = await refreshToken(token); // Pass email and password to loGin
+        res.json({ newToken: newToken }); // Send token in the response
+    } catch (error) {
+        res.status(401).json({ message: "Invalid credentials" }); // Return error message
+    }
+};
+
 export default Login;
