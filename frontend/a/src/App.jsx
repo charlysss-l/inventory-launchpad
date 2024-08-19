@@ -12,12 +12,12 @@ import Signup from './pages/Auth/signup/signup'
 
 const App = () => {
   return (
-  <main className="container">
     <BrowserRouter>
+  <main className="container">
     <Header/>
     <Sidebar/>
      <Routes>
-        <Route path='/login' element={<Login />}></Route>
+        <Route path="/login" element={<Login />} />
         <Route path='/signup' element={<Signup />}></Route>
         <Route path="/" element={<Dashboard/>}/>
         <Route path="/inventory" element={<Inventory/>}>
@@ -27,8 +27,8 @@ const App = () => {
         <Route path='/borrowProduct' element={<BorrowProduct />} />
      </Routes>
     
-    </BrowserRouter>
   </main>
+    </BrowserRouter>
   )
 }
 

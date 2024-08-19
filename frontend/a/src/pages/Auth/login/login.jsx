@@ -27,8 +27,9 @@ const handleSubmitButton = async (e) => {
       throw new Error('Network response was not ok');
     }
     const result = await response.json();
+    localStorage.setItem("token", result.token)
     console.log(result);
-    navigate('/inventory');
+    navigate('/');
   } catch (error) {
     console.error("Error: ", error);
   }
