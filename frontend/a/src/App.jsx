@@ -6,7 +6,7 @@ import Inventory from './pages/Employee_Inventory/Inventory'
 import Borrow from './pages/Employee_Borrow/Borrow'
 import Setting from './pages/Setting/Setting'
 import Header from './components/Header/Header'
-import BorrowProduct from './components/Borrow/borrowProduct'
+import AddBorrowProduct from './components/addBorrowProducts/AddBorrowProduct'
 import Login from './pages/Auth/login/login'
 import Signup from './pages/Auth/signup/signup'
 
@@ -24,7 +24,7 @@ const App = () => {
         </Route>
         <Route path="/borrow" element={<Borrow/>}/>
         <Route path="/setting" element={<Setting/>}/>
-        <Route path='/borrowProduct' element={<BorrowProduct />} />
+        <Route path='/addBorrowProduct' element={<AddBorrowProduct />} />
      </Routes>
     
   </main>

@@ -31,7 +31,7 @@ const AddBorrowProduct = () => {
     }
 
 return (
-    <div className = "container">
+    <div className = "conTainer">
         <form>
             <h2> Borrow Product </h2>
             <div className = "content">
@@ -40,7 +40,7 @@ return (
                     <input type="text" placeholder="Enter Product Name" name="borrowName" onChange={changeHanlder} value={addBorrowProducts.borrowName}/>
                 </div>
                 <div className = "input-box">
-                    <label htmlFor = "brand"> Quantitiy: </label>
+                    <label htmlFor = "brand"> Quantity: </label>
                     <input type="number" placeholder="Enter Brand" name="borrowQuantity" onChange={changeHanlder} value={addBorrowProducts.borrowQuantity}/>
                 </div>
                 <div className = "input-box">
