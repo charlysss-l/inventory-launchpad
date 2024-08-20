@@ -1,41 +1,53 @@
 import bcrypt from 'bcrypt';
-import User from '../models/user.js'; // Ensure correct import
-import { generatedToken } from '../utils/jwtUtils.js'; // Ensure correct import
+import User from '../models/user.js';
+import { generatedToken } from '../utils/jwtUtils.js'; // Correct function name
 import { verifyToken } from '../utils/authMiddleware.js';
 
-const loGin = async (email, password) => { // Accept email and password as parameters
+const loGin = async (email, password) => {
     try {
-        const existingUser = await User.findOne({ email }); // Find user by email
-        if (!existingUser) {
-            throw new Error('User not found'); // Throw error if user does not exist
+        console.log('Login attempt:', email); // Log email
+        if (!email || !password) {
+            throw new Error('Email or password missing'); // Handle missing data
         }
         
-        // Compare the provided password with the hashed password in the database
+        const existingUser = await User.findOne({ email });
+        if (!existingUser) {
+            console.log('User not found'); // Log if user is not found
+            throw new Error('User not found');
+        }
+        
         const isPasswordValid = await bcrypt.compare(password, existingUser.password);
         if (!isPasswordValid) {
-            throw new Error('Incorrect password'); // Throw error if password is incorrect
+            console.log('Incorrect password'); // Log incorrect password
+            throw new Error('Incorrect password');
         }
         
-        const token = generatedToken(existingUser); // Generate token for the user
-        return token; // Return the token
+        const token = generatedToken(existingUser);
+        console.log('Token generated:', token); // Log generated token
+        return token;
     } catch (error) {
-        console.log('login error: ', error)
-        throw new Error('Invalid credentials'); // Throw error if any issue occurs
+        console.log('Login error:', error.message);
+        throw new Error('Invalid credentials');
     }
-}
+};
 
-export const refreshToken = async (oldToken) => {
+export const refreshTokenService = async (oldToken) => {
     try {
-        const decodedToken = verifyToken(oldToken)
-        const user = User.findById(decodedToken._id)
-        if(!user){
-            throw new error('user not ound')
+        console.log('Refreshing token:', oldToken); // Log the old token
+        const decodedToken = verifyToken(oldToken);
+        console.log('Decoded token:', decodedToken); // Log decoded token
+        const user = await User.findById(decodedToken.id); // Use `id` to match token data
+        if (!user) {
+            console.log('User not found during token refresh'); // Log if user is not found
+            throw new Error('User not found');
         }
-        const newToken = generatedToken(user)
-        return newToken
+        const newToken = generatedToken(user); // Ensure correct function name
+        console.log('New token generated:', newToken); // Log new token
+        return newToken;
     } catch (error) {
-        throw new error("invalid token")
+        console.log('Refresh token error:', error.message);
+        throw new Error("Invalid token");
     }
-}
+};
 
-export default loGin; // Export loGin function
+export default loGin;

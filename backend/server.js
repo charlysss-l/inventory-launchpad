@@ -26,7 +26,6 @@ app.use('/user', signupRoute);
 
 //login route
 app.use('/auth', loginRoute)
-
 import userRoute from './src/routes/user.js'
 //users route // get?
 app.use('/api', userRoute)
