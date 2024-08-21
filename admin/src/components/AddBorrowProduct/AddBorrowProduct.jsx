@@ -13,6 +13,8 @@ const AddBorrowProduct = () => {
         borrowQuantity: "",
         borrowDate: "",
         purpose: "",
+        destination: "",
+        clientStaff: "",
     });
 
     useEffect(() => {
@@ -27,6 +29,8 @@ const AddBorrowProduct = () => {
                         borrowQuantity: "", // Quantity will be filled by the user
                         borrowDate: "", // Date will be filled by the user
                         purpose: "", // Purpose will be filled by the user
+                        destination: "",
+                        clientStaff: "",
                     });
                 })
                 .catch((error) => {
@@ -51,6 +55,8 @@ const AddBorrowProduct = () => {
                     borrowQuantity: "",
                     borrowDate: "",
                     purpose: "",
+                    destination: "",
+                    clientStaff: "",
                 });
             })
             .catch(err => {
@@ -87,6 +93,21 @@ const AddBorrowProduct = () => {
                     <div className="input-box">
                         <label htmlFor="purpose"> Purpose: </label>
                         <input type="text" placeholder="Enter Purpose" name="purpose" onChange={changeHanlder} value={addBorrowProducts.purpose} />
+                    </div>
+                    <div className="input-box">
+                        <label htmlFor="purpose"> Destination: </label>
+                        <select name="destination" id='destination' onChange={changeHanlder} value={addBorrowProducts.destination}>
+                            <option value="Griffin Stone">Griffin Stone</option>
+                            <option value="Launchpad Stone">Launchpad Stone</option>
+                            <option value="Launchpad Plus">Launchpad Plus</option>
+                        </select>
+                    </div>
+                    <div className="input-box">
+                        <label htmlFor="purpose"> Destination: </label>
+                        <select name="clientStaff" id='clientStaff' onChange={changeHanlder} value={addBorrowProducts.clientStaff}>
+                            <option value="Client">Client</option>
+                            <option value="Staff">Staff</option>
+                        </select>
                     </div>
                     <div className="button-container">
                         <button type="submit" onClick={(e) => submitHandler(e)}> BORROW PRODUCT </button>

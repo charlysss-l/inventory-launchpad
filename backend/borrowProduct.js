@@ -21,7 +21,15 @@ export const BorrowProduct = mongoose.model("BorrowProduct",{
         type: String,
         required: true,
     },
-    isAccepted: { type: Boolean, default: false } // New field for acceptance status
+    isAccepted: { type: Boolean, default: false },
+    destination: {
+        type: String,
+        required: true
+    },
+    clientStaff: {
+        type: String,
+        required: true,
+    }
 })
 
 export const acceptborrowProduct = async (req, res) => {
@@ -67,6 +75,8 @@ export const addBorrowProduct = async (req,res) => {
             borrowQuantity: req.body.borrowQuantity,  
             borrowDate: req.body.borrowDate,
             purpose:req.body.purpose,
+            destination: req.body.destination,
+            clientStaff: req.body.clientStaff,
         });
 
         console.log('Product to save:', borrowproduct);

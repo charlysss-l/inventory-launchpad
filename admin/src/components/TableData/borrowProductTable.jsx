@@ -44,6 +44,8 @@ const borrowProductTable = ({ products }) => {
                             <th className="title">Quantity</th>
                             <th className="title">Date Borrowed</th>
                             <th className="title">Purpose</th>
+                            <th className="title">Destination</th>
+                            <th className="title">ANO KA?</th>
                             <th className="title">Status</th>
                             <th className="title">Actions</th>
                         </tr>
@@ -56,6 +58,8 @@ const borrowProductTable = ({ products }) => {
                                 <td className="data">{item.borrowQuantity}</td>
                                 <td className="data">{item.borrowDate}</td>
                                 <td className="data">{item.purpose}</td>
+                                <td className="data">{item.destination}</td>
+                                <td className="data">{item.clientStaff}</td>
                                 <td className="data">{item.isAccepted ? "Accepted" : "Pending"}</td>
                                 <td className="data">
                                     <button type="submit" onClick={() => { removeBorrowProduct(item.borrowId) }} className="delete">Delete</button>

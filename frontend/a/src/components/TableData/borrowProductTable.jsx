@@ -14,6 +14,8 @@ import './Table.css'
                 <th className="title">Quantity</th>
                 <th className="title">Date bnrrow?</th>
                 <th className="title">Purpose</th>
+                <th className="title">Destination</th>
+                <th className="title">ANO KA?</th>
                 <th className="title">Status</th>
             </tr>
         </thead>
@@ -25,6 +27,8 @@ import './Table.css'
                     <td className="data">{item.borrowQuantity}</td>
                     <td className="data">{item.borrowDate}</td>
                     <td className="data">{item.purpose}</td>
+                    <td className="data">{item.destination}</td>
+                    <td className="data">{item.clientStaff}</td>
                     <td className="data">{item.isAccepted ? "Accepted" : "Pending"}</td>
                 </tr>
             ))}
