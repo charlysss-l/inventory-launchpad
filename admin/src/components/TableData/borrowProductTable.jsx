@@ -1,6 +1,6 @@
-
 import './productTable.css'
 import { NavLink } from 'react-router-dom';
+
 const removeBorrowProduct = async (borrowId) => {
     await fetch('http://localhost:3000/remove-borrow-products', {
         method: 'POST',
@@ -8,54 +8,71 @@ const removeBorrowProduct = async (borrowId) => {
             Accept: 'application/json',
             'Content-Type': 'application/json',
         },
-        body: JSON.stringify({borrowId:borrowId})
-        
-    }).then((resp)=> {
-        resp.ok? alert('Are you sure you want to remove the product?') : alert("Failed to remove the product")
+        body: JSON.stringify({ borrowId: borrowId })
+    }).then((resp) => {
+        resp.ok ? alert('Product removed successfully') : alert("Failed to remove the product")
     })
 }
-    const borrowProductTable = ({ products }) => {
-        return (
-            <div className="conn">
-  <div className="inventory-container">
 
-<div className="inventory-heading">
-    <h3>Products</h3>
-    <NavLink to={'/admin/addBorrowProduct'} className="pages">Borrow Product-manual</NavLink>
- </div>
+const acceptBorrowProduct = async (borrowId) => {
+    await fetch('http://localhost:3000/accept-borrow-product', {
+        method: 'POST',
+        headers: {
+            Accept: 'application/json',
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ borrowId: borrowId })
+    }).then((resp) => {
+        resp.ok ? alert('Product accepted successfully') : alert("Failed to accept the product")
+        window.location.reload(); // Reload page to reflect changes
+    })
+}
 
- <table className="inventory-table">
-        <thead>
-            <tr>
-                <th className="title">Borrow ID</th>
-                <th className="title">Name</th>
-                <th className="title">Quantity</th>
-                <th className="title">Date bnrrow?</th>
-                <th className="title">Purpose</th>
-                <th className="title">Delete</th>
-            </tr>
-        </thead>
-        <tbody>
-            {products.map((item, index) => (
-                <tr key={index}>
-                    <td className="data">{item.borrowId}</td>
-                    <td className="data">{item.borrowName}</td>
-                    <td className="data">{item.borrowQuantity}</td>
-                    <td className="data">{item.borrowDate}</td>
-                    <td className="data">{item.purpose}</td>
-                    <td className="data"><button type="submit" onClick={() => {removeBorrowProduct(item.borrowId)}} className="delete">Delete</button></td>
-                  
-                </tr>
-            ))}
-        </tbody>
-    </table>
-</div>
+const borrowProductTable = ({ products }) => {
+    return (
+        <div className="conn">
+            <div className="inventory-container">
+                <div className="inventory-heading">
+                    <h3>Products</h3>
+                    <NavLink to={'/admin/addBorrowProduct'} className="pages">Borrow Product-manual</NavLink>
+                </div>
+                <table className="inventory-table">
+                    <thead>
+                        <tr>
+                            <th className="title">Borrow ID</th>
+                            <th className="title">Name</th>
+                            <th className="title">Quantity</th>
+                            <th className="title">Date Borrowed</th>
+                            <th className="title">Purpose</th>
+                            <th className="title">Status</th>
+                            <th className="title">Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {products.map((item, index) => (
+                            <tr key={index}>
+                                <td className="data">{item.borrowId}</td>
+                                <td className="data">{item.borrowName}</td>
+                                <td className="data">{item.borrowQuantity}</td>
+                                <td className="data">{item.borrowDate}</td>
+                                <td className="data">{item.purpose}</td>
+                                <td className="data">{item.isAccepted ? "Accepted" : "Pending"}</td>
+                                <td className="data">
+                                    <button type="submit" onClick={() => { removeBorrowProduct(item.borrowId) }} className="delete">Delete</button>
+                                    {!item.isAccepted && <button onClick={() => { acceptBorrowProduct(item.borrowId) }}>Accept</button>}
+                                </td>
+                            </tr>
+                        ))}
+                    </tbody>
+                </table>
             </div>
-          
-        );
-    };
-    
-    export default borrowProductTable;
+        </div>
+    );
+};
+
+export default borrowProductTable;
+
+
     
     
     {/* figure out pa if pagination or isang table nlng scroll scroll nlng */}

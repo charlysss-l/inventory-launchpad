@@ -1,6 +1,6 @@
 import mongoose from "mongoose";
 
-const BorrowProduct = mongoose.model("BorrowProduct",{
+export const BorrowProduct = mongoose.model("BorrowProduct",{
     borrowId:{
         type: Number,
         required: true,
@@ -20,8 +20,30 @@ const BorrowProduct = mongoose.model("BorrowProduct",{
     purpose: {
         type: String,
         required: true,
-    }
+    },
+    isAccepted: { type: Boolean, default: false } // New field for acceptance status
 })
+
+export const acceptborrowProduct = async (req, res) => {
+        const { borrowId } = req.body;
+    
+        try {
+            const updatedProduct = await BorrowProduct.findOneAndUpdate(
+                { borrowId: borrowId },
+                { isAccepted: true },
+                { new: true }
+            );
+    
+            if (updatedProduct) {
+                res.status(200).json({ message: 'Product accepted successfully', product: updatedProduct });
+            } else {
+                res.status(404).json({ message: 'Product not found' });
+            }
+        } catch (error) {
+            res.status(500).json({ message: 'Server error', error });
+        }
+    }
+
 
 
 export const addBorrowProduct = async (req,res) => {
