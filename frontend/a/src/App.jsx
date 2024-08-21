@@ -24,7 +24,8 @@ const App = () => {
         </Route>
         <Route path="/borrow" element={<Borrow/>}/>
         <Route path="/setting" element={<Setting/>}/>
-        <Route path='/addBorrowProduct' element={<AddBorrowProduct />} />
+        <Route path="/addBorrowProduct/:product_id" element={<AddBorrowProduct />} />
+
      </Routes>
     
   </main>

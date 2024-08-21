@@ -141,3 +141,16 @@ export const editProduct = async (req, res) => {
       res.status(500).json({ success: false, message: "Failed to edit product" });
     }
   };
+
+  export const findProducyByID = async (req, res) => {
+    try {
+        const product = await Product.findOne({ product_id: req.params.id });
+ // Adjust this according to your database query method
+        if (!product) {
+            return res.status(404).json({ message: 'Product not found' });
+        }
+        res.json(product);
+    } catch (error) {
+        res.status(500).json({ message: 'Server error' });
+    }
+  }

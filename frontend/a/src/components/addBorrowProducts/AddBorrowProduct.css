@@ -1,11 +1,11 @@
 
 .conTainer{
     max-width: 800px;
-    min-height: 700px;
+    min-height: 200px;
     padding: 28px;
+    display: flex;
     margin: auto;
     box-shadow: 0 15px 20px #3d3d37;
-    z-index: 5;
 }
 h2{
     font-size: 26px;

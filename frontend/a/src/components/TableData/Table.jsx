@@ -1,50 +1,103 @@
-    import React from 'react';
-    import {NavLink} from 'react-router-dom'
-import './Table.css'
+import React from 'react';
+import { NavLink } from 'react-router-dom';
+import './Table.css';
 
-    const Table = ({ products }) => {
-        return (
+const Table = ({ products }) => {
+    return (
+        <div className="con">
+            <div className="inventory-container">
+                <div className="inventory-heading">
+                    <h3>Borrow</h3>
+                    <NavLink to={'/addBorrowProduct'} className="pages">BorrowEmployee</NavLink>
+                </div>
 
-            <div className="con">
-  <div className="inventory-container">
+                <table className="inventory-table">
+                    <thead>
+                        <tr>
+                            <th className="title">Product_ID</th>
+                            <th className="title">Name</th>
+                            <th className="title">Brand</th>
+                            <th className="title">Quantity</th>
+                            <th className="title">Category</th>
+                            <th className="title">Date Purchased</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {products.map((item, index) => (
+                            <tr key={index}>
+                                <td className="data">{item.product_id}</td>
+                                <td className="data">{item.product_name}</td>
+                                <td className="data">{item.product_brand}</td>
+                                <td className="data">{item.product_quantity}</td>
+                                <td className="data">{item.product_category}</td>
+                                <td className="data">{item.product_datePurchased}</td>
+                                <td>
+                                <NavLink to={`/addBorrowProduct/${item.product_id}`}>
+    <button>Borrow</button>
+</NavLink>
 
-<div className="inventory-heading">
-    <h3>Borrow</h3>
-    <NavLink to={'/addBorrowProduct'} className="pages">BorrowEmployee</NavLink>
- </div>
-
-
- <table className="inventory-table">
-        <thead>
-            <tr>
-                <th className="title">Product_ID</th>
-                <th className="title">Name</th>
-                <th className="title">Brand</th>
-                <th className="title">Quantity</th>
-                <th className="title">Category</th>
-                <th className="title">Date Purchased</th>
-            </tr>
-        </thead>
-        <tbody>
-            {products.map((item, index) => (
-                <tr key={index}>
-                    <td className="data">{item.product_id}</td>
-                    <td className="data">{item.product_name}</td>
-                    <td className="data">{item.product_brand}</td>
-                    <td className="data">{item.product_quantity}</td>
-                    <td className="data">{item.product_category}</td>
-                    <td className="data">{item.product_datePurchased}</td>
-                </tr>
-            ))}
-        </tbody>
-    </table>
-</div>
+                                </td>
+                            </tr>
+                        ))}
+                    </tbody>
+                </table>
             </div>
-          
-        );
-    };
-    
+        </div>
+    );
+};
+
 export default Table;
+
+
+
+//     import React from 'react';
+//     import {NavLink} from 'react-router-dom'
+// import './Table.css'
+
+//     const Table = ({ products }) => {
+//         return (
+
+//             <div className="con">
+//   <div className="inventory-container">
+
+// <div className="inventory-heading">
+//     <h3>Borrow</h3>
+//     <NavLink to={'/addBorrowProduct'} className="pages">BorrowEmployee</NavLink>
+//  </div>
+
+
+//  <table className="inventory-table">
+//         <thead>
+//             <tr>
+//                 <th className="title">Product_ID</th>
+//                 <th className="title">Name</th>
+//                 <th className="title">Brand</th>
+//                 <th className="title">Quantity</th>
+//                 <th className="title">Category</th>
+//                 <th className="title">Date Purchased</th>
+//             </tr>
+//         </thead>
+//         <tbody>
+//             {products.map((item, index) => (
+//                 <tr key={index}>
+//                     <td className="data">{item.product_id}</td>
+//                     <td className="data">{item.product_name}</td>
+//                     <td className="data">{item.product_brand}</td>
+//                     <td className="data">{item.product_quantity}</td>
+//                     <td className="data">{item.product_category}</td>
+//                     <td className="data">{item.product_datePurchased}</td>
+//                     <td><button>Borrow</button></td>
+//                 </tr>
+//             ))}
+//         </tbody>
+//     </table>
+// </div>
+//             </div>
+          
+//         );
+//     };
+    
+// export default Table;
     
     
     
