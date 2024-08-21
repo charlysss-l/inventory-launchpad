@@ -1,4 +1,4 @@
-import { addProduct, removeProduct, fetchProduct, editProduct, findProducyByID } from './products.js';
+import { addProduct, removeProduct, fetchProduct, editProduct, findProductByID } from './products.js';
 import { addBorrowProduct, removeBorrowProduct, fetchBorrowProduct, acceptborrowProduct } from './borrowProduct.js';
 
 import express from 'express';
@@ -62,7 +62,7 @@ app.post('/add-borrow-products', addBorrowProduct)
 app.post('/remove-borrow-products', removeBorrowProduct)
 app.get('/all-borrow-products', fetchBorrowProduct)
 
-app.get('/allproducts/:id', findProducyByID);
+app.get('/allproducts/:id', findProductByID);
 app.post('/accept-borrow-product', acceptborrowProduct)
 
 

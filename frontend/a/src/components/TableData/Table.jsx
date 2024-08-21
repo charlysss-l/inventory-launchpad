@@ -8,7 +8,6 @@ const Table = ({ products }) => {
             <div className="inventory-container">
                 <div className="inventory-heading">
                     <h3>Borrow</h3>
-                    <NavLink to={'/addBorrowProduct'} className="pages">BorrowEmployee</NavLink>
                 </div>
 
                 <table className="inventory-table">

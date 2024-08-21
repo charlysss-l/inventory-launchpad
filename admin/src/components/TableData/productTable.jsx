@@ -48,7 +48,10 @@ const removeProduct = async (product_id) => {
                     <td className="data">{item.product_datePurchased}</td>
                     <td className="data"><NavLink to={`/admin/editProduct/${item.product_id}`} className="editprod">Edit Product</NavLink></td>
                     <td className="data"><button type="submit" onClick={() => {removeProduct(item.product_id)}} className="delete">Delete</button></td>
-                  
+                    <NavLink to={`/admin/addBorrowProduct/${item.product_id}`}>
+                        <button>Borrow</button>
+                    </NavLink>
+
                 </tr>
             ))}
         </tbody>

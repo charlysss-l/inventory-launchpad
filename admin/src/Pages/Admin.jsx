@@ -32,7 +32,7 @@ const Admin = () => {
         <Route path="/admin/setting" element={<Admin_Setting/>}/>
         <Route path="/admin/addProduct" element={<AddProduct />}/>
         <Route path="/admin/editProduct/:product_id" element={<EditProduct />}/>
-        <Route path="/admin/addBorrowProduct" element={<AddBorrowProduct />}/>
+        <Route path="/admin/addBorrowProduct/:product_id" element={<AddBorrowProduct />} />
      </Routes>
 </main>
 

@@ -142,7 +142,7 @@ export const editProduct = async (req, res) => {
     }
   };
 
-  export const findProducyByID = async (req, res) => {
+  export const findProductByID = async (req, res) => {
     try {
         const product = await Product.findOne({ product_id: req.params.id });
  // Adjust this according to your database query method
