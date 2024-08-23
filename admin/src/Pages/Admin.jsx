@@ -36,7 +36,7 @@ const Admin = () => {
         <Route path="/admin/editProduct/:product_id" element={<EditProduct />}/>
         <Route path="/admin/addBorrowProduct/:product_id" element={<AddBorrowProduct />} />
         <Route path="/admin/:category" element={<Admin_Category />} />
-
+    
         {/* <Route path="/admin/hardwares" element={<Admin_Category category="hardwares" />}></Route> */}
      </Routes>
 </main>

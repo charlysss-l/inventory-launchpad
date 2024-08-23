@@ -51,7 +51,7 @@ export const prodCategory = async (req, res) => {
 
 
 
-export const addProduct = async (req,res) => {
+export const addProduct = async (req,res) => {  
     try {
         // Retrieve the last product
         let lastProduct = await Product.findOne({}).sort({ product_id: -1 }).limit(1);

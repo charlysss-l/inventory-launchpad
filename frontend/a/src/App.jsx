@@ -10,6 +10,8 @@ import AddBorrowProduct from './components/addBorrowProducts/AddBorrowProduct'
 import Login from './pages/Auth/login/login'
 import Signup from './pages/Auth/signup/signup'
 
+import Employe_Category from './pages/Employee_Category/Employee_Category'
+
 const App = () => {
   return (
     <BrowserRouter>
@@ -25,7 +27,7 @@ const App = () => {
         <Route path="/borrow" element={<Borrow/>}/>
         <Route path="/setting" element={<Setting/>}/>
         <Route path="/addBorrowProduct/:product_id" element={<AddBorrowProduct />} />
-
+        <Route path="/userCategory/:category" element={<Admin_Category />} />
      </Routes>
     
   </main>

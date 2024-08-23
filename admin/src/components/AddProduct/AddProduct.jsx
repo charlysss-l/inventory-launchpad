@@ -57,8 +57,9 @@ return (
                 <div className = "input-box">
                     <label htmlFor = "category"> Category: </label>
                     <select name="product_category" id="product_category" onChange={changeHanlder} value={addProducts.product_category}>
+                        <option >Please Select Category</option>
                         <option value="hardwares">Hardwares</option>
-                        <option value="sample">Sample</option>
+                        <option value="furnitures">Sample</option>
                     </select>
                 </div>
                 <div className = "input-box">
