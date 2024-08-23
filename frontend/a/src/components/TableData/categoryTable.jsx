@@ -2,19 +2,6 @@ import React, { useState, useEffect } from 'react';
 import './Table.css';
 import { NavLink, useParams } from 'react-router-dom';
 
-const removeProduct = async (product_id) => {
-    await fetch('http://localhost:3000/removeproduct', {
-        method: 'POST',
-        headers: {
-            Accept: 'application/json',
-            'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({ product_id: product_id })
-    }).then((resp) => {
-        resp.ok ? alert('Product removed successfully.') : alert("Failed to remove the product");
-    });
-};
-
 const CategoryTable = () => {
     const { category } = useParams(); // Get category from the URL
     const [filteredProducts, setFilteredProducts] = useState([]);
@@ -48,7 +35,6 @@ const CategoryTable = () => {
             <div className="inventory-container">
                 <div className="inventory-heading">
                     <h3>Products</h3>
-                    <NavLink to={'/admin/addProduct'} className="pages">Add Product</NavLink>
                 </div>
                 {loading ? (
                     <div>Loading...</div> // Display loading message
@@ -76,13 +62,7 @@ const CategoryTable = () => {
                                     <td className="data">{item.product_category}</td>
                                     <td className="data">{item.product_datePurchased}</td>
                                     <td className="data">
-                                        <NavLink to={`/admin/editProduct/${item.product_id}`} className="editprod">Edit Product</NavLink>
-                                    </td>
-                                    <td className="data">
-                                        <button type="button" onClick={() => { removeProduct(item.product_id) }} className="delete">Delete</button>
-                                    </td>
-                                    <td className="data">
-                                        <NavLink to={`/admin/addBorrowProduct/${item.product_id}`}>
+                                        <NavLink to={`/addBorrowProduct/${item.product_id}`}>
                                             <button>Borrow</button>
                                         </NavLink>
                                     </td>

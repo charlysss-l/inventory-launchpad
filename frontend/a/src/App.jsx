@@ -27,7 +27,7 @@ const App = () => {
         <Route path="/borrow" element={<Borrow/>}/>
         <Route path="/setting" element={<Setting/>}/>
         <Route path="/addBorrowProduct/:product_id" element={<AddBorrowProduct />} />
-        <Route path="/userCategory/:category" element={<Admin_Category />} />
+        <Route path="/userCategory/:category" element={<Employe_Category />} />
      </Routes>
     
   </main>

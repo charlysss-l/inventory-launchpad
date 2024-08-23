@@ -10,9 +10,13 @@ const Sidebar = () => {
                 <NavLink to={'/admin/inventory'} className="pages">Inventory</NavLink>
                 <NavLink to={'/admin/employee'} className="pages">Employee</NavLink>
                 <NavLink to={'/admin/borrow'} className="pages">Borrow</NavLink>
+
                 <NavLink to={'/admin/hardwares'} className="pages">Hardwares</NavLink>
-      
                 <NavLink to={'/admin/furnitures'} className="pages">Furnitures</NavLink>
+                <NavLink to={'/admin/applicances'} className="pages">Appliances</NavLink>    
+                <NavLink to={'/admin/lightings'} className="pages">Lightings</NavLink>    
+                <NavLink to={'/admin/others'} className="pages">Others</NavLink>    
+                    
             </div>
             <div className="bottom">
                 <NavLink to={'/admin/setting'} className="bottom-link">Setting</NavLink>
