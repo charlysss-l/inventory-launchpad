@@ -60,7 +60,7 @@ return (
                         <option >Please Select Category</option>
                         <option value="hardwares">Hardwares</option>
                         <option value="furnitures">Furnitures</option>
-                        <option value="appliances">Applicanes</option>
+                        <option value="appliances">Appliances</option>
                         <option value="lightings">Lightings</option>
                         <option value="others">Others</option>
                     </select>

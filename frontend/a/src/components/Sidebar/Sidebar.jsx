@@ -13,6 +13,9 @@ const Sidebar = () => {
 
         <NavLink to={'/userCategory/hardwares'} className="pages">Hardwares</NavLink>
                 <NavLink to={'/userCategory/furnitures'} className="pages">Furnitures</NavLink>
+                <NavLink to={'/userCategory/appliances'} className="pages">Appliances</NavLink>    
+                <NavLink to={'/userCategory/lightings'} className="pages">Lightings</NavLink>    
+                <NavLink to={'/userCategory/others'} className="pages">Others</NavLink>
       </div>
 
       <div className="bottom">

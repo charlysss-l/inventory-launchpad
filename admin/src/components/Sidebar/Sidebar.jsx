@@ -13,7 +13,7 @@ const Sidebar = () => {
 
                 <NavLink to={'/admin/hardwares'} className="pages">Hardwares</NavLink>
                 <NavLink to={'/admin/furnitures'} className="pages">Furnitures</NavLink>
-                <NavLink to={'/admin/applicances'} className="pages">Appliances</NavLink>    
+                <NavLink to={'/admin/appliances'} className="pages">Appliances</NavLink>    
                 <NavLink to={'/admin/lightings'} className="pages">Lightings</NavLink>    
                 <NavLink to={'/admin/others'} className="pages">Others</NavLink>    
                     
