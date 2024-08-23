@@ -1,4 +1,4 @@
-import { addProduct, removeProduct, fetchProduct, editProduct, findProductByID } from './products.js';
+import { addProduct, removeProduct, fetchProduct, editProduct, findProductByID, prodCategory } from './products.js';
 import { addBorrowProduct, removeBorrowProduct, fetchBorrowProduct, acceptborrowProduct } from './borrowProduct.js';
 
 import express from 'express';
@@ -65,6 +65,7 @@ app.get('/all-borrow-products', fetchBorrowProduct)
 app.get('/allproducts/:id', findProductByID);
 app.post('/accept-borrow-product', acceptborrowProduct)
 
+app.get('/prodCat/:category', prodCategory);
 
 // const { MongoClient, ServerApiVersion } = require('mongodb');
 // const uri = 'mongodb+srv://launchpad2024:launchpad@2024@cluster0.nfyxn.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0';

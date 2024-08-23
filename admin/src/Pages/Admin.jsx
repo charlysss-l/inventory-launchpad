@@ -15,6 +15,8 @@ import './Admin.css'
 import Login from './Auth/login/login'
 import Signup from './Auth/signup/signup'
 
+import Admin_Category from './Category/Admin_Category'
+
 
 const Admin = () => {
   return (
@@ -33,9 +35,11 @@ const Admin = () => {
         <Route path="/admin/addProduct" element={<AddProduct />}/>
         <Route path="/admin/editProduct/:product_id" element={<EditProduct />}/>
         <Route path="/admin/addBorrowProduct/:product_id" element={<AddBorrowProduct />} />
+        <Route path="/admin/:category" element={<Admin_Category />} />
+
+        {/* <Route path="/admin/hardwares" element={<Admin_Category category="hardwares" />}></Route> */}
      </Routes>
 </main>
-
     
   )
 }

@@ -38,6 +38,19 @@ const Product = mongoose.model("Product",{
     }
 })
 
+export const prodCategory = async (req, res) => {
+    const category = req.params.category; // Get category from the request params
+    try {
+        const products = await Product.find({ product_category: category }); // Fetch products by category
+        res.json(products); // Send back the products as JSON
+    } catch (error) {
+        console.error(`Error fetching products for category ${category}:`, error);
+        res.status(500).send('Internal Server Error');
+    }
+};
+
+
+
 export const addProduct = async (req,res) => {
     try {
         // Retrieve the last product

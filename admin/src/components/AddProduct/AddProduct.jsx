@@ -56,7 +56,10 @@ return (
                 </div>
                 <div className = "input-box">
                     <label htmlFor = "category"> Category: </label>
-                    <input type="text" placeholder="Enter Category" name="product_category" onChange={changeHanlder} value={addProducts.product_category}/>
+                    <select name="product_category" id="product_category" onChange={changeHanlder} value={addProducts.product_category}>
+                        <option value="hardwares">Hardwares</option>
+                        <option value="sample">Sample</option>
+                    </select>
                 </div>
                 <div className = "input-box">
                     <label htmlFor = "date"> Date purchased: </label>
