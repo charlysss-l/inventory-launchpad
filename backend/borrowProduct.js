@@ -29,6 +29,18 @@ export const BorrowProduct = mongoose.model("BorrowProduct",{
     clientStaff: {
         type: String,
         required: true,
+    },
+    borrowerName: {
+        type: String,
+        required: true,
+    },
+    borrowerGmail:{
+        type: String,
+        requireed: true,
+    },
+    borrowerNumber:{
+        type: Number,
+        required: true,
     }
 })
 
@@ -77,6 +89,10 @@ export const addBorrowProduct = async (req,res) => {
             purpose:req.body.purpose,
             destination: req.body.destination,
             clientStaff: req.body.clientStaff,
+            borrowerName: req.body.borrowerName,
+            borrowerGmail: req.body.borrowerGmail,
+            borrowerNumber: req.body.borrowerNumber,
+            
         });
 
         console.log('Product to save:', borrowproduct);
