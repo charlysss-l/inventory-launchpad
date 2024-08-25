@@ -104,15 +104,15 @@ const AddBorrowProduct = () => {
                         <input type="text" placeholder="Enter Purpose" name="purpose" onChange={changeHanlder} value={addBorrowProducts.purpose} />
                     </div>
                     <div className="input-box">
-                        <label htmlFor="borrowerName"> Purpose: </label>
+                        <label htmlFor="borrowerName"> borrowerName: </label>
                         <input type="text" placeholder="Enter borrowerName" name="borrowerName" onChange={changeHanlder} value={addBorrowProducts.borrowerName} />
                     </div>
                     <div className="input-box">
-                        <label htmlFor="borrowerGmail"> Purpose: </label>
+                        <label htmlFor="borrowerGmail"> borrowerGmail: </label>
                         <input type="email" placeholder="Enter borrowerGmail" name="borrowerGmail" onChange={changeHanlder} value={addBorrowProducts.borrowerGmail} />
                     </div>
                     <div className="input-box">
-                        <label htmlFor="borrowerNumber"> Purpose: </label>
+                        <label htmlFor="borrowerNumber"> borrowerNumber: </label>
                         <input type="number" placeholder="Enter borrowerNumber" name="borrowerNumber" onChange={changeHanlder} value={addBorrowProducts.borrowerNumber} />
                     </div>
                     <div className="input-box">

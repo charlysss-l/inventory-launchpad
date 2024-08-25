@@ -1,4 +1,5 @@
 import mongoose from "mongoose";
+import {sendEmail} from "./email.js";
 
 export const BorrowProduct = mongoose.model("BorrowProduct",{
     borrowId:{
@@ -55,6 +56,28 @@ export const acceptborrowProduct = async (req, res) => {
             );
     
             if (updatedProduct) {
+                // Send email notification with borrower's email as reply-to
+            const emailSubject = 'Your Borrow Request has been Accepted';
+            const emailText = `Hello ${updatedProduct.borrowerName},
+
+Your request to borrow the product "${updatedProduct.borrowName}" has been accepted.
+
+Product Details:
+- Quantity: ${updatedProduct.borrowQuantity}
+- Borrow Date: ${updatedProduct.borrowDate.toLocaleDateString()}
+- Purpose: ${updatedProduct.purpose}
+
+Thank you for your patience.
+
+Best regards,
+Admin Team`;
+
+            await sendEmail(
+                updatedProduct.borrowerGmail, // Send to borrower's email
+                emailSubject,
+                emailText,
+                updatedProduct.borrowerGmail  // Set as reply-to
+            );
                 res.status(200).json({ message: 'Product accepted successfully', product: updatedProduct });
             } else {
                 res.status(404).json({ message: 'Product not found' });
@@ -99,6 +122,30 @@ export const addBorrowProduct = async (req,res) => {
         await borrowproduct.save();
         console.log('Borrow Product saved');
 
+        // Send an email notification to the user with reply-to as their own email
+        const emailSubject = 'Borrow Request Received';
+        const emailText = `Hello ${req.body.borrowerName},
+
+Your request to borrow the product "${req.body.borrowName}" has been received.
+
+Product Details:
+- Quantity: ${req.body.borrowQuantity}
+- Borrow Date: ${new Date(req.body.borrowDate).toLocaleDateString()}
+- Purpose: ${req.body.purpose}
+
+We will review your request and notify you once it's accepted.
+
+Best regards,
+Admin Team`;
+
+        await sendEmail(
+            req.body.borrowerGmail, // Send to borrower's email
+            emailSubject,
+            emailText,
+            req.body.borrowerGmail  // Set as reply-to
+        );
+
+
         res.json({
             success: true,
             product_name: req.body.product_name,
@@ -112,12 +159,42 @@ export const addBorrowProduct = async (req,res) => {
 
 export const removeBorrowProduct = async (req, res) => {
     try {
-        await BorrowProduct.findOneAndDelete({ borrowId: req.body.borrowId });
-        console.log("Product removed");
-        res.json({
-            success: true,
-            borrowId: req.body.borrowId,
-        });
+        // Find and delete the product
+        const deletedProduct = await BorrowProduct.findOneAndDelete({ borrowId: req.body.borrowId });
+
+        if (deletedProduct) {
+            console.log("Product removed");
+
+            // Send email notification with borrower's email as reply-to
+            const emailSubject = 'Your Borrow Request has been Removed';
+            const emailText = `Hello ${deletedProduct.borrowerName},
+
+Your request to borrow the product "${deletedProduct.borrowName}" has been removed.
+
+Product Details:
+- Quantity: ${deletedProduct.borrowQuantity}
+- Borrow Date: ${deletedProduct.borrowDate.toLocaleDateString()}
+- Purpose: ${deletedProduct.purpose}
+
+Thank you for your patience.
+
+Best regards,
+Admin Team`;
+
+            await sendEmail(
+                deletedProduct.borrowerGmail, // Send to borrower's email
+                emailSubject,
+                emailText,
+                deletedProduct.borrowerGmail  // Set as reply-to
+            );
+
+            res.json({
+                success: true,
+                borrowId: req.body.borrowId,
+            });
+        } else {
+            res.status(404).json({ message: 'Product not found' });
+        }
     } catch (error) {
         console.error("Error removing product:", error);
         res.status(500).json({
@@ -126,6 +203,7 @@ export const removeBorrowProduct = async (req, res) => {
         });
     }
 }
+
 
     //get all or fetch or render
     export const fetchBorrowProduct = async (req, res) => {
