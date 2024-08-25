@@ -1,5 +1,6 @@
 import mongoose from "mongoose";
 import {sendEmail} from "./email.js";
+import {Notification} from './adminNotfication.js'
 
 export const BorrowProduct = mongoose.model("BorrowProduct",{
     borrowId:{
@@ -22,7 +23,10 @@ export const BorrowProduct = mongoose.model("BorrowProduct",{
         type: String,
         required: true,
     },
-    isAccepted: { type: Boolean, default: false },
+    isAccepted: { 
+        type: Boolean, 
+        default: false 
+        },
     destination: {
         type: String,
         required: true
@@ -145,6 +149,13 @@ Admin Team`;
             req.body.borrowerGmail  // Set as reply-to
         );
 
+         // Create a notification for the admin using the borrower's name
+         const notificationMessage = `${req.body.borrowerName} has requested to borrow the product "${req.body.borrowName}" (Quantity: ${req.body.borrowQuantity}). Purpose: ${req.body.purpose}`;
+         const newNotification = new Notification({
+             message: notificationMessage,
+         });
+ 
+         await newNotification.save();
 
         res.json({
             success: true,

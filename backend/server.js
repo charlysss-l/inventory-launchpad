@@ -1,5 +1,6 @@
 import { addProduct, removeProduct, fetchProduct, editProduct, findProductByID, prodCategory } from './products.js';
 import { addBorrowProduct, removeBorrowProduct, fetchBorrowProduct, acceptborrowProduct } from './borrowProduct.js';
+import { fetchNotifs, markNotifs } from './adminNotfication.js';
 
 import express from 'express';
 import mongoose from 'mongoose';
@@ -30,7 +31,9 @@ import userRoute from './src/routes/user.js'
 //users route // get?
 app.use('/api', userRoute)
 
-
+//for notifications - admin
+app.get('/admin/notifications', fetchNotifs)
+app.put('/admin/notifications/:id/markAsRead', markNotifs)
 
 //mongoDB connection using mongoose
 mongoose.connect('mongodb+srv://teamlaunchpadinventory:teamlaunchpadinventory@cluster0.bdcqs.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0').then(() => console.log('Connected to MongoDB'))
