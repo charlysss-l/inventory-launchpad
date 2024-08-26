@@ -103,6 +103,61 @@ Admin Team`;
             );
     
             if (updatedProduct) {
+                const emailSubject = `Return Status for Borrowed Product: ${updatedProduct.borrowName}`;
+            let emailText;
+
+            // Update condition to correctly handle "GOOD" and "DAMAGED"
+            if (status === 'GOOD') {
+                emailText = `Hello ${updatedProduct.borrowerName},
+
+We have received the product you borrowed: "${updatedProduct.borrowName}". Upon inspection, we have determined that the item is in good condition.
+
+Product Details:
+- Quantity: ${updatedProduct.borrowQuantity}
+- Borrow Date: ${updatedProduct.borrowDate.toLocaleDateString()}
+- Return Status: Good Condition
+
+Thank you for your cooperation.
+
+Best regards,
+Admin Team`;
+            } else if (status === 'DAMAGED') {
+                emailText = `Hello ${updatedProduct.borrowerName},
+
+We have received the product you borrowed: "${updatedProduct.borrowName}". Upon inspection, we have determined that the item is damaged.
+
+Product Details:
+- Quantity: ${updatedProduct.borrowQuantity}
+- Borrow Date: ${updatedProduct.borrowDate.toLocaleDateString()}
+- Return Status: Damaged
+
+Thank you for your cooperation.
+
+Best regards,
+Admin Team`;
+            } else {
+                emailText = `Hello ${updatedProduct.borrowerName},
+
+We have received the product you borrowed: "${updatedProduct.borrowName}". We have noted your return status update.
+
+Product Details:
+- Quantity: ${updatedProduct.borrowQuantity}
+- Borrow Date: ${updatedProduct.borrowDate.toLocaleDateString()}
+- Return Status: ${status}
+
+Thank you for your cooperation.
+
+Best regards,
+Admin Team`;
+            }
+
+            // Send email notification
+            await sendEmail(
+                updatedProduct.borrowerGmail,  // Send to borrower's email
+                emailSubject,
+                emailText
+            );
+
                 res.status(200).json({ message: 'Return status updated successfully', product: updatedProduct });
             } else {
                 res.status(404).json({ message: 'Product not found' });
