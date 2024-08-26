@@ -1,39 +1,28 @@
-import './productTable.css';
+
+import './productTable.css'
 import { NavLink } from 'react-router-dom';
-
 const removeProduct = async (product_id) => {
-    if (window.confirm('Are you sure you want to remove the product?')) {
-        try {
-            const response = await fetch('http://localhost:3000/removeproduct', {
-                method: 'POST',
-                headers: {
-                    Accept: 'application/json',
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify({ product_id }),
-            });
+    await fetch('http://localhost:3000/removeproduct', {
+        method: 'POST',
+        headers: {
+            Accept: 'application/json',
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({product_id:product_id})
+        
+    }).then((resp)=> {
+        resp.ok? alert('Are you sure you want to remove the product?') : alert("Failed to remove the product")
+    })
+}
+    const productTable = ({ products }) => {
+        return (
+            <div className="conn">
+  <div className="inventory-container">
 
-            if (response.ok) {
-                alert('Product removed successfully');
-                // Optional: Refresh the product list here
-            } else {
-                alert('Failed to remove the product');
-            }
-        } catch (error) {
-            console.error('Error:', error);
-            alert('An error occurred while removing the product');
-        }
-    }
-};
-
-const ProductTable = ({ products }) => {
-    return (
-        <div className="conn">
-            <div className="inventory-container">
-                <div className="inventory-heading">
-                    <h3>Products</h3>
-                    <NavLink to={'/admin/addProduct'} className="pages">Add Product</NavLink>
-                </div>
+<div className="inventory-heading">
+    <h3>Products</h3>
+    <NavLink to={'/admin/addProduct'} className="pages">Add Product</NavLink>
+ </div>
 
  <table className="inventory-table">
         <thead>
@@ -44,6 +33,9 @@ const ProductTable = ({ products }) => {
                 <th className="title">Quantity</th>
                 <th className="title">Category</th>
                 <th className="title">Date Purchased</th>
+                <th className="title">Price</th>
+                <th className="title">Total Price</th>
+                <th className="title">Supplier</th>
                 <th className="title">Update</th>
                 <th className="title">Delete</th>
             </tr>
@@ -57,6 +49,9 @@ const ProductTable = ({ products }) => {
                     <td className="data">{item.product_quantity}</td>
                     <td className="data">{item.product_category}</td>
                     <td className="data">{item.product_datePurchased}</td>
+                    <td className="data">{item.product_price}</td>
+                    <td className="data">{item.product_totalPrice}</td>
+                    <td className="data">{item.product_supplier}</td>
                     <td className="data"><NavLink to={`/admin/editProduct/${item.product_id}`} className="editprod">Edit</NavLink></td>
                     <td className="data"><button type="submit" onClick={() => {removeProduct(item.product_id)}} className="delete">Delete</button></td>
                     <NavLink to={`/admin/addBorrowProduct/${item.product_id}`}>

@@ -93,8 +93,18 @@ const borrowProductTable = ({ products }) => {
                                 <td className="data">{item.borrowerNumber}</td>
                                 <td className="data">{item.isAccepted ? (item.isReturn || "Ongoing") : "Pending"}</td>
                                 <td className="data">
-                                    <button type="submit" onClick={() => { removeBorrowProduct(item.borrowId) }} className="delete">Delete</button>
-                                    {!item.isAccepted && <button onClick={() => { acceptBorrowProduct(item.borrowId) }}>Accept</button>}
+                                    {!item.isAccepted && (
+                                        <>
+                                            <button onClick={() => acceptBorrowProduct(item.borrowId)}>Accept</button>
+                                            <button onClick={() => removeBorrowProduct(item.borrowId)} className="delete">Delete</button>
+                                        </>
+                                    )}
+                                    {item.isAccepted && !item.isReturn && (
+                                        <>
+                                            <button onClick={() => updateReturnStatus(item.borrowId, 'Okay')}>Okay</button>
+                                            <button onClick={() => updateReturnStatus(item.borrowId, 'Damaged')}>Damaged</button>
+                                        </>
+                                    )}
                                 </td>
                             </tr>
                         ))}
