@@ -1,18 +1,19 @@
-  .conn{
+  .conn {
     padding: 15%;
   }
+
   .inventory-container {
-    margin-left: 250px; 
+    margin-left: 250px;
     padding: 25px;
     border-radius: 8px;
     display: flex;
     justify-items: center;
     flex-direction: column;
-    width: 1200px;
+    width: 2000px;
     border: 3px solid #d9d8d7a9;
     box-shadow: 0 15px 15px rgba(0, 0, 0, 0.1);
-
   }
+
   /* {Heading: Products} */
   .inventory-heading {
     margin-bottom: 20px;
@@ -22,51 +23,56 @@
     font-weight: bolder;
     display: flex;
     justify-content: space-between;
+
   }
-  
-    /* {Space on top of each data} */
+
+  /* {Space on top of each data} */
   .inventory-table {
     width: 100%;
-    border-collapse: collapse; /* Keep borders clean */
-    margin-bottom: 20px   ;
+    border-collapse: collapse;
+    /* Keep borders clean */
+    margin-bottom: 20px;
 
-   
+
 
 
   }
-  
-   /* {Space on top of each data} */
+
+  /* {Space on top of each data} */
   .title,
   .inventory-table td {
     padding: 20px;
     text-align: center;
     vertical-align: middle;
-    border-bottom: 1px solid #ddd; /* Separate rows */
+    border-bottom: 1px solid #ddd;
+
+
 
   }
-  
+
   .title {
     font-weight: bold;
     color: #383E49;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     font-size: 15px;
   }
-  
-.data{
+
+  .data {
     color: #424D47;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     font-weight: bold;
-  
-}
+
+  }
+
   .inventory-pagination {
     display: flex;
     justify-content: space-between;
     align-items: center;
   }
-  
 
 
-/* {Pagination Button} */
+
+  /* {Pagination Button} */
   .inventory-button {
     background-color: #98a286;
     color: #ffffff;
@@ -76,46 +82,34 @@
     cursor: pointer;
     transition: background-color 0.3s ease;
   }
-  
-  
+
+
   .inventory-button:hover {
     background-color: #7a8462;
   }
-  
+
   .inventory-page-info {
     font-size: 14px;
     color: #333;
   }
-  
-  .button{
-    display: flex;
-    appearance: auto;
-    letter-spacing: normal;
-    word-spacing: normal;
-    line-height: normal;
-    text-transform: none;
-    text-indent: 0px;
-    text-shadow: none;
-    padding-block: 1px;
-    padding-inline: 6px;
 
 
+
+  .edit {
+     width: 71px;
+      height: 29px;
+      background-image: linear-gradient(180deg, #1c466d, #3482cc);
+      color: #fff;
+      border: 0;
+      border-radius: 7px;
+      box-shadow: 0px 4px 4px rgba(111, 106, 106, 0.575);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      transition: 0.3 ease;
   }
-  .edit{
-    width: 71px;
-    height: 29px;
-    background-image: linear-gradient(180deg, #1c466d, #3482cc);
-    color: #ffffff;
-    border: 0;
-    border-radius: 7px;
-    box-shadow: 0px 4px 4px rgba(111, 106, 106, 0.575);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-    transition: 0.3 ease;
-  }
-  
+
   .editprod {
     width: 71px;
     height: 29px;
@@ -129,9 +123,9 @@
     align-items: center;
     text-align: center;
     transition: 0.3 ease;
-    }
+  }
 
-  .delete{
+  .delete {
     width: 71px;
     height: 29px;
     background-image: linear-gradient(180deg, #6d281c, #ac3f2c);
@@ -144,6 +138,41 @@
     align-items: center;
     text-align: center;
   }
+
   .delete:hover {
     background-image: linear-gradient(180deg, #ac3f2c, #ac3f2c);
-    }
+  }
+
+
+
+  .borrow {
+    width: 71px;
+    height: 29px;
+    background-image: linear-gradient(180deg, #f39c12, #d35400);
+    /* Gradient from a dark gold to a darker orange */
+    color: #ffffff;
+    border: 0;
+    border-radius: 7px;
+    box-shadow: 0px 4px 4px rgba(111, 106, 106, 0.575);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    transition: 0.3s ease;
+    /* Added 's' for seconds */
+  }
+
+  .acceptbutton {
+    width: 71px;
+    height: 29px;
+    background-image: linear-gradient(180deg, #1c466d, #3482cc);
+    color: #ffffff;
+    border: 0;
+    border-radius: 7px;
+    box-shadow: 0px 4px 4px rgba(111, 106, 106, 0.575);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    transition: 0.3 ease;
+  }
