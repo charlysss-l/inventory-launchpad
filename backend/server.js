@@ -1,5 +1,5 @@
 import { addProduct, removeProduct, fetchProduct, editProduct, findProductByID, prodCategory } from './products.js';
-import { addBorrowProduct, removeBorrowProduct, fetchBorrowProduct, acceptborrowProduct } from './borrowProduct.js';
+import { addBorrowProduct, removeBorrowProduct, fetchBorrowProduct, acceptborrowProduct, updateReturnStatus } from './borrowProduct.js';
 import { fetchNotifs, markNotifs } from './adminNotfication.js';
 
 import express from 'express';
@@ -67,6 +67,7 @@ app.get('/all-borrow-products', fetchBorrowProduct)
 
 app.get('/allproducts/:id', findProductByID);
 app.post('/accept-borrow-product', acceptborrowProduct)
+app.post('/update-return-status', updateReturnStatus)
 
 app.get('/prodCat/:category', prodCategory);
 

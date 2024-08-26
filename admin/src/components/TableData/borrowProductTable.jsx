@@ -1,4 +1,4 @@
-import './productTable.css'
+import './productTable.css';
 import { NavLink } from 'react-router-dom';
 
 const removeBorrowProduct = async (borrowId) => {
@@ -8,11 +8,11 @@ const removeBorrowProduct = async (borrowId) => {
             Accept: 'application/json',
             'Content-Type': 'application/json',
         },
-        body: JSON.stringify({ borrowId: borrowId })
+        body: JSON.stringify({ borrowId: borrowId }),
     }).then((resp) => {
-        resp.ok ? alert('Product removed successfully') : alert("Failed to remove the product")
-    })
-}
+        resp.ok ? alert('Product removed successfully') : alert('Failed to remove the product');
+    });
+};
 
 const acceptBorrowProduct = async (borrowId) => {
     await fetch('http://localhost:3000/accept-borrow-product', {
@@ -21,12 +21,26 @@ const acceptBorrowProduct = async (borrowId) => {
             Accept: 'application/json',
             'Content-Type': 'application/json',
         },
-        body: JSON.stringify({ borrowId: borrowId })
+        body: JSON.stringify({ borrowId: borrowId }),
     }).then((resp) => {
-        resp.ok ? alert('Product accepted successfully') : alert("Failed to accept the product")
+        resp.ok ? alert('Product accepted successfully') : alert('Failed to accept the product');
         window.location.reload(); // Reload page to reflect changes
-    })
-}
+    });
+};
+
+const updateReturnStatus = async (borrowId, status) => {
+    await fetch('http://localhost:3000/update-return-status', {
+        method: 'POST',
+        headers: {
+            Accept: 'application/json',
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ borrowId: borrowId, status: status }),
+    }).then((resp) => {
+        resp.ok ? alert(`Product marked as ${status} successfully`) : alert(`Failed to mark product as ${status}`);
+        window.location.reload(); // Reload page to reflect changes
+    });
+};
 
 const borrowProductTable = ({ products }) => {
     return (
@@ -66,10 +80,20 @@ const borrowProductTable = ({ products }) => {
                                 <td className="data">{item.borrowerName}</td>
                                 <td className="data">{item.borrowerGmail}</td>
                                 <td className="data">{item.borrowerNumber}</td>
-                                <td className="data">{item.isAccepted ? "Accepted" : "Pending"}</td>
+                                <td className="data">{item.isAccepted ? (item.isReturn || "Ongoing") : "Pending"}</td>
                                 <td className="data">
-                                    <button type="submit" onClick={() => { removeBorrowProduct(item.borrowId) }} className="delete">Delete</button>
-                                    {!item.isAccepted && <button onClick={() => { acceptBorrowProduct(item.borrowId) }}>Accept</button>}
+                                    {!item.isAccepted && (
+                                        <>
+                                            <button onClick={() => acceptBorrowProduct(item.borrowId)}>Accept</button>
+                                            <button onClick={() => removeBorrowProduct(item.borrowId)} className="delete">Delete</button>
+                                        </>
+                                    )}
+                                    {item.isAccepted && !item.isReturn && (
+                                        <>
+                                            <button onClick={() => updateReturnStatus(item.borrowId, 'Okay')}>Okay</button>
+                                            <button onClick={() => updateReturnStatus(item.borrowId, 'Damaged')}>Damaged</button>
+                                        </>
+                                    )}
                                 </td>
                             </tr>
                         ))}
@@ -81,6 +105,7 @@ const borrowProductTable = ({ products }) => {
 };
 
 export default borrowProductTable;
+
 
 
     

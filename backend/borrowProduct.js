@@ -46,7 +46,8 @@ export const BorrowProduct = mongoose.model("BorrowProduct",{
     borrowerNumber:{
         type: Number,
         required: true,
-    }
+    },
+    isReturn: { type: String, enum: ['Okay', 'Damaged', null], default: null }, // new field
 })
 
 export const acceptborrowProduct = async (req, res) => {
@@ -91,6 +92,25 @@ Admin Team`;
         }
     }
 
+    export const updateReturnStatus = async (req, res) => {
+        const { borrowId, status } = req.body;
+    
+        try {
+            const updatedProduct = await BorrowProduct.findOneAndUpdate(
+                { borrowId: borrowId },
+                { isReturn: status },
+                { new: true }
+            );
+    
+            if (updatedProduct) {
+                res.status(200).json({ message: 'Return status updated successfully', product: updatedProduct });
+            } else {
+                res.status(404).json({ message: 'Product not found' });
+            }
+        } catch (error) {
+            res.status(500).json({ message: 'Server error', error });
+        }
+    }
 
 
 export const addBorrowProduct = async (req,res) => {
