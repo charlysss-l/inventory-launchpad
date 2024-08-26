@@ -69,7 +69,7 @@ const borrowProductTable = ({ products }) => {
                                 <td className="data">{item.isAccepted ? "Accepted" : "Pending"}</td>
                                 <td className="data">
                                     <button type="submit" onClick={() => { removeBorrowProduct(item.borrowId) }} className="delete">Delete</button>
-                                    {!item.isAccepted && <button onClick={() => { acceptBorrowProduct(item.borrowId) }}>Accept</button>}
+                                    {!item.isAccepted && <button onClick={() => { acceptBorrowProduct(item.borrowId) }} className="acceptbutton">Accept</button>}
                                 </td>
                             </tr>
                         ))}

@@ -1,18 +1,26 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import './productTable.css';
 import { NavLink, useParams } from 'react-router-dom';
 
 const removeProduct = async (product_id) => {
-    await fetch('http://localhost:3000/removeproduct', {
-        method: 'POST',
-        headers: {
-            Accept: 'application/json',
-            'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({ product_id: product_id })
-    }).then((resp) => {
-        resp.ok ? alert('Product removed successfully.') : alert("Failed to remove the product");
-    });
+    try {
+        const response = await fetch('http://localhost:3000/removeproduct', {
+            method: 'POST',
+            headers: {
+                Accept: 'application/json',
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({ product_id: product_id })
+        });
+        
+        if (!response.ok) {
+            throw new Error('Failed to remove the product');
+        }
+        
+        alert('Product removed successfully.');
+    } catch (error) {
+        alert(error.message);
+    }
 };
 
 const CategoryTable = () => {
@@ -21,27 +29,50 @@ const CategoryTable = () => {
     const [loading, setLoading] = useState(true);
 
     useEffect(() => {
-        console.log('Fetching category:', category); // Debugging output
-        // Fetch products by category
-        setLoading(true); // Start loading
-        fetch(`http://localhost:3000/prodCat/${category}`)
-            .then((resp) => {
-                if (!resp.ok) {
+        const fetchProducts = async () => {
+            try {
+                setLoading(true); // Start loading
+                const response = await fetch(`http://localhost:3000/prodCat/${category}`);
+                
+                if (!response.ok) {
                     throw new Error('Network response was not ok');
                 }
-                return resp.json();
-            })
-            .then((data) => {
-                console.log('Fetched data:', data); // Debugging output
+                
+                const data = await response.json();
                 setFilteredProducts(data); // Update state with fetched products
-                setLoading(false); // End loading
-            })
-            .catch((error) => {
+            } catch (error) {
                 console.error('Error fetching data:', error);
-                setLoading(false); // End loading on error
-            });
+            } finally {
+                setLoading(false); // End loading
+            }
+        };
+
+        fetchProducts();
     }, [category]); // Dependency on category
-    
+
+    const handleRemoveProduct = useCallback(async (product_id) => {
+        await removeProduct(product_id);
+        // Fetch products again after removing one to update the list
+        const fetchProducts = async () => {
+            try {
+                setLoading(true); // Start loading
+                const response = await fetch(`http://localhost:3000/prodCat/${category}`);
+                
+                if (!response.ok) {
+                    throw new Error('Network response was not ok');
+                }
+                
+                const data = await response.json();
+                setFilteredProducts(data); // Update state with fetched products
+            } catch (error) {
+                console.error('Error fetching data:', error);
+            } finally {
+                setLoading(false); // End loading
+            }
+        };
+
+        fetchProducts();
+    }, [category]);
 
     return (
         <div className="conn">
@@ -64,11 +95,12 @@ const CategoryTable = () => {
                                 <th className="title">Date Purchased</th>
                                 <th className="title">Update</th>
                                 <th className="title">Delete</th>
+                                <th className="title">Borrow</th>
                             </tr>
                         </thead>
                         <tbody>
                             {filteredProducts.map((item, index) => (
-                                <tr key={index}>
+                                <tr key={item.product_id}>
                                     <td className="data">{item.product_id}</td>
                                     <td className="data">{item.product_name}</td>
                                     <td className="data">{item.product_brand}</td>
@@ -79,12 +111,10 @@ const CategoryTable = () => {
                                         <NavLink to={`/admin/editProduct/${item.product_id}`} className="editprod">Edit</NavLink>
                                     </td>
                                     <td className="data">
-                                        <button type="button" onClick={() => { removeProduct(item.product_id) }} className="delete">Delete</button>
+                                        <button type="button" onClick={() => handleRemoveProduct(item.product_id)} className="delete">Delete</button>
                                     </td>
                                     <td className="data">
-                                        <NavLink to={`/admin/addBorrowProduct/${item.product_id}`}>
-                                            <button>Borrow</button>
-                                        </NavLink>
+                                        <NavLink to={`/admin/addBorrowProduct/${item.product_id}`} className="borrow">Borrow</NavLink>
                                     </td>
                                 </tr>
                             ))}
