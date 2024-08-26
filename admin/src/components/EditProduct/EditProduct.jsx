@@ -81,10 +81,21 @@ const EditProduct = () => {
             <label htmlFor="quantity">Quantity:</label>
             <input type="number" placeholder="Enter Quantity" name="product_quantity" onChange={changeHandler} value={editProduct.product_quantity} />
           </div>
-          <div className="input-box">
+          {/* <div className="input-box">
             <label htmlFor="category">Category:</label>
             <input type="text" placeholder="Enter Category" name="product_category" onChange={changeHandler} value={editProduct.product_category} />
-          </div>
+          </div> */}
+          <div className = "input-box">
+                    <label htmlFor = "category"> Category: </label>
+                    <select name="product_category" id="product_category" onChange={changeHandler} value={editProduct.product_category}>
+                        <option >Please Select Category</option>
+                        <option value="hardwares">Hardwares</option>
+                        <option value="furnitures">Furnitures</option>
+                        <option value="appliances">Appliances</option>
+                        <option value="lightings">Lightings</option>
+                        <option value="others">Others</option>
+                    </select>
+                </div>
           <div className="input-box">
             <label htmlFor="date">Date Purchased:</label>
             <input type="date" placeholder="Enter Date Purchased" name="product_datePurchased" onChange={changeHandler} value={editProduct.product_datePurchased} />

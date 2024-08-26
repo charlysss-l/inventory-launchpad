@@ -11,6 +11,7 @@ const removeBorrowProduct = async (borrowId) => {
         body: JSON.stringify({ borrowId: borrowId }),
     }).then((resp) => {
         resp.ok ? alert('Product removed successfully') : alert('Failed to remove the product');
+        window.location.reload();
     });
 };
 
