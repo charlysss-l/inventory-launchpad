@@ -91,7 +91,7 @@ const borrowProductTable = ({ products }) => {
                                     )}
                                     {item.isAccepted && !item.isReturn && (
                                         <>
-                                            <button onClick={() => updateReturnStatus(item.borrowId, 'Okay')}>Okay</button>
+                                            <button onClick={() => updateReturnStatus(item.borrowId, 'Good')}>Good</button>
                                             <button onClick={() => updateReturnStatus(item.borrowId, 'Damaged')}>Damaged</button>
                                         </>
                                     )}

@@ -47,7 +47,7 @@ export const BorrowProduct = mongoose.model("BorrowProduct",{
         type: Number,
         required: true,
     },
-    isReturn: { type: String, enum: ['Okay', 'Damaged', null], default: null }, // new field
+    isReturn: { type: String, enum: ['Good', 'Damaged', null], default: null }, // new field
 })
 
 export const acceptborrowProduct = async (req, res) => {

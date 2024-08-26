@@ -12,9 +12,7 @@ import Header from '../components/Header/Header'
 import EditProduct from '../components/EditProduct/EditProduct'
 import AddBorrowProduct from '../components/AddBorrowProduct/AddBorrowProduct'
 import './Admin.css'
-import Login from './Auth/login/login'
-import Signup from './Auth/signup/signup'
-
+import Login from './Auth/login'
 import Admin_Category from './Category/Admin_Category'
 
 
@@ -25,8 +23,7 @@ const Admin = () => {
 <Sidebar/>
 <Header />
      <Routes>
-        <Route path=''></Route>
-        <Route></Route>
+        <Route path='/' element={<Login />}></Route>
         <Route path="/admin/dashboard" element={<Admin_Dashboard />}/>
         <Route path="/admin/inventory" element={<Admin_Inventory />}/>
         <Route path="/admin/employee" element={<Admin_Employee />}/>
