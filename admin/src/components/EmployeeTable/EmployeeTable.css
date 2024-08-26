@@ -17,7 +17,7 @@
   .employee-heading {
     margin-bottom: 20px;
     font-size: 25px;
-    color: #1b3970;
+    color: #383E49;
     font-family: Arial, Helvetica, sans-serif;
     font-weight: bolder;
     display: flex;
@@ -49,7 +49,7 @@
   }
   
 .data{
-    color: 424D47;
+    color: #424D47;
     font-family: Arial, Helvetica, sans-serif;
     font-weight: bold;
 }

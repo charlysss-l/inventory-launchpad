@@ -22,8 +22,8 @@ const Admin = () => {
   return (
     // add sidebar and header components dito pare
 <main className="admin-page">
-{/* <Sidebar/>
-<Header /> */}
+<Sidebar/>
+<Header />
      <Routes>
         <Route path=''></Route>
         <Route></Route>

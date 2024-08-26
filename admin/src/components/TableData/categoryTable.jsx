@@ -76,7 +76,7 @@ const CategoryTable = () => {
                                     <td className="data">{item.product_category}</td>
                                     <td className="data">{item.product_datePurchased}</td>
                                     <td className="data">
-                                        <NavLink to={`/admin/editProduct/${item.product_id}`} className="editprod">Edit Product</NavLink>
+                                        <NavLink to={`/admin/editProduct/${item.product_id}`} className="editprod">Edit</NavLink>
                                     </td>
                                     <td className="data">
                                         <button type="button" onClick={() => { removeProduct(item.product_id) }} className="delete">Delete</button>

@@ -4,6 +4,7 @@ body{
     align-items: center;
     justify-content: center;
     height: 100vh;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 .container{
     max-width: 800px;
@@ -17,7 +18,7 @@ h2{
     font-size: 26px;
     font-weight: 600;
     text-align: left;
-    color: rgb(192, 185, 185);
+    color: #222625;
     padding-bottom: 8px;
     border-bottom: 1px solid rgb(173, 173, 76);
 }
@@ -26,12 +27,14 @@ h2{
     flex-wrap: wrap;
     justify-content: space-between;
     padding: 20px 0;
+    color: #222625;
 }
 .input-box{
     display: flex;
     flex-wrap: wrap;
     width: 50%;
     padding-bottom: 15px;
+    color: #222625;
 }
 .input-box:nth-child(2n){
     justify-content: end;
@@ -61,7 +64,7 @@ h2{
     margin: 15px 0;
 }
 .button-container button{
-    background-color: rgb(173, 173, 76);
+    background-color: 62776A;
     color: #1a1717;
     border: none;
     padding: 10px 15px;

@@ -12,6 +12,7 @@
   .search-container {
     display: flex;
     margin-left: 350px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   }
 
   .search-container button {
@@ -44,8 +45,9 @@
   
   
   .notification-container {
-    background-color: #F2F1DF;
+    background-color: #F8F7E5;
     padding-left: 48%;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   }
   
   .notification-container img {
