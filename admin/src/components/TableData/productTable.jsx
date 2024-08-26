@@ -33,9 +33,6 @@ const removeProduct = async (product_id) => {
                 <th className="title">Quantity</th>
                 <th className="title">Category</th>
                 <th className="title">Date Purchased</th>
-                <th className="title">Price</th>
-                <th className="title">Total Price</th>
-                <th className="title">Supplier</th>
                 <th className="title">Update</th>
                 <th className="title">Delete</th>
             </tr>
@@ -49,9 +46,6 @@ const removeProduct = async (product_id) => {
                     <td className="data">{item.product_quantity}</td>
                     <td className="data">{item.product_category}</td>
                     <td className="data">{item.product_datePurchased}</td>
-                    <td className="data">{item.product_price}</td>
-                    <td className="data">{item.product_totalPrice}</td>
-                    <td className="data">{item.product_supplier}</td>
                     <td className="data"><NavLink to={`/admin/editProduct/${item.product_id}`} className="editprod">Edit</NavLink></td>
                     <td className="data"><button type="submit" onClick={() => {removeProduct(item.product_id)}} className="delete">Delete</button></td>
                     <NavLink to={`/admin/addBorrowProduct/${item.product_id}`}>

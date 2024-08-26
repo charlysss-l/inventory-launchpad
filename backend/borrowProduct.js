@@ -46,8 +46,7 @@ export const BorrowProduct = mongoose.model("BorrowProduct",{
     borrowerNumber:{
         type: Number,
         required: true,
-    },
-    isReturn: { type: String, enum: ['Okay', 'Damaged', null], default: null }, // new field
+    }
 })
 
 export const acceptborrowProduct = async (req, res) => {
@@ -92,26 +91,7 @@ Admin Team`;
         }
     }
 
-    export const updateReturnStatus = async (req, res) => {
-        const { borrowId, status } = req.body;
 
-    try {
-        const updatedProduct = await BorrowProduct.findOneAndUpdate(
-            { borrowId: borrowId },
-            { isReturn: status },
-            { new: true }
-        );
-
-        if (updatedProduct) {
-            res.status(200).json({ message: 'Return status updated successfully', product: updatedProduct });
-        } else {
-            res.status(404).json({ message: 'Product not found' });
-        }
-    } catch (error) {
-        res.status(500).json({ message: 'Server error', error });
-    }
-    };
-    
 
 export const addBorrowProduct = async (req,res) => {
     try {
@@ -247,23 +227,3 @@ Admin Team`;
             res.status(500).json({ message: 'Error fetching productssss' }); // Send an error response if something goes wrong
         }
     }
-
-
-    export const fetchBorrowProductID = async (req, res) => {
-        const productId = parseInt(req.params.id, 10); // Convert ID to integer
-    
-        try {
-            // Find the product by borrowId
-            const product = await BorrowProduct.findOne({ borrowId: productId });
-    
-            if (product) {
-                res.json(product);
-            } else {
-                res.status(404).send('Product not found');
-            }
-        } catch (error) {
-            console.error('Error fetching product:', error);
-            res.status(500).send('Server error');
-        }
-    };
-    
