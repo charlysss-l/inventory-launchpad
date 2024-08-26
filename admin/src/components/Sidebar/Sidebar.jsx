@@ -1,7 +1,14 @@
-import { NavLink } from 'react-router-dom';
+import { NavLink,useNavigate } from 'react-router-dom';
 import './Sidebar.css';
 
 const Sidebar = () => {
+    const token = localStorage.getItem("token")
+  const navigate = useNavigate()
+
+  const handleLogout = () => {
+    localStorage.removeItem("token")
+    navigate('/')
+  }
     return (
         <div className="side_container">
             <div className="choices">
@@ -19,8 +26,9 @@ const Sidebar = () => {
                     
             </div>
             <div className="bottom">
-                <NavLink to={'/admin/setting'} className="bottom-link">Setting</NavLink>
-                <NavLink to={'/admin/logout'} className="bottom-link">Logout</NavLink>
+                <button onClick={handleLogout}>LOGOUT</button>
+                {/* or */}
+                <NavLink onClick={() => {handleLogout}} className="bottom-link">Logout</NavLink>
             </div>
         </div>
     );
