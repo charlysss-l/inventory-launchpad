@@ -1,5 +1,5 @@
-import React,{useState} from 'react'
 import './login.css'
+import React,{useState} from 'react'
 import { useNavigate } from 'react-router-dom'
 
 const login = () => {
@@ -25,6 +25,7 @@ const handleSubmitButton = async (e) => {
     });
     if (!response.ok) {
       throw new Error('Network response was not ok');
+  
     }
     const result = await response.json();
     localStorage.setItem("token", result.token)

@@ -1,4 +1,4 @@
-import './productTable.css'
+import './productTable.css';
 import { NavLink } from 'react-router-dom';
 
 const removeBorrowProduct = async (borrowId) => {
@@ -9,10 +9,22 @@ const removeBorrowProduct = async (borrowId) => {
             'Content-Type': 'application/json',
         },
         body: JSON.stringify({ borrowId: borrowId })
-    }).then((resp) => {
-        resp.ok ? alert('Product removed successfully') : alert("Failed to remove the product")
     })
-}
+    .then(async (resp) => {
+        if (resp.ok) {
+            const data = await resp.json();
+            alert(data.message || 'Product removed successfully');
+            window.location.reload(); // Reload page to reflect changes
+        } else {
+            const errorData = await resp.json();
+            alert(errorData.message || 'Failed to remove the product');
+        }
+    })
+    .catch((error) => {
+        alert('An error occurred while trying to remove the product.');
+        console.error('Remove Product Error:', error);
+    });
+};
 
 const acceptBorrowProduct = async (borrowId) => {
     await fetch('http://localhost:3000/accept-borrow-product', {
@@ -21,12 +33,26 @@ const acceptBorrowProduct = async (borrowId) => {
             Accept: 'application/json',
             'Content-Type': 'application/json',
         },
-        body: JSON.stringify({ borrowId: borrowId })
+        body: JSON.stringify({ borrowId: borrowId }),
     }).then((resp) => {
-        resp.ok ? alert('Product accepted successfully') : alert("Failed to accept the product")
+        resp.ok ? alert('Product accepted successfully') : alert('Failed to accept the product');
         window.location.reload(); // Reload page to reflect changes
-    })
-}
+    });
+};
+
+const updateReturnStatus = async (borrowId, status) => {
+    await fetch('http://localhost:3000/update-return-status', {
+        method: 'POST',
+        headers: {
+            Accept: 'application/json',
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ borrowId: borrowId, status: status }),
+    }).then((resp) => {
+        resp.ok ? alert(`Product marked as ${status} successfully`) : alert(`Failed to mark product as ${status}`);
+        window.location.reload(); // Reload page to reflect changes
+    });
+};
 
 const borrowProductTable = ({ products }) => {
     return (
@@ -34,7 +60,6 @@ const borrowProductTable = ({ products }) => {
             <div className="inventory-container">
                 <div className="inventory-heading">
                     <h3>Products</h3>
-                    <NavLink to={'/admin/addBorrowProduct'} className="pages">Borrow Product-manual</NavLink>
                 </div>
                 <table className="inventory-table">
                     <thead>
@@ -66,10 +91,20 @@ const borrowProductTable = ({ products }) => {
                                 <td className="data">{item.borrowerName}</td>
                                 <td className="data">{item.borrowerGmail}</td>
                                 <td className="data">{item.borrowerNumber}</td>
-                                <td className="data">{item.isAccepted ? "Accepted" : "Pending"}</td>
+                                <td className="data">{item.isAccepted ? (item.isReturn || "Ongoing") : "Pending"}</td>
                                 <td className="data">
-                                    <button type="submit" onClick={() => { removeBorrowProduct(item.borrowId) }} className="delete">Delete</button>
-                                    {!item.isAccepted && <button onClick={() => { acceptBorrowProduct(item.borrowId) }}>Accept</button>}
+                                    {!item.isAccepted && (
+                                        <>
+                                            <button onClick={() => acceptBorrowProduct(item.borrowId)}>Accept</button>
+                                            <button onClick={() => removeBorrowProduct(item.borrowId)} className="delete">Delete</button>
+                                        </>
+                                    )}
+                                    {item.isAccepted && !item.isReturn && (
+                                        <>
+                                            <button onClick={() => updateReturnStatus(item.borrowId, 'Okay')}>Okay</button>
+                                            <button onClick={() => updateReturnStatus(item.borrowId, 'Damaged')}>Damaged</button>
+                                        </>
+                                    )}
                                 </td>
                             </tr>
                         ))}
@@ -81,6 +116,7 @@ const borrowProductTable = ({ products }) => {
 };
 
 export default borrowProductTable;
+
 
 
     
