@@ -43,6 +43,16 @@ const updateReturnStatus = async (borrowId, status) => {
     });
 };
 
+const formatDate = (dateString) => {
+    if (!dateString) return 'Ongoing';
+    const date = new Date(dateString);
+    const month = date.getMonth() + 1;
+    const day = date.getDate();
+    const year = date.getFullYear().toString().slice(-2);
+    return `${month.toString().padStart(2, '0')}-${day.toString().padStart(2, '0')}-${year}`;
+};
+
+
 const borrowProductTable = ({ products }) => {
     return (
         <div className="conn">
@@ -74,7 +84,7 @@ const borrowProductTable = ({ products }) => {
                                 <td className="data">{item.borrowId}</td>
                                 <td className="data">{item.borrowName}</td>
                                 <td className="data">{item.borrowQuantity}</td>
-                                <td className="data">{item.borrowDate}</td>
+                                <td className="data">{formatDate(item.borrowDate)}</td>
                                 <td className="data">{item.purpose}</td>
                                 <td className="data">{item.destination}</td>
                                 <td className="data">{item.clientStaff}</td>

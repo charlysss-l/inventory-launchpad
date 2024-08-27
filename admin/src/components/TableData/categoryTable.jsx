@@ -15,6 +15,15 @@ const removeProduct = async (product_id) => {
     });
 };
 
+const formatDate = (dateString) => {
+    if (!dateString) return 'Ongoing';
+    const date = new Date(dateString);
+    const month = date.getMonth() + 1;
+    const day = date.getDate();
+    const year = date.getFullYear().toString().slice(-2);
+    return `${month.toString().padStart(2, '0')}-${day.toString().padStart(2, '0')}-${year}`;
+};
+
 const CategoryTable = () => {
     const { category } = useParams(); // Get category from the URL
     const [filteredProducts, setFilteredProducts] = useState([]);
@@ -75,7 +84,7 @@ const CategoryTable = () => {
                                     <td className="data">{item.product_brand}</td>
                                     <td className="data">{item.product_quantity}</td>
                                     <td className="data">{item.product_category}</td>
-                                    <td className="data">{item.product_datePurchased}</td>
+                                    <td className="data">{formatDate(item.product_datePurchased)}</td>
                                     <td className="data">
                                         <NavLink to={`/admin/editProduct/${item.product_id}`} className="editprod">Edit</NavLink>
                                     </td>
