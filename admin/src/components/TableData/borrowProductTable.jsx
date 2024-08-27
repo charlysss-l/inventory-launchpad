@@ -48,8 +48,7 @@ const borrowProductTable = ({ products }) => {
         <div className="conn">
             <div className="inventory-container">
                 <div className="inventory-heading">
-                    <h3>Borrowed Products</h3>
-                    <NavLink to={'/admin/addBorrowProduct'} className="pages">Borrow Product</NavLink>
+                    <h3>Borrowed History</h3>
                 </div>
                 <table className="inventory-table">
                     <thead>
