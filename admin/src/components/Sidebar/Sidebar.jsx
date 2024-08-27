@@ -1,6 +1,6 @@
 import { NavLink,useNavigate } from 'react-router-dom';
 import './Sidebar.css';
-
+import { useState } from 'react';
 const Sidebar = () => {
     const token = localStorage.getItem("token")
   const navigate = useNavigate()
@@ -9,29 +9,52 @@ const Sidebar = () => {
     localStorage.removeItem("token")
     navigate('/')
   }
-    return (
-        <div className="side_container">
-            <div className="choices">
-                <h1 className="logo">Launchpad</h1>
-                <NavLink to={'/admin/dashboard'} className="pages">Dashboard</NavLink>
-                <NavLink to={'/admin/inventory'} className="pages">Inventory</NavLink>
-                <NavLink to={'/admin/employee'} className="pages">Employee</NavLink>
-                <NavLink to={'/admin/borrow'} className="pages">Borrow</NavLink>
 
-                <NavLink to={'/admin/hardwares'} className="pages">Hardwares</NavLink>
-                <NavLink to={'/admin/furnitures'} className="pages">Furnitures</NavLink>
-                <NavLink to={'/admin/appliances'} className="pages">Appliances</NavLink>    
-                <NavLink to={'/admin/lightings'} className="pages">Lightings</NavLink>    
-                <NavLink to={'/admin/others'} className="pages">Others</NavLink>    
-                    
-            </div>
-            <div className="bottom">
-                <button onClick={handleLogout}>LOGOUT</button>
-                {/* or */}
-                <NavLink onClick={() => {handleLogout}} className="bottom-link">Logout</NavLink>
-            </div>
-        </div>
+  const [reservationDropdownOpen, setReservationDropdownOpen] = useState(false);
+  const [menuOpen, setMenuOpen] = useState(false);
+
+  const toggleReservationDropdown = () => {
+    setReservationDropdownOpen(!reservationDropdownOpen);
+
+  };
+
+
+    return (
+        <nav className="navbar">
+        <div className="logo">Launchpad</div>
+              <li className="choices">
+              <NavLink to={'/admin/dashboard'} className="pages">Dashboard</NavLink>
+              </li>
+              <li 
+              className="choices" 
+              onClick={toggleReservationDropdown}
+              >
+              <span className="dropbtn">Inventory</span>
+              {reservationDropdownOpen && (
+                  <div className="dropdown-content">
+                  <NavLink to={'/admin/inventory'} >History</NavLink>
+                  <NavLink to={'/admin/hardwares'}>Hardwares</NavLink>
+                      <NavLink to={'/admin/furnitures'}>Furnitures</NavLink>
+                      <NavLink to={'/admin/appliances'} >Appliances</NavLink>    
+                      <NavLink to={'/admin/lightings'}>Lightings</NavLink>    
+                      <NavLink to={'/admin/others'}>Others</NavLink>    
+                  </div>
+              )}
+              </li>
+              <li className="choices">
+              <NavLink to={'/admin/borrow'} className="pages">Borrow</NavLink>
+              </li>
+  
+      
+              <div className="bottom">
+                  <NavLink onClick={() => {handleLogout}} className="bottom-link">Logout</NavLink>
+              </div>
+      </nav>
     );
-};
+  };
+  
+
+
+
 
 export default Sidebar;
