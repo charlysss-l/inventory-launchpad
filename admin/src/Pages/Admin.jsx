@@ -7,7 +7,7 @@ import Admin_Inventory from './Inventory/Admin_Inventory'
 import AddProduct from '../components/AddProduct/AddProduct'
 import Admin_Borrow from './Borrow/Admin_Borrow'
 import Admin_Setting from './Setting/Admin_Setting'
-//import Header from '../components/Header/Header'
+
 import EditProduct from '../components/EditProduct/EditProduct'
 import AddBorrowProduct from '../components/AddBorrowProduct/AddBorrowProduct'
 import './Admin.css'
@@ -17,7 +17,6 @@ import Admin_Category from './Category/Admin_Category'
 
 const Admin = () => {
   return (
-    // add sidebar and header components dito pare
 <main className="admin-page">
 
 <Sidebar/>

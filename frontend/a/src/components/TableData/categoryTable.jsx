@@ -48,8 +48,7 @@ const CategoryTable = () => {
                                 <th className="title">Quantity</th>
                                 <th className="title">Category</th>
                                 <th className="title">Date Purchased</th>
-                                <th className="title">Update</th>
-                                <th className="title">Delete</th>
+                                <th className="title">Borrow</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -62,10 +61,8 @@ const CategoryTable = () => {
                                     <td className="data">{item.product_category}</td>
                                     <td className="data">{item.product_datePurchased}</td>
                                     <td className="data">
-                                        <NavLink to={`/addBorrowProduct/${item.product_id}`}>
-                                            <button>Borrow</button>
-                                        </NavLink>
-                                    </td>
+                                    <NavLink to={`/addBorrowProduct/${item.product_id}`} className="borrow-button">Borrow</NavLink>
+                                </td>
                                 </tr>
                             ))}
                         </tbody>

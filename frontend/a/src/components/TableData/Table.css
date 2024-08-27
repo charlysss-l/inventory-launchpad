@@ -1,97 +1,112 @@
-.con{
-  padding: 8%;
+.conn{
+  padding: 1%;
 }
-  .inventory-container {
-    margin: auto;
-    padding: 25px;
-    border-radius: 8px;
-    width: 60%;
-    border: 3px solid #D7D9D9;
-    box-shadow: 0 15px 15px rgba(0, 0, 0, 0.1);
-    padding: 100px;
-  }
-  
-  .inventory-heading {
-    margin-bottom: 20px;
-    display: flex;
-    font-size: 25px;
-    color: #1b3970;
-    font-family: Arial, Helvetica, sans-serif;
-    font-weight: bolder;
-  }
-  
-   
-  .inventory-table {
-    width: 100%;
-    border-collapse: collapse; 
-    margin-bottom: 20px   ;
-  }
-  
-  
-  .title,
-  .inventory-table td {
-    padding: 20px;
-    text-align: center;
-    vertical-align: middle;
-    border-bottom: 1px solid #ddd;
+.inventory-container {
+  margin-left: 250px; 
+  padding: 25px;
+  border-radius: 8px;
+  display: flex;
+  justify-items: center;
+  flex-direction: column;
+  width: 1200px;
+  border: 3px solid #d9d8d7a9;
+  box-shadow: 0 15px 15px rgba(0, 0, 0, 0.1);
 
-  }
-  
-  .title {
-    font-weight: bold;
-    color: #667085;
-    font-family:Arial, Helvetica, sans-serif;
-    font-size: 20px;
-  }
-  
+}
+
+.inventory-heading {
+  margin-bottom: 20px;
+  font-size: 26px;
+  color: #383E49;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-weight: bolder;
+  display: flex;
+  justify-content: space-between;
+}
+
+
+.inventory-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 20px   ;
+
+}
+
+ /* {Space on top of each data} */
+.title,
+.inventory-table td {
+  text-align: center;
+  vertical-align: middle;
+  border-bottom: 1px solid #ddd; /* Separate rows */
+}
+
+.title {
+  font-weight: bold;
+  color: #383E49;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-size: 13px;
+}
+
 .data{
-    color: #424D47;
-    font-family: Arial, Helvetica, sans-serif;
-    font-weight: bold;
+  color: #424D47;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-weight:600;
+  font-size: 10px;
+  padding: 1px;
 }
-  .inventory-pagination {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+
+.edit{
+  width: 71px;
+  height: 29px;
+  background-image: linear-gradient(180deg, #1c466d, #3482cc);
+  color: #ffffff;
+  border: 0;
+  border-radius: 7px;
+  box-shadow: 0px 4px 4px rgba(111, 106, 106, 0.575);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  transition: 0.3 ease;
+}
+
+.editprod {
+  width: 71px;
+  height: 29px;
+  background-image: linear-gradient(180deg, #3482cc, #1c466d);
+  color: #ffffff;
+  border: 0;
+  border-radius: 7px;
+  box-shadow: 0px 4px 4px rgba(111, 106, 106, 0.575);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  transition: 0.3 ease;
+  text-decoration: none;
+  font-size: 15px;
+  font-weight: 100;
   }
-  
 
 
+.borrow-button{
+width: 71px;
+height: 29px;
+background-image: linear-gradient(180deg,#46b369, #378f53);
+color: #ffffff;
+border: 0;
+border-radius: 7px;
+box-shadow: 0px 4px 4px rgba(111, 106, 106, 0.575);
+display: flex;
+justify-content: center;
+align-items: center;
 
-  .inventory-button {
-    background-color: #98a286;
-    color: #fff;
-    padding: 10px 20px;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-  }
-  
-  
-  .inventory-button:hover {
-    background-color: #7a8462;
-  }
-  
-  .inventory-page-info {
-    font-size: 14px;
-    color: #333;
-  }
-  
-  .borrow{
-    width: 71px;
-    height: 29px;
-    background-image: linear-gradient(180deg, #62776A, #B6DDC5);
-    color: #fff;
-    border: 0;
-    border-radius: 7px;
-    box-shadow: 0px 4px 4px rgba(111, 106, 106, 0.575);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-    transition: 0.3 ease;
-  }
-  .borrow:hover {
-    background-image: linear-gradient(180deg, #B6DDC5, #B6DDC5);
-    }
+transition: 0.3 ease;
+text-decoration: none;
+font-size: 15px;
+font-weight: 100;
+}
+.borrow-button:hover {
+background-image: linear-gradient(180deg,#378f53, #378f53);
+}
+

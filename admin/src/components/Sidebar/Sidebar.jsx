@@ -11,7 +11,6 @@ const Sidebar = () => {
   }
 
   const [reservationDropdownOpen, setReservationDropdownOpen] = useState(false);
-  const [menuOpen, setMenuOpen] = useState(false);
 
   const toggleReservationDropdown = () => {
     setReservationDropdownOpen(!reservationDropdownOpen);

@@ -49,7 +49,7 @@ const borrowProductTable = ({ products }) => {
             <div className="inventory-container">
                 <div className="inventory-heading">
                     <h3>Borrowed Products</h3>
-                    <NavLink to={'/admin/addBorrowProduct'} className="pages">Borrow Product-manual</NavLink>
+                    <NavLink to={'/admin/addBorrowProduct'} className="pages">Borrow Product</NavLink>
                 </div>
                 <table className="inventory-table">
                     <thead>
@@ -60,7 +60,7 @@ const borrowProductTable = ({ products }) => {
                             <th className="title">Date Borrowed</th>
                             <th className="title">Purpose</th>
                             <th className="title">Destination</th>
-                            <th className="title">ANO KA?</th>
+                            <th className="title">Role</th>
                             <th className="title">Borrower's Name</th>
                             <th className="title">Borrower's Gmail</th>
                             <th className="title">Borrower's Number</th>
