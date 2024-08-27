@@ -64,6 +64,7 @@ const CategoryTable = () => {
                                 <th className="title">Date Purchased</th>
                                 <th className="title">Update</th>
                                 <th className="title">Delete</th>
+                                <th className="title">Borrow</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -81,10 +82,8 @@ const CategoryTable = () => {
                                     <td className="data">
                                         <button type="button" onClick={() => { removeProduct(item.product_id) }} className="delete">Delete</button>
                                     </td>
-                                    <td className="data">
-                                        <NavLink to={`/admin/addBorrowProduct/${item.product_id}`}>
-                                            <button>Borrow</button>
-                                        </NavLink>
+                                    <td>
+                                    <NavLink to={`/admin/addBorrowProduct/${item.product_id}`} className="borrow-button">Borrow</NavLink>   
                                     </td>
                                 </tr>
                             ))}

@@ -65,7 +65,8 @@ const borrowProductTable = ({ products }) => {
                             <th className="title">Borrower's Gmail</th>
                             <th className="title">Borrower's Number</th>
                             <th className="title">Status</th>
-                            <th className="title">Actions</th>
+                            <th className="title">Accept</th>
+                            <th className="title">Delete</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -85,14 +86,20 @@ const borrowProductTable = ({ products }) => {
                                 <td className="data">
                                     {!item.isAccepted && (
                                         <>
-                                            <button onClick={() => acceptBorrowProduct(item.borrowId)}>Accept</button>
-                                            <button onClick={() => removeBorrowProduct(item.borrowId)} className="delete">Delete</button>
+                                            <button onClick={() => acceptBorrowProduct(item.borrowId)}  className="accept-button">Accept</button>
                                         </>
                                     )}
                                     {item.isAccepted && !item.isReturn && (
                                         <>
                                             <button onClick={() => updateReturnStatus(item.borrowId, 'Good')}>Good</button>
                                             <button onClick={() => updateReturnStatus(item.borrowId, 'Damaged')}>Damaged</button>
+                                        </>
+                                    )}
+                                </td>
+                                <td className="data">
+                                    {!item.isAccepted && (
+                                        <>
+                                            <button onClick={() => removeBorrowProduct(item.borrowId)} className="delete">Delete</button>
                                         </>
                                     )}
                                 </td>
