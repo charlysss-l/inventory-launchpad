@@ -4,18 +4,19 @@
     justify-content: center;
     margin: 100px 400px;
     text-align: center;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
 .notification-popup {
-    position: fixed; /* Use fixed positioning for centering relative to the viewport */
+    position: fixed;
     top: 50%;
     left: 50%;
-    transform: translate(-50%, -50%); /* Center the element */
-    background-color: white;
-    border: 1px solid #ccc;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-    padding: 20px;
-    width: 300px;
+    transform: translate(-50%, -50%);
+    background-color: #1c6c1655;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px #000000;
+    padding: 16px;
+    width: 800px; /* Further increased width for a wider popup */
     z-index: 1000;
 }
 
@@ -26,22 +27,35 @@
 }
 
 .notification-popup li {
-    padding: 10px;
-    border-bottom: 1px solid #ddd;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 16px 0; /* Increased padding for better spacing */
+    border-bottom: 1px solid #eee;
+    font-size: 16px; /* Increased font size for better readability */
 }
 
 .notification-popup li.read {
-    background-color: #f9f9f9;
+    background-color: white;
 }
 
 .notification-popup li.unread {
-    background-color: #fff;
+    background-color: darkgrey;
+}
+
+.notification-popup li:hover {
+    background-color: #e0e0e0;
 }
 
 .notification-popup button {
     background: none;
     border: none;
-    color: blue;
+    color: #1a73e8;
     cursor: pointer;
-    font-size: 12px;
+    font-size: 16px; /* Increased button font size for consistency */
 }
+
+.notification-popup button:hover {
+    text-decoration: underline;
+}
+

@@ -40,7 +40,7 @@ const AddProduct = () => {
 return (
     <div className = "container">
         <form action="/admin/add-product" method="POST">
-            <h2> Add Product </h2>
+            <h3> Add Product </h3>
             <div className = "content">
                 <div className = "input-box">
                     <label htmlFor = "product"> Name: </label>

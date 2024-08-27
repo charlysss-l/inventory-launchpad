@@ -1,58 +1,80 @@
-/* login.css */
-
+/* Container for centering the login form */
 .containerr {
+    max-width: 800px; /* Increased width for a wider form */
+    margin: 0 auto; /* Center horizontally */
+    padding: 20px;
+    height: auto; /* Adjust height to fit content */
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    box-sizing: border-box;
+    position: absolute; /* Positioning for centering */
+    top: 50%; /* Center vertically */
+    left: 50%; /* Center horizontally */
+    transform: translate(-50%, -50%); /* Center precisely */
+}
+
+/* Remove unnecessary bottom margin if not needed */
+.containerr > div:first-child {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 10px;
+    /* Reduced margin */
+}
+
+/* Style for the content within the container */
+.contentt {
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
-    height: 100vh;
-    margin-left: 700px;
-    /* Adjust this value to match the width of your sidebar */
 }
 
-.containerr>div:first-child {
-    font-size: 2rem;
-    margin-bottom: 1rem;
+/* Style for the input boxes */
+.input-boxx {
+    width: 100%;
+    margin-bottom: 10px;
+    /* Reduced margin */
+    text-align: left;
 }
 
-.content {
-
-    padding: 2rem;
-    border-radius: 10px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-}
-
-.input-box {
-    margin-bottom: 1rem;
-}
-
-.input-box label {
+/* Adjusted spacing and appearance for labels */
+.input-boxx label {
     display: block;
-    margin-bottom: 0.5rem;
     font-weight: bold;
-    font-size: 1rem;
+    margin-bottom: 5px;
 }
 
-.input-box input {
+/* Adjusted input box styling */
+.input-boxx input {
     width: 100%;
-    padding: 0.75rem;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    font-size: 1rem;
+    padding: 10px;
+    border: 1px solid #222625;
+    border-radius: 4px;
+    font-size: 16px;
+    transition: border-color 0.3s ease;
+    background-color: #f2f2f2;
 }
 
-button {
+.input-boxx input:focus {
+    border-color: #222625;
+    outline: none;
+}
+
+/* Style for the login button */
+button[type='submitt'] {
     width: 100%;
-    padding: 0.75rem;
-    background-image: linear-gradient(180deg, #1c466d, #3482cc);
-    color: white;
+    padding: 10px;
+    background-image: linear-gradient(180deg, #3482cc, #1c466d);
+    color: #fff;
     border: none;
-    border-radius: 5px;
-    font-size: 1rem;
+    border-radius: 4px;
+    font-size: 16px;
     cursor: pointer;
     transition: background-color 0.3s ease;
 }
 
-button:hover {
-    background-image: linear-gradient(180deg, #6d281c, #ac3f2c);
+/* Button hover effect */
+button[type='submitt']:hover {
+    background-image: linear-gradient(180deg, #ac3f2c, #6d281c);
+    /* Adjusted hover color for better contrast */
 }

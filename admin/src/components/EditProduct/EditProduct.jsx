@@ -67,7 +67,7 @@ const EditProduct = () => {
   return (
     <div className="container">
       <form>
-        <h2>Edit Product</h2>
+        <h3>Edit Product</h3>
         <div className="content">
           <div className="input-box">
             <label htmlFor="product">Name:</label>
