@@ -1,9 +1,58 @@
-.containerr{
+/* login.css */
+
+.containerr {
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    margin: auto;
-    width: 100%;
     height: 100vh;
+    margin-left: 700px;
+    /* Adjust this value to match the width of your sidebar */
+}
+
+.containerr>div:first-child {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+}
+
+.content {
+
+    padding: 2rem;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.input-box {
+    margin-bottom: 1rem;
+}
+
+.input-box label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: bold;
+    font-size: 1rem;
+}
+
+.input-box input {
+    width: 100%;
+    padding: 0.75rem;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 1rem;
+}
+
+button {
+    width: 100%;
+    padding: 0.75rem;
+    background-image: linear-gradient(180deg, #1c466d, #3482cc);
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+button:hover {
+    background-image: linear-gradient(180deg, #6d281c, #ac3f2c);
 }

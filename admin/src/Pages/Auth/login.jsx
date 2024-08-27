@@ -44,15 +44,16 @@ const handleSubmitButton = async (e) => {
         <form>
           <div className="input-box">
             <label htmlFor="">Email</label>
-          <input type="email" name='email' placeholder='email' onChange={changeHandler} value={formData.email}/>
+          <input type="email" name='email' placeholder='Email' onChange={changeHandler} value={formData.email}/>
           </div>
           <div className="input-box">
             <label htmlFor="">Password</label>
-          <input type="password" name='password' placeholder='password' onChange={changeHandler} value={formData.password}/>
+          <input type="password" name='password' placeholder='Password' onChange={changeHandler} value={formData.password}/>
           </div>
           {/* or navlink? IDK :< */}
           {/* {onClick={(e) => {handleSubmitButton(e)}} pwede sa button or sa form since submit type naman yung button basta nasa loob ng form} */}
-          <button type='submit' onClick={(e) => {handleSubmitButton(e)}}>Login</button>
+          <button type='submit' onClick={(e) => {handleSubmitButton(e)}}>LOGIN
+          </button>
         </form>
         </div>
       </section>
