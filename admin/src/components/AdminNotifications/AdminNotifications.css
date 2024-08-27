@@ -1,5 +1,9 @@
 .notification-container {
-    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 100px 400px;
+    text-align: center;
 }
 
 .notification-popup {
