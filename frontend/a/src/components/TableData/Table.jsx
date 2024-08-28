@@ -4,7 +4,7 @@ import './Table.css';
 
 const Table = ({ products }) => {
     return (
-        <div className="con">
+        <div className="conn">
             <div className="inventory-container">
                 <div className="inventory-heading">
                     <h3>Borrow</h3>
@@ -19,9 +19,10 @@ const Table = ({ products }) => {
                             <th className="title">Quantity</th>
                             <th className="title">Category</th>
                             <th className="title">Date Purchased</th>
+                            <th className="title">Borrow</th>
                         </tr>
                     </thead>
-                    <tbody>
+                    <tbody >
                         {products.map((item, index) => (
                             <tr key={index}>
                                 <td className="data">{item.product_id}</td>
@@ -31,10 +32,7 @@ const Table = ({ products }) => {
                                 <td className="data">{item.product_category}</td>
                                 <td className="data">{item.product_datePurchased}</td>
                                 <td>
-                                <NavLink to={`/addBorrowProduct/${item.product_id}`}>
-    <button>Borrow</button>
-</NavLink>
-
+                                    <NavLink to={`/addBorrowProduct/${item.product_id}`} className="borrow-button">Borrow</NavLink>
                                 </td>
                             </tr>
                         ))}

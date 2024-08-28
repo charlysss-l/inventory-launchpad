@@ -2,6 +2,16 @@ import React, { useState, useEffect } from 'react';
 import './Table.css';
 import { NavLink, useParams } from 'react-router-dom';
 
+const formatDate = (dateString) => {
+    if (!dateString) return 'Ongoing';
+    const date = new Date(dateString);
+    const month = date.getMonth() + 1;
+    const day = date.getDate();
+    const year = date.getFullYear().toString().slice(-2);
+    return `${month.toString().padStart(2, '0')}-${day.toString().padStart(2, '0')}-${year}`;
+};
+
+
 const CategoryTable = () => {
     const { category } = useParams(); // Get category from the URL
     const [filteredProducts, setFilteredProducts] = useState([]);
@@ -48,8 +58,7 @@ const CategoryTable = () => {
                                 <th className="title">Quantity</th>
                                 <th className="title">Category</th>
                                 <th className="title">Date Purchased</th>
-                                <th className="title">Update</th>
-                                <th className="title">Delete</th>
+                                <th className="title">Borrow</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -60,12 +69,10 @@ const CategoryTable = () => {
                                     <td className="data">{item.product_brand}</td>
                                     <td className="data">{item.product_quantity}</td>
                                     <td className="data">{item.product_category}</td>
-                                    <td className="data">{item.product_datePurchased}</td>
+                                    <td className="data">{formatDate(item.product_datePurchased)}</td>
                                     <td className="data">
-                                        <NavLink to={`/addBorrowProduct/${item.product_id}`}>
-                                            <button>Borrow</button>
-                                        </NavLink>
-                                    </td>
+                                    <NavLink to={`/addBorrowProduct/${item.product_id}`} className="borrow-button">Borrow</NavLink>
+                                </td>
                                 </tr>
                             ))}
                         </tbody>

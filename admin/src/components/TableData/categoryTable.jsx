@@ -15,6 +15,15 @@ const removeProduct = async (product_id) => {
     });
 };
 
+const formatDate = (dateString) => {
+    if (!dateString) return 'Ongoing';
+    const date = new Date(dateString);
+    const month = date.getMonth() + 1;
+    const day = date.getDate();
+    const year = date.getFullYear().toString().slice(-2);
+    return `${month.toString().padStart(2, '0')}-${day.toString().padStart(2, '0')}-${year}`;
+};
+
 const CategoryTable = () => {
     const { category } = useParams(); // Get category from the URL
     const [filteredProducts, setFilteredProducts] = useState([]);
@@ -64,6 +73,7 @@ const CategoryTable = () => {
                                 <th className="title">Date Purchased</th>
                                 <th className="title">Update</th>
                                 <th className="title">Delete</th>
+                                <th className="title">Borrow</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -74,17 +84,15 @@ const CategoryTable = () => {
                                     <td className="data">{item.product_brand}</td>
                                     <td className="data">{item.product_quantity}</td>
                                     <td className="data">{item.product_category}</td>
-                                    <td className="data">{item.product_datePurchased}</td>
+                                    <td className="data">{formatDate(item.product_datePurchased)}</td>
                                     <td className="data">
                                         <NavLink to={`/admin/editProduct/${item.product_id}`} className="editprod">Edit</NavLink>
                                     </td>
                                     <td className="data">
                                         <button type="button" onClick={() => { removeProduct(item.product_id) }} className="delete">Delete</button>
                                     </td>
-                                    <td className="data">
-                                        <NavLink to={`/admin/addBorrowProduct/${item.product_id}`}>
-                                            <button>Borrow</button>
-                                        </NavLink>
+                                    <td>
+                                    <NavLink to={`/admin/addBorrowProduct/${item.product_id}`} className="borrow-button">Borrow</NavLink>   
                                     </td>
                                 </tr>
                             ))}

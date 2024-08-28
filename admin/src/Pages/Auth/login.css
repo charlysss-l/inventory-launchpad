@@ -1,9 +1,80 @@
-.containerr{
+/* Container for centering the login form */
+.containerr {
+    max-width: 800px; /* Increased width for a wider form */
+    margin: 0 auto; /* Center horizontally */
+    padding: 20px;
+    height: auto; /* Adjust height to fit content */
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    box-sizing: border-box;
+    position: absolute; /* Positioning for centering */
+    top: 50%; /* Center vertically */
+    left: 50%; /* Center horizontally */
+    transform: translate(-50%, -50%); /* Center precisely */
+}
+
+/* Remove unnecessary bottom margin if not needed */
+.containerr > div:first-child {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 10px;
+    /* Reduced margin */
+}
+
+/* Style for the content within the container */
+.contentt {
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
-    margin: auto;
+}
+
+/* Style for the input boxes */
+.input-boxx {
     width: 100%;
-    height: 100vh;
+    margin-bottom: 10px;
+    /* Reduced margin */
+    text-align: left;
+}
+
+/* Adjusted spacing and appearance for labels */
+.input-boxx label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+/* Adjusted input box styling */
+.input-boxx input {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #222625;
+    border-radius: 4px;
+    font-size: 16px;
+    transition: border-color 0.3s ease;
+    background-color: #f2f2f2;
+}
+
+.input-boxx input:focus {
+    border-color: #222625;
+    outline: none;
+}
+
+/* Style for the login button */
+button[type='submitt'] {
+    width: 100%;
+    padding: 10px;
+    background-image: linear-gradient(180deg, #3482cc, #1c466d);
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+/* Button hover effect */
+button[type='submitt']:hover {
+    background-image: linear-gradient(180deg, #ac3f2c, #6d281c);
+    /* Adjusted hover color for better contrast */
 }

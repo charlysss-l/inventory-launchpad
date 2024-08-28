@@ -43,13 +43,22 @@ const updateReturnStatus = async (borrowId, status) => {
     });
 };
 
+const formatDate = (dateString) => {
+    if (!dateString) return 'Ongoing';
+    const date = new Date(dateString);
+    const month = date.getMonth() + 1;
+    const day = date.getDate();
+    const year = date.getFullYear().toString().slice(-2);
+    return `${month.toString().padStart(2, '0')}-${day.toString().padStart(2, '0')}-${year}`;
+};
+
+
 const borrowProductTable = ({ products }) => {
     return (
         <div className="conn">
             <div className="inventory-container">
                 <div className="inventory-heading">
-                    <h3>Borrowed Products</h3>
-                    <NavLink to={'/admin/addBorrowProduct'} className="pages">Borrow Product-manual</NavLink>
+                    <h3>Borrowed History</h3>
                 </div>
                 <table className="inventory-table">
                     <thead>
@@ -60,12 +69,13 @@ const borrowProductTable = ({ products }) => {
                             <th className="title">Date Borrowed</th>
                             <th className="title">Purpose</th>
                             <th className="title">Destination</th>
-                            <th className="title">ANO KA?</th>
+                            <th className="title">Role</th>
                             <th className="title">Borrower's Name</th>
                             <th className="title">Borrower's Gmail</th>
                             <th className="title">Borrower's Number</th>
                             <th className="title">Status</th>
-                            <th className="title">Actions</th>
+                            <th className="title">Accept</th>
+                            <th className="title">Delete</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -74,7 +84,7 @@ const borrowProductTable = ({ products }) => {
                                 <td className="data">{item.borrowId}</td>
                                 <td className="data">{item.borrowName}</td>
                                 <td className="data">{item.borrowQuantity}</td>
-                                <td className="data">{item.borrowDate}</td>
+                                <td className="data">{formatDate(item.borrowDate)}</td>
                                 <td className="data">{item.purpose}</td>
                                 <td className="data">{item.destination}</td>
                                 <td className="data">{item.clientStaff}</td>
@@ -85,14 +95,20 @@ const borrowProductTable = ({ products }) => {
                                 <td className="data">
                                     {!item.isAccepted && (
                                         <>
-                                            <button onClick={() => acceptBorrowProduct(item.borrowId)}>Accept</button>
-                                            <button onClick={() => removeBorrowProduct(item.borrowId)} className="delete">Delete</button>
+                                            <button onClick={() => acceptBorrowProduct(item.borrowId)}  className="accept-button">Accept</button>
                                         </>
                                     )}
                                     {item.isAccepted && !item.isReturn && (
                                         <>
                                             <button onClick={() => updateReturnStatus(item.borrowId, 'Good')}>Good</button>
                                             <button onClick={() => updateReturnStatus(item.borrowId, 'Damaged')}>Damaged</button>
+                                        </>
+                                    )}
+                                </td>
+                                <td className="data">
+                                    {!item.isAccepted && (
+                                        <>
+                                            <button onClick={() => removeBorrowProduct(item.borrowId)} className="delete">Delete</button>
                                         </>
                                     )}
                                 </td>
