@@ -4,9 +4,9 @@ import './Sidebar.css';
 
 const Sidebar = () => {
   return (
-    <div className="side_container">
-      <div className="choices">
+    <div className="navbar">
         <h1 className="logo">Launchpad</h1>
+      <div className="choices">
         <NavLink to={'/'} className="pages">Dashboard</NavLink>
         <NavLink to={'/inventory'} className="pages">Inventory</NavLink>
         {/* <NavLink to={'/borrow'} className="pages">Borrow</NavLink> */}
