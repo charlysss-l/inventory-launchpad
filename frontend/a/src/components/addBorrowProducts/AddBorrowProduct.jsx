@@ -107,28 +107,30 @@ console.log('Product ID:', product_id); // Log the product_id
                         <input type="text" placeholder="Enter Purpose" name="purpose" onChange={changeHanlder} value={addBorrowProducts.purpose} />
                     </div>
                     <div className="input-box">
-                        <label htmlFor="borrowerName"> borrowerName: </label>
-                        <input type="text" placeholder="Enter borrowerName" name="borrowerName" onChange={changeHanlder} value={addBorrowProducts.borrowerName} />
+                        <label htmlFor="borrowerName"> Name of Borrower: </label>
+                        <input type="text" placeholder="Enter Full Name" name="borrowerName" onChange={changeHanlder} value={addBorrowProducts.borrowerName} />
                     </div>
                     <div className="input-box">
-                        <label htmlFor="borrowerGmail"> borrowerGmail: </label>
-                        <input type="email" placeholder="Enter borrowerGmail" name="borrowerGmail" onChange={changeHanlder} value={addBorrowProducts.borrowerGmail} />
+                        <label htmlFor="borrowerGmail"> Gmail: </label>
+                        <input type="email" placeholder="Enter Gmail" name="borrowerGmail" onChange={changeHanlder} value={addBorrowProducts.borrowerGmail} />
                     </div>
                     <div className="input-box">
-                        <label htmlFor="borrowerNumber"> borrowerNumber: </label>
-                        <input type="number" placeholder="Enter borrowerNumber" name="borrowerNumber" onChange={changeHanlder} value={addBorrowProducts.borrowerNumber} />
+                        <label htmlFor="borrowerNumber"> Contact No.: </label>
+                        <input type="number" placeholder="Enter Contact No." name="borrowerNumber" onChange={changeHanlder} value={addBorrowProducts.borrowerNumber} />
                     </div>
                     <div className="input-box">
-                        <label htmlFor="purpose"> Destination: </label>
+                        <label htmlFor="purpose"> Porduct Destination: </label>
                         <select name="destination" id='destination' onChange={changeHanlder} value={addBorrowProducts.destination}>
+                            <option >Please Select Desination</option>
                             <option value="Griffin Stone">Griffin Stone</option>
                             <option value="Launchpad Stone">Launchpad Stone</option>
                             <option value="Launchpad Plus">Launchpad Plus</option>
                         </select>
                     </div>
                     <div className="input-box">
-                        <label htmlFor="purpose"> Destination: </label>
+                        <label htmlFor="purpose"> Sino ka: </label>
                         <select name="clientStaff" id='clientStaff' onChange={changeHanlder} value={addBorrowProducts.clientStaff}>
+                            <option >Sino ka</option>
                             <option value="Client">Client</option>
                             <option value="Staff">Staff</option>
                         </select>
