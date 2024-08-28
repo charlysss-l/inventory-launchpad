@@ -46,7 +46,7 @@ const Sidebar = () => {
   
       
               <div className="bottom">
-                  <NavLink onClick={() => {handleLogout}} className="bottom-link">Logout</NavLink>
+                  <NavLink onClick={handleLogout} className="bottom-link">Logout</NavLink>
               </div>
       </nav>
     );
