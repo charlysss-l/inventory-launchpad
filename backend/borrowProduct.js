@@ -68,6 +68,7 @@ export const acceptborrowProduct = async (req, res) => {
 Your request to borrow the product "${updatedProduct.borrowName}" has been accepted.
 
 Product Details:
+- Borrow ID: ${updatedProduct.borrowId}
 - Quantity: ${updatedProduct.borrowQuantity}
 - Borrow Date: ${updatedProduct.borrowDate.toLocaleDateString()}
 - Purpose: ${updatedProduct.purpose}
@@ -113,6 +114,7 @@ Admin Team`;
 We have received the product you borrowed: "${updatedProduct.borrowName}". Upon inspection, we have determined that the item is in good condition.
 
 Product Details:
+- Borrow ID: ${updatedProduct.borrowId}
 - Quantity: ${updatedProduct.borrowQuantity}
 - Borrow Date: ${updatedProduct.borrowDate.toLocaleDateString()}
 - Return Status: Good Condition
@@ -127,6 +129,7 @@ Admin Team`;
 We have received the product you borrowed: "${updatedProduct.borrowName}". Upon inspection, we have determined that the item is damaged.
 
 Product Details:
+- Borrow ID: ${updatedProduct.borrowId}
 - Quantity: ${updatedProduct.borrowQuantity}
 - Borrow Date: ${updatedProduct.borrowDate.toLocaleDateString()}
 - Return Status: Damaged
@@ -208,6 +211,7 @@ export const addBorrowProduct = async (req,res) => {
 Your request to borrow the product "${req.body.borrowName}" has been received.
 
 Product Details:
+- Borrow ID: ${updatedProduct.borrowId}
 - Quantity: ${req.body.borrowQuantity}
 - Borrow Date: ${new Date(req.body.borrowDate).toLocaleDateString()}
 - Purpose: ${req.body.purpose}
@@ -258,6 +262,7 @@ export const removeBorrowProduct = async (req, res) => {
 Your request to borrow the product "${deletedProduct.borrowName}" has been removed.
 
 Product Details:
+- Borrow ID: ${updatedProduct.borrowId}
 - Quantity: ${deletedProduct.borrowQuantity}
 - Borrow Date: ${deletedProduct.borrowDate.toLocaleDateString()}
 - Purpose: ${deletedProduct.purpose}
