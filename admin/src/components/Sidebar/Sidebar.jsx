@@ -31,7 +31,7 @@ const Sidebar = () => {
               <span className="dropbtn">Inventory</span>
               {reservationDropdownOpen && (
                   <div className="dropdown-content">
-                  <NavLink to={'/admin/inventory'} >History</NavLink>
+                  <NavLink to={'/admin/inventory'} >All Products</NavLink>
                   <NavLink to={'/admin/hardwares'}>Hardwares</NavLink>
                       <NavLink to={'/admin/furnitures'}>Furnitures</NavLink>
                       <NavLink to={'/admin/appliances'} >Appliances</NavLink>    
@@ -41,7 +41,7 @@ const Sidebar = () => {
               )}
               </li>
               <li className="choices">
-              <NavLink to={'/admin/borrow'} className="pages">Borrow</NavLink>
+              <NavLink to={'/admin/borrow'} className="pages">Borrow History</NavLink>
               </li>
   
       
