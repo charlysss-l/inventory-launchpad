@@ -50,6 +50,7 @@ export const BorrowProduct = mongoose.model("BorrowProduct",{
     isReturn: { type: String, enum: ['Good', 'Damaged', null], default: null }, // new field
 })
 
+//accept borrow
 export const acceptborrowProduct = async (req, res) => {
         const { borrowId } = req.body;
     
@@ -167,7 +168,7 @@ Admin Team`;
         }
     }
 
-
+//add borrow product
 export const addBorrowProduct = async (req,res) => {
     try {
         // Retrieve the last product
@@ -242,7 +243,7 @@ Admin Team`;
     }
 }
 
-
+//remove a borrow
 export const removeBorrowProduct = async (req, res) => {
     try {
         // Find and delete the product

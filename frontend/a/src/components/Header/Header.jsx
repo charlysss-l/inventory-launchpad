@@ -1,7 +1,6 @@
 import React from 'react';
 import './Header.css'; 
 import { NavLink, useNavigate } from 'react-router-dom';
-
 import Search from '../../assets/Search.png';
 
 
