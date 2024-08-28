@@ -104,28 +104,30 @@ const AddBorrowProduct = () => {
                         <input type="text" placeholder="Enter Purpose" name="purpose" onChange={changeHanlder} value={addBorrowProducts.purpose} />
                     </div>
                     <div className="input-box">
-                        <label htmlFor="borrowerName"> borrowerName: </label>
-                        <input type="text" placeholder="Enter borrowerName" name="borrowerName" onChange={changeHanlder} value={addBorrowProducts.borrowerName} />
+                        <label htmlFor="borrowerName"> Name of Borrowe: </label>
+                        <input type="text" placeholder="Enter Your Full Name" name="borrowerName" onChange={changeHanlder} value={addBorrowProducts.borrowerName} />
                     </div>
                     <div className="input-box">
-                        <label htmlFor="borrowerGmail"> borrowerGmail: </label>
-                        <input type="email" placeholder="Enter borrowerGmail" name="borrowerGmail" onChange={changeHanlder} value={addBorrowProducts.borrowerGmail} />
+                        <label htmlFor="borrowerGmail"> Gmail: </label>
+                        <input type="email" placeholder="Enter Gmail Account" name="borrowerGmail" onChange={changeHanlder} value={addBorrowProducts.borrowerGmail} />
                     </div>
                     <div className="input-box">
-                        <label htmlFor="borrowerNumber"> borrowerNumber: </label>
-                        <input type="number" placeholder="Enter borrowerNumber" name="borrowerNumber" onChange={changeHanlder} value={addBorrowProducts.borrowerNumber} />
+                        <label htmlFor="borrowerNumber"> Contact No.: </label>
+                        <input type="number" placeholder="Enter Contact Number" name="borrowerNumber" onChange={changeHanlder} value={addBorrowProducts.borrowerNumber} />
                     </div>
                     <div className="input-box">
                         <label htmlFor="purpose"> Destination: </label>
                         <select name="destination" id='destination' onChange={changeHanlder} value={addBorrowProducts.destination}>
+                        <option >Please Select Product Destination</option>
                             <option value="Griffin Stone">Griffin Stone</option>
                             <option value="Launchpad Stone">Launchpad Stone</option>
                             <option value="Launchpad Plus">Launchpad Plus</option>
                         </select>
                     </div>
                     <div className="input-box">
-                        <label htmlFor="purpose"> Destination: </label>
+                        <label htmlFor="purpose"> Sino ka sir: </label>
                         <select name="clientStaff" id='clientStaff' onChange={changeHanlder} value={addBorrowProducts.clientStaff}>
+                        <option >Please Select Sino ka sir?</option>
                             <option value="Client">Client</option>
                             <option value="Staff">Staff</option>
                         </select>
