@@ -40,7 +40,7 @@ h3{
     margin: 5px 0;
 }
 
-.input-box input{
+.input-box input,select{
     height: 40px;
     width: 95%;
     padding: 0 10px;
@@ -49,6 +49,9 @@ h3{
     outline: none;
 }
 .input-box input:is(:focus, :valid){
+    box-shadow: 0 3px 6px #222625;
+}
+.input-box select:is(:focus, :valid){
     box-shadow: 0 3px 6px #222625;
 }
 .button-container{

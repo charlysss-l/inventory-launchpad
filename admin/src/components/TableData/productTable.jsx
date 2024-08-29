@@ -12,7 +12,17 @@ const removeProduct = async (product_id) => {
         },
         body: JSON.stringify({ product_id: product_id }),
     }).then((resp) => {
-        resp.ok ? alert('Are you sure you want to remove the product?') : alert('Failed to remove the product');
+        // resp.ok ? confirm('Are you sure you want to remove the product?') : alert('Failed to remove the product');
+        if (resp.ok) {
+            const userResponse = prompt('Type "yes" to confirm product removal:').toLowerCase();
+            if (userResponse === 'yes') {
+                alert('Product removed successfully.');
+            } else {
+                alert('Product removal canceled.');
+            }
+        } else {
+            alert('Failed to remove the product');
+        }
     });
 };
 

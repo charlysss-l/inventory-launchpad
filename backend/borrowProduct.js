@@ -211,7 +211,7 @@ export const addBorrowProduct = async (req,res) => {
 Your request to borrow the product "${req.body.borrowName}" has been received.
 
 Product Details:
-- Borrow ID: ${updatedProduct.borrowId}
+- Borrow ID: ${req.body.borrowId}
 - Quantity: ${req.body.borrowQuantity}
 - Borrow Date: ${new Date(req.body.borrowDate).toLocaleDateString()}
 - Purpose: ${req.body.purpose}

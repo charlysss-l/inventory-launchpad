@@ -2,6 +2,9 @@ import { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import './AddBorrowProduct.css';
 import axios from 'axios';
+import { ToastContainer, toast,Bounce } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
 
 const AddBorrowProduct = () => {
     const { product_id } = useParams(); // Get the product ID from the URL
@@ -58,7 +61,6 @@ console.log('Product ID:', product_id); // Log the product_id
         axios.post('http://localhost:3000/add-borrow-products', addBorrowProducts)
             .then(res => {
                 console.log(res);
-                alert('Borrow product added');
                 setAddBorrowProducts({
                     borrowName: "",
                     borrowQuantity: "",
@@ -70,10 +72,31 @@ console.log('Product ID:', product_id); // Log the product_id
                     borrowerGmail: "",
                     borrowerNumber: "",
                 });
+                toast.success('🦄 Borrow Product Successfully!', {
+                    position: "top-center",
+                    autoClose: 5000,
+                    hideProgressBar: false,
+                    closeOnClick: true,
+                    pauseOnHover: true,
+                    draggable: true,
+                    progress: undefined,
+                    theme: "light",
+                    transition: Bounce,
+                    });
             })
             .catch(err => {
                 console.log(err);
-                alert('Error borrowing product');
+                toast.error('🦄 Borrow Product Failed!', {
+                    position: "top-center",
+                    autoClose: 5000,
+                    hideProgressBar: false,
+                    closeOnClick: true,
+                    pauseOnHover: true,
+                    draggable: true,
+                    progress: undefined,
+                    theme: "light",
+                    transition: Bounce,
+                    });
             });
     };
 
@@ -140,6 +163,7 @@ console.log('Product ID:', product_id); // Log the product_id
                     </div>
                 </div>
             </form>
+            <ToastContainer />
         </div>
     )
 }

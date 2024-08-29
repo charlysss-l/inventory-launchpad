@@ -1,6 +1,8 @@
 import { useState, useEffect } from 'react';
 import axios from 'axios';
 import { useParams } from 'react-router-dom';
+import { ToastContainer, toast,Bounce } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const EditProduct = () => {
     const { product_id } = useParams();
@@ -23,7 +25,6 @@ const EditProduct = () => {
       e.preventDefault();
       axios.put(`http://localhost:3000/editProduct`, { ...editProduct, product_id }).then((res) => {
         console.log(res);
-        alert('Product updated');
         setEditProduct({
           product_name: "",
           product_brand: "",
@@ -34,9 +35,30 @@ const EditProduct = () => {
           product_totalPrice: "",
           product_supplier: "",
         });
+        toast.success('🦄 Product Updated Successfully!', {
+          position: "top-center",
+          autoClose: 5000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          theme: "light",
+          transition: Bounce,
+          });
       }).catch((err) => {
         console.log(err);
-        alert('Error updating product');
+        toast.error('🦄 Updating Product Failed!', {
+          position: "top-center",
+          autoClose: 5000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          theme: "light",
+          transition: Bounce,
+          });
       });
     };
   
@@ -117,6 +139,7 @@ const EditProduct = () => {
           </div>
         </div>
       </form>
+      <ToastContainer />
     </div>
   );
 };
