@@ -1,6 +1,9 @@
 import  {useState} from 'react'
 import './AddProduct.css'
 import axios from 'axios'
+import { ToastContainer, toast,Bounce } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
 const AddProduct = () => {
     const [addProducts, setAddProducts] = useState({
         product_name: "",
@@ -20,7 +23,7 @@ const AddProduct = () => {
         e.preventDefault()
         axios.post('http://localhost:3000/add-product', addProducts).then(res =>{
             console.log(res)
-            alert('product added')
+            // alert('product added')
             setAddProducts({
                 product_name: "",
                 product_brand: "",
@@ -31,9 +34,31 @@ const AddProduct = () => {
                 product_totalPrice: "",
                 product_supplier: "",
             })
+            toast.success('🦄 Product Added Successfully!', {
+                position: "top-center",
+                autoClose: 5000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+                theme: "light",
+                transition: Bounce,
+                });
         }).catch(errr => {
             console.log(errr)
-            alert('error adding product')
+            // alert('error adding product')
+            toast.error('🦄 Error Adding Product!', {
+                position: "top-center",
+                autoClose: 3000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+                theme: "light",
+                transition: Bounce,
+                });
         })
     }
 
@@ -87,6 +112,7 @@ return (
                 </div>
             </div>
         </form>
+        <ToastContainer />
     </div>
   )
 }
