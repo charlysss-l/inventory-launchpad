@@ -38,6 +38,28 @@ const Product = mongoose.model("Product",{
     }
 })
 
+//total number of produucts in the inventory
+export const getTotalProducts = async (req, res) => {
+    try {
+        const totalProducts = await Product.countDocuments();
+        res.json({ totalProducts });
+    } catch (err) {
+        res.status(500).json({ error: 'Failed to fetch total products' });
+    }
+};
+
+//all number of inventory
+export const getSumofProducts = async (req, res) => {
+    try {
+        const products = await Product.find();
+        const totalInventory = products.reduce((sum, product) => sum + product.product_quantity, 0);
+        res.json({ totalInventory });
+    } catch (err) {
+        res.status(500).json({ error: 'Failed to fetch total inventory' });
+    }
+};
+
+
 export const prodCategory = async (req, res) => {
     const category = req.params.category; // Get category from the request params
     try {

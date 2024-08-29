@@ -1,4 +1,4 @@
-import { addProduct, removeProduct, fetchProduct, editProduct, findProductByID, prodCategory } from './products.js';
+import { addProduct, removeProduct, fetchProduct, editProduct, findProductByID, prodCategory,getTotalProducts, getSumofProducts } from './products.js';
 import { addBorrowProduct, removeBorrowProduct, fetchBorrowProduct, acceptborrowProduct, updateReturnStatus } from './borrowProduct.js';
 import { fetchNotifs, markNotifs } from './adminNotfication.js';
 
@@ -70,6 +70,11 @@ app.post('/accept-borrow-product', acceptborrowProduct)
 app.post('/update-return-status', updateReturnStatus)
 
 app.get('/prodCat/:category', prodCategory);
+
+//dashboard
+app.get('/totalProducts', getTotalProducts)
+app.get('/totalInventory', getSumofProducts)
+
 
 // const { MongoClient, ServerApiVersion } = require('mongodb');
 // const uri = 'mongodb+srv://launchpad2024:launchpad@2024@cluster0.nfyxn.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0';
