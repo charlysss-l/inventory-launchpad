@@ -2,18 +2,82 @@ import React, { useState, useEffect } from 'react';
 import './productTable.css';
 import { NavLink, useParams } from 'react-router-dom';
 import { Pagination } from '@mui/material'; // Import MUI Pagination
+import { ToastContainer, toast,Bounce } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const removeProduct = async (product_id) => {
-    await fetch('http://localhost:3000/removeproduct', {
-        method: 'POST',
-        headers: {
-            Accept: 'application/json',
-            'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({ product_id: product_id })
-    }).then((resp) => {
-        resp.ok ? alert('Product removed successfully.') : alert("Failed to remove the product");
-    });
+    const userResponse = prompt('Type "yes" to confirm product removal and "no" to cancel').toLowerCase();
+    
+    if (userResponse === 'yes') {
+        try {
+            const response = await fetch('http://localhost:3000/removeproduct', {
+                method: 'POST',
+                headers: {
+                    Accept: 'application/json',
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({ product_id: product_id }),
+            });
+
+            if (response.ok) {
+                toast.success('🦄 Product Removed Successfully!', {
+                    position: "top-center",
+                    autoClose: 5000,
+                    hideProgressBar: false,
+                    closeOnClick: true,
+                    pauseOnHover: true,
+                    draggable: true,
+                    progress: undefined,
+                    theme: "light",
+                });
+            } else {
+                toast.warn('⚠️ Failed to remove the product!', {
+                    position: "top-center",
+                    autoClose: 5000,
+                    hideProgressBar: false,
+                    closeOnClick: true,
+                    pauseOnHover: true,
+                    draggable: true,
+                    progress: undefined,
+                    theme: "light",
+                });
+            }
+        } catch (error) {
+            console.error('Error:', error);
+            toast.error('❌ An error occurred while trying to remove the product!', {
+                position: "top-center",
+                autoClose: 5000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+                theme: "light",
+            });
+        }
+    } else if (userResponse === 'no') {
+        toast.info('ℹ️ Product removal canceled.', {
+            position: "top-center",
+            autoClose: 5000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+            theme: "light",
+        });
+    } else {
+        toast.error('❌ Invalid response. Product removal canceled.', {
+            position: "top-center",
+            autoClose: 5000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+            theme: "light",
+        });
+    }
 };
 
 const formatDate = (dateString) => {
@@ -130,6 +194,7 @@ const CategoryTable = () => {
                     </>
                 )}
             </div>
+            <ToastContainer />
         </div>
     );
 };
