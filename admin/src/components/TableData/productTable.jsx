@@ -2,28 +2,76 @@ import React, { useState, useEffect } from 'react';
 import './productTable.css';
 import { NavLink } from 'react-router-dom';
 import { Pagination } from '@mui/material';
+import { ToastContainer, toast,Bounce } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
 
 const removeProduct = async (product_id) => {
-    await fetch('http://localhost:3000/removeproduct', {
-        method: 'POST',
-        headers: {
-            Accept: 'application/json',
-            'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({ product_id: product_id }),
-    }).then((resp) => {
-        // resp.ok ? confirm('Are you sure you want to remove the product?') : alert('Failed to remove the product');
-        if (resp.ok) {
-            const userResponse = prompt('Type "yes" to confirm product removal:').toLowerCase();
-            if (userResponse === 'yes') {
-                alert('Product removed successfully.');
+    const userResponse = prompt('Type "yes" to confirm product removal and "no" to cancel').toLowerCase();
+    if (userResponse === 'yes') {
+        try {
+            const response = await fetch('http://localhost:3000/removeproduct', {
+                method: 'POST',
+                headers: {
+                    Accept: 'application/json',
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({ product_id: product_id }),
+            });
+
+            if (response.ok) {
+                toast.success('🦄 Product Removed Successfully!', {
+                    position: "top-center",
+                    autoClose: 5000,
+                    hideProgressBar: false,
+                    closeOnClick: true,
+                    pauseOnHover: true,
+                    draggable: true,
+                    progress: undefined,
+                    theme: "light",
+                    transition: Bounce,
+                    });
             } else {
-                alert('Product removal canceled.');
+                toast.warn('🦄 Failed to remove the product!', {
+                    position: "top-center",
+                    autoClose: 5000,
+                    hideProgressBar: false,
+                    closeOnClick: true,
+                    pauseOnHover: true,
+                    draggable: true,
+                    progress: undefined,
+                    theme: "light",
+                    transition: Bounce,
+                    });
             }
-        } else {
-            alert('Failed to remove the product');
+        } catch (error) {
+            console.error('Error:', error);
+            toast.warn('🦄 An error occurred while trying to remove the product!', {
+                position: "top-center",
+                autoClose: 5000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+                theme: "light",
+                transition: Bounce,
+                });
         }
-    });
+    }
+    else {
+        toast.error('🦄 Product Removal Failed!', {
+            position: "top-center",
+            autoClose: 5000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+            theme: "light",
+            transition: Bounce,
+            });
+    }
 };
 
 const productTable = ({ products }) => {
@@ -105,6 +153,7 @@ const productTable = ({ products }) => {
                     style={{ marginTop: '20px', display: 'flex', justifyContent: 'center' }}
                 />
             </div>
+            <ToastContainer />
         </div>
     );
 };
