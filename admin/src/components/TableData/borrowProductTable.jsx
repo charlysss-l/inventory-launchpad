@@ -1,26 +1,89 @@
 import React, { useState, useEffect } from 'react';
 import './productTable.css';
 import { Pagination } from '@mui/material';
+import { ToastContainer, toast,Bounce } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const removeBorrowProduct = async (borrowId) => {
-    try {
-        const response = await fetch('http://localhost:3000/remove-borrow-products', {
-            method: 'POST',
-            headers: {
-                Accept: 'application/json',
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify({ borrowId }),
-        });
-        if (response.ok) {
-            alert('Product removed successfully');
-            window.location.reload();
-        } else {
-            alert('Failed to remove the product');
+    const userResponse = prompt('Type "yes" to confirm product removal and "no" to cancel').toLowerCase();
+
+    if (userResponse === 'yes') {
+        try {
+            const response = await fetch('http://localhost:3000/remove-borrow-products', {
+                method: 'POST',
+                headers: {
+                    Accept: 'application/json',
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({ borrowId }),
+            });
+
+            console.log('Response status:', response.status); // Log the status code for debugging
+
+            if (response.ok) {
+                toast.success('🦄 Product Removed Successfully!', {
+                    position: "top-center",
+                    autoClose: 5000,
+                    hideProgressBar: false,
+                    closeOnClick: true,
+                    pauseOnHover: true,
+                    draggable: true,
+                    progress: undefined,
+                    theme: "light",
+                    transition: Bounce, // Use the Bounce transition for the toast
+                });
+            } else {
+                toast.warn('⚠️ Failed to remove the product!', {
+                    position: "top-center",
+                    autoClose: 5000,
+                    hideProgressBar: false,
+                    closeOnClick: true,
+                    pauseOnHover: true,
+                    draggable: true,
+                    progress: undefined,
+                    theme: "light",
+                    transition: Bounce, // Use the Bounce transition for the toast
+                });
+            }
+
+        } catch (error) {
+            console.error('Error:', error);
+            toast.error('❌ An error occurred while trying to remove the product!', {
+                position: "top-center",
+                autoClose: 5000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+                theme: "light",
+                transition: Bounce, // Use the Bounce transition for the toast
+            });
         }
-    } catch (error) {
-        console.error('Error:', error);
-        alert('Failed to remove the product');
+    } else if (userResponse === 'no') {
+        toast.info('ℹ️ Product removal canceled.', {
+            position: "top-center",
+            autoClose: 5000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+            theme: "light",
+            transition: Bounce, // Use the Bounce transition for the toast
+        });
+    } else {
+        toast.error('❌ Invalid response. Product removal canceled.', {
+            position: "top-center",
+            autoClose: 5000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+            theme: "light",
+            transition: Bounce, // Use the Bounce transition for the toast
+        });
     }
 };
 
@@ -165,6 +228,7 @@ const borrowProductTable = ({ products }) => {
                     style={{ marginTop: '20px', display: 'flex', justifyContent: 'center' }}
                 />
             </div>
+            <ToastContainer />
         </div>
     );
 };

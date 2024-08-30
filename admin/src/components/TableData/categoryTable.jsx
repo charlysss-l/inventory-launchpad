@@ -29,6 +29,7 @@ const removeProduct = async (product_id) => {
                     draggable: true,
                     progress: undefined,
                     theme: "light",
+                    transition: Bounce
                 });
             } else {
                 toast.warn('⚠️ Failed to remove the product!', {
@@ -40,6 +41,7 @@ const removeProduct = async (product_id) => {
                     draggable: true,
                     progress: undefined,
                     theme: "light",
+                    transition: Bounce
                 });
             }
         } catch (error) {
@@ -53,19 +55,9 @@ const removeProduct = async (product_id) => {
                 draggable: true,
                 progress: undefined,
                 theme: "light",
+                transition: Bounce
             });
         }
-    } else if (userResponse === 'no') {
-        toast.info('ℹ️ Product removal canceled.', {
-            position: "top-center",
-            autoClose: 5000,
-            hideProgressBar: false,
-            closeOnClick: true,
-            pauseOnHover: true,
-            draggable: true,
-            progress: undefined,
-            theme: "light",
-        });
     } else {
         toast.error('❌ Invalid response. Product removal canceled.', {
             position: "top-center",
@@ -76,6 +68,7 @@ const removeProduct = async (product_id) => {
             draggable: true,
             progress: undefined,
             theme: "light",
+            transition: Bounce
         });
     }
 };

@@ -262,7 +262,7 @@ export const removeBorrowProduct = async (req, res) => {
 Your request to borrow the product "${deletedProduct.borrowName}" has been removed.
 
 Product Details:
-- Borrow ID: ${updatedProduct.borrowId}
+- Borrow ID: ${deletedProduct.borrowId}
 - Quantity: ${deletedProduct.borrowQuantity}
 - Borrow Date: ${deletedProduct.borrowDate.toLocaleDateString()}
 - Purpose: ${deletedProduct.purpose}
