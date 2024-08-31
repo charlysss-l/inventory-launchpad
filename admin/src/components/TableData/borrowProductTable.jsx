@@ -61,7 +61,7 @@ const removeBorrowProduct = async (borrowId) => {
             });
         }
     } else if (userResponse === 'no') {
-        toast.info('ℹ️ Product removal canceled.', {
+        toast.error('ℹ️ Product removal canceled.', {
             position: "top-center",
             autoClose: 5000,
             hideProgressBar: false,
@@ -98,10 +98,32 @@ const acceptBorrowProduct = async (borrowId) => {
             body: JSON.stringify({ borrowId }),
         });
         if (response.ok) {
-            alert('Product accepted successfully');
-            window.location.reload();
+            toast.success('🦄 Borrow Product Accepted Successfully!', {
+                position: "top-center",
+                autoClose: 5000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+                theme: "light",
+                transition: Bounce, // Use the Bounce transition for the toast
+            });
+            setTimeout(() => {
+                window.location.reload();  // Reload the page after a short delay
+            }, 5000); 
         } else {
-            alert('Failed to accept the product');
+            toast.error('🦄 Borrow Product Failed Accepted!', {
+                position: "top-center",
+                autoClose: 5000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+                theme: "light",
+                transition: Bounce, // Use the Bounce transition for the toast
+            });
         }
     } catch (error) {
         console.error('Error:', error);
@@ -120,14 +142,52 @@ const updateReturnStatus = async (borrowId, status) => {
             body: JSON.stringify({ borrowId, status }),
         });
         if (response.ok) {
-            alert(`Product marked as ${status} successfully`);
-            window.location.reload();
+            toast.success(`🦄 Product Marked as ${status} Successfully`, {
+                position: "top-center",
+                autoClose: 5000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+                theme: "light",
+                transition: Bounce, // Use the Bounce transition for the toast
+            });
+            setTimeout(() => {
+                window.location.reload();  // Reload the page after a short delay
+            }, 5000); 
         } else {
-            alert(`Failed to mark product as ${status}`);
+            toast.error(`🦄 Product Marked as ${status} Successfully`, {
+                position: "top-center",
+                autoClose: 5000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+                theme: "light",
+                transition: Bounce, // Use the Bounce transition for the toast
+            });
+            setTimeout(() => {
+                window.location.reload();  // Reload the page after a short delay
+            }, 5000);
         }
     } catch (error) {
         console.error('Error:', error);
-        alert(`Failed to mark product as ${status}`);
+        toast.warn(`🦄Failed to mark product as ${status}`, {
+            position: "top-center",
+            autoClose: 5000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+            theme: "light",
+            transition: Bounce, // Use the Bounce transition for the toast
+        });
+        setTimeout(() => {
+            window.location.reload();  // Reload the page after a short delay
+        }, 5000);
     }
 };
 
