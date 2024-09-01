@@ -1,11 +1,4 @@
 
-body{
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    height: 100vh;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-}
 .container{
     max-width: 800px;
     min-height: 700px;

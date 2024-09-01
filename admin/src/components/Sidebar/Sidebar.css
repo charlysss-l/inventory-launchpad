@@ -11,6 +11,7 @@
     border-top-right-radius: 80px;
     z-index: 2;
     position: fixed;
+    top: 0;
 }
 
 
