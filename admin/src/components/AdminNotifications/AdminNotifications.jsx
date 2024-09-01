@@ -4,7 +4,6 @@ import './AdminNotifications.css';
 const AdminNotifications = () => {
     const [notifications, setNotifications] = useState([]);
     const [loading, setLoading] = useState(true);
-    const [showNotifications, setShowNotifications] = useState(false);
 
     useEffect(() => {
         console.log('Fetching notifications...');
@@ -20,10 +19,6 @@ const AdminNotifications = () => {
                 setLoading(false);
             });
     }, []);
-
-    const handleToggleNotifications = () => {
-        setShowNotifications(!showNotifications);
-    };
 
     const handleMarkAsRead = (notificationId) => {
         fetch(`http://localhost:3000/admin/notifications/${notificationId}/markAsRead`, {
@@ -45,25 +40,21 @@ const AdminNotifications = () => {
 
     return (
         <div className="notification-container">
-            <button onClick={handleToggleNotifications}>
-                Notifications ({notifications.filter((n) => !n.isRead).length})
-            </button>
-            {showNotifications && (
+            <h2>Admin Notifications</h2>
+            {loading ? (
+                <div>Loading...</div>
+            ) : (
                 <div className="notification-popup">
-                    {loading ? (
-                        <div>Loading...</div>
-                    ) : (
-                        <ul>
-                            {notifications.map((notification) => (
-                                <li key={notification._id} className={notification.isRead ? 'read' : 'unread'}>
-                                    {notification.message}
-                                    {!notification.isRead && (
-                                        <button onClick={() => handleMarkAsRead(notification._id)}>Mark as Read</button>
-                                    )}
-                                </li>
-                            ))}
-                        </ul>
-                    )}
+                    <ul>
+                        {notifications.map((notification) => (
+                            <li key={notification._id} className={notification.isRead ? 'read' : 'unread'}>
+                                {notification.message}
+                                {!notification.isRead && (
+                                    <button onClick={() => handleMarkAsRead(notification._id)}>Mark as Read</button>
+                                )}
+                            </li>
+                        ))}
+                    </ul>
                 </div>
             )}
         </div>
@@ -71,6 +62,7 @@ const AdminNotifications = () => {
 };
 
 export default AdminNotifications;
+
 
 // import React, { useState, useEffect } from 'react';
 // import './AdminNotifications.css'; // Ensure you have corresponding CSS

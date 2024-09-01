@@ -1,46 +1,50 @@
 .notification-container {
     display: flex;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
-    margin: 100px 400px;
+    margin: 50px auto;
+    width: 80%;
+    max-width: 1000px;
     text-align: center;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    background-color: #f9f9f9;
+    padding: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
 .notification-popup {
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    background-color: #1c6c1655;
-    border-radius: 8px;
-    box-shadow: 0 4px 12px #000000;
-    padding: 16px;
-    width: 800px; /* Further increased width for a wider popup */
-    z-index: 1000;
+    width: 100%;
+    margin-top: 20px;
 }
 
 .notification-popup ul {
     list-style: none;
     padding: 0;
     margin: 0;
+    max-height: 400px;
+    overflow-y: auto;
+    border-top: 1px solid #ddd;
 }
 
 .notification-popup li {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 16px 0; /* Increased padding for better spacing */
-    border-bottom: 1px solid #eee;
-    font-size: 16px; /* Increased font size for better readability */
+    padding: 12px 20px;
+    border-bottom: 1px solid #ddd;
+    font-size: 16px;
+    transition: background-color 0.2s;
 }
 
 .notification-popup li.read {
-    background-color: white;
+    background-color: #f0f0f0;
 }
 
 .notification-popup li.unread {
-    background-color: darkgrey;
+    background-color: #dfe6e9;
 }
 
 .notification-popup li:hover {
@@ -52,10 +56,9 @@
     border: none;
     color: #1a73e8;
     cursor: pointer;
-    font-size: 16px; /* Increased button font size for consistency */
+    font-size: 16px;
 }
 
 .notification-popup button:hover {
     text-decoration: underline;
 }
-
