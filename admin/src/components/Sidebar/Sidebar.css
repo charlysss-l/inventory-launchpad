@@ -108,3 +108,13 @@
 .bottom-link:hover, button:hover {
     background-color: #62776A;
 }
+
+/* .pages.active {
+    font-weight: bold;
+    color: #007bff; /* Customize active link color */
+}
+
+.dropdown-link.active {
+    font-weight: bold;
+    color: #007bff; /* Customize active link color */
+} */

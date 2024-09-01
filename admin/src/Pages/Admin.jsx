@@ -1,6 +1,6 @@
 import React from 'react'
 
-import {Route, Routes} from 'react-router-dom'
+import {Route, Routes, useLocation} from 'react-router-dom'
 import Sidebar from '../components/Sidebar/Sidebar'
 import Admin_Dashboard from './Dashboard/Admin_Dashboard'
 import Admin_Inventory from './Inventory/Admin_Inventory'
@@ -16,12 +16,14 @@ import Admin_Category from './Category/Admin_Category'
 
 
 const Admin = () => {
+  const location = useLocation();
   return (
+
 <main className="admin-page">
 
-<Sidebar/>
+{location.pathname !== '/admin/login' && <Sidebar />}
      <Routes>
-        <Route path='/' element={<Login />}></Route>
+        <Route path='/admin/login' element={<Login />}></Route>
         <Route path="/admin/dashboard" element={<Admin_Dashboard />}/>
         <Route path="/admin/inventory" element={<Admin_Inventory />}/>
         <Route path="/admin/borrow" element={<Admin_Borrow/>}/>

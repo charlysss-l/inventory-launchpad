@@ -1,4 +1,4 @@
-import React,{useState} from 'react'
+  import React,{useState} from 'react'
 import { useNavigate } from 'react-router-dom'
 import './login.css'
 
@@ -29,7 +29,7 @@ const handleSubmitButton = async (e) => {
     const result = await response.json();
     localStorage.setItem("token", result.token)
     console.log(result);
-    navigate('/admin/inventory');
+    navigate('/admin/dashboard');
   } catch (error) {
     console.error("Error: ", error);
   }
