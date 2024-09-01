@@ -1,7 +1,7 @@
 import mongoose from "mongoose";
 import {sendEmail} from "./email.js";
 import {Notification} from './adminNotfication.js'
-
+import { Product } from "./products.js";
 export const BorrowProduct = mongoose.model("BorrowProduct",{
     borrowId:{
         type: Number,
@@ -51,17 +51,70 @@ export const BorrowProduct = mongoose.model("BorrowProduct",{
 })
 
 export const acceptborrowProduct = async (req, res) => {
-        const { borrowId } = req.body;
-    
-        try {
-            const updatedProduct = await BorrowProduct.findOneAndUpdate(
-                { borrowId: borrowId },
-                { isAccepted: true },
-                { new: true }
+    const { borrowId } = req.body;
+
+    try {
+        // Find the borrow request
+        const borrowRequest = await BorrowProduct.findOne({ borrowId: borrowId });
+
+        if (!borrowRequest) {
+            return res.status(404).json({ message: 'Borrow request not found' });
+        }
+
+        // Find the product associated with the borrow request
+        const product = await Product.findOne({ product_name: borrowRequest.borrowName });
+
+        if (!product) {
+            return res.status(404).json({ message: 'Product not found' });
+        }
+
+        // Check if the requested quantity is available
+        if (borrowRequest.borrowQuantity > product.product_quantity) {
+            // Insufficient quantity: Delete the borrow request
+            await BorrowProduct.findOneAndDelete({ borrowId: borrowId });
+
+            // Notify the user via email
+            const emailSubject = 'Your Borrow Request has been Deleted';
+            const emailText = `Hello ${borrowRequest.borrowerName},
+
+We regret to inform you that your request to borrow the product "${borrowRequest.borrowName}" has been deleted. The requested quantity exceeds the available stock.
+
+Product Details:
+- Borrow ID: ${borrowRequest.borrowId}
+- Requested Quantity: ${borrowRequest.borrowQuantity}
+
+We apologize for any inconvenience this may have caused.
+
+Best regards,
+Admin Team`;
+
+            await sendEmail(
+                borrowRequest.borrowerGmail, // Send to borrower's email
+                emailSubject,
+                emailText,
+                borrowRequest.borrowerGmail  // Set as reply-to
             );
-    
-            if (updatedProduct) {
-                // Send email notification with borrower's email as reply-to
+
+            // Alert to admin
+            const adminAlertMessage = `Borrow request ID ${borrowRequest.borrowId} was deleted because the requested quantity exceeds the available stock for product "${borrowRequest.borrowName}".`;
+            console.log(adminAlertMessage); // Or use another alert mechanism
+
+            return res.status(400).json({ message: 'Borrow request deleted due to insufficient product quantity' });
+        }
+
+        // If sufficient quantity is available, proceed with the acceptance
+        const updatedProduct = await BorrowProduct.findOneAndUpdate(
+            { borrowId: borrowId },
+            { isAccepted: true },
+            { new: true }
+        );
+
+        if (updatedProduct) {
+            // Reduce the product quantity
+            product.product_quantity -= borrowRequest.borrowQuantity;
+            await product.save();
+
+            // Send email notification with borrower's email as reply-to
             const emailSubject = 'Your Borrow Request has been Accepted';
             const emailText = `Hello ${updatedProduct.borrowerName},
 
@@ -84,32 +137,41 @@ Admin Team`;
                 emailText,
                 updatedProduct.borrowerGmail  // Set as reply-to
             );
-                res.status(200).json({ message: 'Product accepted successfully', product: updatedProduct });
-            } else {
-                res.status(404).json({ message: 'Product not found' });
-            }
-        } catch (error) {
-            res.status(500).json({ message: 'Server error', error });
+
+            res.status(200).json({ message: 'Product accepted successfully', product: updatedProduct });
+        } else {
+            res.status(404).json({ message: 'Product not found' });
         }
+    } catch (error) {
+        res.status(500).json({ message: 'Server error', error });
     }
+}
 
-    export const updateReturnStatus = async (req, res) => {
-        const { borrowId, status } = req.body;
-    
-        try {
-            const updatedProduct = await BorrowProduct.findOneAndUpdate(
-                { borrowId: borrowId },
-                { isReturn: status },
-                { new: true }
-            );
-    
-            if (updatedProduct) {
+export const updateReturnStatus = async (req, res) => {
+    const { borrowId, status } = req.body;
+
+    try {
+        const updatedProduct = await BorrowProduct.findOneAndUpdate(
+            { borrowId: borrowId },
+            { isReturn: status },
+            { new: true }
+        );
+
+        if (updatedProduct) {
+            // Find the original product
+            const product = await Product.findOne({ product_name: updatedProduct.borrowName });
+            if (product) {
+                // Increase the product quantity
+                product.product_quantity += updatedProduct.borrowQuantity;
+
+                // Save the product
+                await product.save();
+
                 const emailSubject = `Return Status for Borrowed Product: ${updatedProduct.borrowName}`;
-            let emailText;
+                let emailText;
 
-            // Update condition to correctly handle "GOOD" and "DAMAGED"
-            if (status === 'GOOD') {
-                emailText = `Hello ${updatedProduct.borrowerName},
+                if (status === 'GOOD') {
+                    emailText = `Hello ${updatedProduct.borrowerName},
 
 We have received the product you borrowed: "${updatedProduct.borrowName}". Upon inspection, we have determined that the item is in good condition.
 
@@ -123,8 +185,8 @@ Thank you for your cooperation.
 
 Best regards,
 Admin Team`;
-            } else if (status === 'DAMAGED') {
-                emailText = `Hello ${updatedProduct.borrowerName},
+                } else if (status === 'DAMAGED') {
+                    emailText = `Hello ${updatedProduct.borrowerName},
 
 We have received the product you borrowed: "${updatedProduct.borrowName}". Upon inspection, we have determined that the item is damaged.
 
@@ -138,8 +200,8 @@ Thank you for your cooperation.
 
 Best regards,
 Admin Team`;
-            } else {
-                emailText = `Hello ${updatedProduct.borrowerName},
+                } else {
+                    emailText = `Hello ${updatedProduct.borrowerName},
 
 We have received the product you borrowed: "${updatedProduct.borrowName}". We have noted your return status update.
 
@@ -152,23 +214,26 @@ Thank you for your cooperation.
 
 Best regards,
 Admin Team`;
-            }
+                }
 
-            // Send email notification
-            await sendEmail(
-                updatedProduct.borrowerGmail,  // Send to borrower's email
-                emailSubject,
-                emailText
-            );
+                // Send email notification
+                await sendEmail(
+                    updatedProduct.borrowerGmail,  // Send to borrower's email
+                    emailSubject,
+                    emailText
+                );
 
                 res.status(200).json({ message: 'Return status updated successfully', product: updatedProduct });
             } else {
-                res.status(404).json({ message: 'Product not found' });
+                res.status(404).json({ message: 'Original product not found' });
             }
-        } catch (error) {
-            res.status(500).json({ message: 'Server error', error });
+        } else {
+            res.status(404).json({ message: 'Borrowed product not found' });
         }
+    } catch (error) {
+        res.status(500).json({ message: 'Server error', error });
     }
+};
 
 
 export const addBorrowProduct = async (req,res) => {
@@ -211,7 +276,7 @@ export const addBorrowProduct = async (req,res) => {
 Your request to borrow the product "${req.body.borrowName}" has been received.
 
 Product Details:
-- Borrow ID: ${req.body.borrowId}
+- Borrow ID: ${id}
 - Quantity: ${req.body.borrowQuantity}
 - Borrow Date: ${new Date(req.body.borrowDate).toLocaleDateString()}
 - Purpose: ${req.body.purpose}
