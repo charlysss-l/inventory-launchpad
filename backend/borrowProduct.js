@@ -89,15 +89,15 @@ Best regards,
 Admin Team`;
 
             await sendEmail(
-                borrowRequest.borrowerGmail, // Send to borrower's email
+                borrowRequest.borrowerGmail,
                 emailSubject,
                 emailText,
-                borrowRequest.borrowerGmail  // Set as reply-to
+                borrowRequest.borrowerGmail
             );
 
             // Alert to admin
             const adminAlertMessage = `Borrow request ID ${borrowRequest.borrowId} was deleted because the requested quantity exceeds the available stock for product "${borrowRequest.borrowName}".`;
-            console.log(adminAlertMessage); // Or use another alert mechanism
+            console.log(adminAlertMessage);
 
             return res.status(400).json({ message: 'Borrow request deleted due to insufficient product quantity' });
         }
@@ -114,7 +114,7 @@ Admin Team`;
             product.product_quantity -= borrowRequest.borrowQuantity;
             await product.save();
 
-            // Send email notification with borrower's email as reply-to
+            // Send email notification
             const emailSubject = 'Your Borrow Request has been Accepted';
             const emailText = `Hello ${updatedProduct.borrowerName},
 
@@ -132,10 +132,10 @@ Best regards,
 Admin Team`;
 
             await sendEmail(
-                updatedProduct.borrowerGmail, // Send to borrower's email
+                updatedProduct.borrowerGmail,
                 emailSubject,
                 emailText,
-                updatedProduct.borrowerGmail  // Set as reply-to
+                updatedProduct.borrowerGmail
             );
 
             res.status(200).json({ message: 'Product accepted successfully', product: updatedProduct });
@@ -145,7 +145,8 @@ Admin Team`;
     } catch (error) {
         res.status(500).json({ message: 'Server error', error });
     }
-}
+};
+
 
 export const updateReturnStatus = async (req, res) => {
     const { borrowId, status } = req.body;
@@ -163,10 +164,9 @@ export const updateReturnStatus = async (req, res) => {
             if (product) {
                 // Increase the product quantity
                 product.product_quantity += updatedProduct.borrowQuantity;
-
-                // Save the product
                 await product.save();
 
+                // Prepare the email
                 const emailSubject = `Return Status for Borrowed Product: ${updatedProduct.borrowName}`;
                 let emailText;
 
@@ -218,7 +218,7 @@ Admin Team`;
 
                 // Send email notification
                 await sendEmail(
-                    updatedProduct.borrowerGmail,  // Send to borrower's email
+                    updatedProduct.borrowerGmail,
                     emailSubject,
                     emailText
                 );
@@ -234,6 +234,7 @@ Admin Team`;
         res.status(500).json({ message: 'Server error', error });
     }
 };
+
 
 
 export const addBorrowProduct = async (req,res) => {
