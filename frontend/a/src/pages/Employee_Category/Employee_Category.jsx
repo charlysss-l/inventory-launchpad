@@ -7,9 +7,9 @@ const Admin_Category = () => {
   return (
     <div className="admin-category-page">
       <Sidebar /> {/* Include Sidebar here */}
-      <div className="content">
+      
         <CategoryTable /> {/* No need to pass products here */}
-      </div>
+      
     </div>
   );
 };

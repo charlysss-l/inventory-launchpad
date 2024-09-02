@@ -40,7 +40,7 @@ const handleSubmitButton = async (e) => {
     <>
       <section className='containerr'>
         <div>Login</div>
-        <div className="content">
+        <div className="contentt">
         <form>
           <div className="input-box">
             <label htmlFor="">Email</label>

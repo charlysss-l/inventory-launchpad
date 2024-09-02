@@ -1,17 +1,17 @@
 .conn{
-  padding: 1%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
 }
 .inventory-container {
-  margin-left: 250px; 
+  height: 80%;
   padding: 25px;
   border-radius: 8px;
-  display: flex;
-  justify-items: center;
-  flex-direction: column;
-  width: 1200px;
+  width: 80%;
   border: 3px solid #d9d8d7a9;
   box-shadow: 0 15px 15px rgba(0, 0, 0, 0.1);
-
+  margin-left: 15%;
 }
 
 .inventory-heading {
@@ -27,9 +27,9 @@
 
 .inventory-table {
   width: 100%;
+  height: 80%;
   border-collapse: collapse;
   margin-bottom: 20px   ;
-
 }
 
  /* {Space on top of each data} */
@@ -51,10 +51,43 @@
   color: #424D47;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   font-weight:600;
-  font-size: 10px;
-  padding: 1px;
+  font-size: 1rem;
 }
 
+.inventory-button {
+  background-color: #98a286;
+  color: #ffffff;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+
+.inventory-button:hover {
+  background-color: #7a8462;
+}
+
+.inventory-page-info {
+  font-size: 14px;
+  color: #333;
+}
+
+.button{
+  display: flex;
+  appearance: auto;
+  letter-spacing: normal;
+  word-spacing: normal;
+  line-height: normal;
+  text-transform: none;
+  text-indent: 0px;
+  text-shadow: none;
+  padding-block: 1px;
+  padding-inline: 6px;
+
+
+}
 .edit{
   width: 71px;
   height: 29px;
@@ -71,7 +104,7 @@
 }
 
 .editprod {
-  width: 71px;
+  width: 100%;
   height: 29px;
   background-image: linear-gradient(180deg, #3482cc, #1c466d);
   color: #ffffff;
@@ -88,9 +121,29 @@
   font-weight: 100;
   }
 
+.delete{
+  width: 100%;
+  height: 29px;
+  background-image: linear-gradient(180deg,#ac3f2c, #6d281c);
+  color: #ffffff;
+  border: 0;
+  border-radius: 7px;
+  box-shadow: 0px 4px 4px rgba(111, 106, 106, 0.575);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  transition: 0.3 ease;
+  text-decoration: none;
+  font-size: 15px;
+  font-weight: 100;
+}
+.delete:hover {
+  background-image: linear-gradient(180deg, #ac3f2c, #ac3f2c);
+  }
 
 .borrow-button{
-  width: 100%;
+width: 100%;
 height: 29px;
 background-image: linear-gradient(180deg,#46b369, #378f53);
 color: #ffffff;
@@ -100,6 +153,7 @@ box-shadow: 0px 4px 4px rgba(111, 106, 106, 0.575);
 display: flex;
 justify-content: center;
 align-items: center;
+text-align: center;
 transition: 0.3 ease;
 text-decoration: none;
 font-size: 15px;
@@ -109,3 +163,23 @@ font-weight: 100;
 background-image: linear-gradient(180deg,#378f53, #378f53);
 }
 
+.accept-button{
+width: 100%;
+height: 29px;
+background-image: linear-gradient(180deg,#46b369, #378f53);
+color: #ffffff;
+border: 0;
+border-radius: 7px;
+box-shadow: 0px 4px 4px rgba(111, 106, 106, 0.575);
+display: flex;
+justify-content: center;
+align-items: center;
+text-align: center;
+transition: 0.3 ease;
+text-decoration: none;
+font-size: 15px;
+font-weight: 100;
+}
+.accept-button:hover {
+background-image: linear-gradient(180deg,#378f53, #378f53);
+}
