@@ -4,11 +4,12 @@
     min-height: 700px;
     padding: 28px;
     margin: auto;
-
+    margin-top: 7%;
     z-index: 1;
+    box-shadow: 0 15px 20px #3d3d37;
 }
 h3{
-    font-size: 30px;
+    font-size: 34px;
     font-weight: 600;
     text-align: left;
     color: #222625;

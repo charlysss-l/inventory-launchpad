@@ -1,12 +1,13 @@
 import React from 'react';
 import AdminNotifications from '../../components/AdminNotifications/AdminNotifications';
 import AdminDashboard from '../../components/AdminDashboard/AdminDashboard';
-
+import './Dashboard.css'
+0
 const Admin_Dashboard = () => {
   return (
-    <div>
-      <AdminNotifications />
+    <div className='dashCont'>
       <AdminDashboard />
+      <AdminNotifications />
     </div>
   );
 };

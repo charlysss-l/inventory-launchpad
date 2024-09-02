@@ -1,0 +1,16 @@
+.dashCont {
+    width: 100%; /* Ensure full width */
+    min-height: 100vh; /* Ensure it takes up the full viewport height */
+    padding: 28px;
+    display: flex;
+    flex-direction: column; /* Stack content vertically */
+    margin: auto;
+    padding-left: 10%; /* Remove margin-top to align with the top of the page */
+    box-shadow: 0 15px 20px #3d3d37;
+    box-sizing: border-box; /* Ensure padding doesn't affect the width */
+}
+
+/* Optional: Center the content inside .dashCont */
+.dashCont > * {
+    margin: auto;
+}
