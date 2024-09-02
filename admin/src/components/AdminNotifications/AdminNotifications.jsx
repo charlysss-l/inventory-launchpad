@@ -5,7 +5,8 @@ const AdminNotifications = () => {
     const [notifications, setNotifications] = useState([]);
     const [loading, setLoading] = useState(true);
 
-    useEffect(() => {
+    // Function to fetch notifications
+    const fetchNotifications = () => {
         console.log('Fetching notifications...');
         fetch('http://localhost:3000/admin/notifications')
             .then((response) => response.json())
@@ -18,6 +19,17 @@ const AdminNotifications = () => {
                 console.error('Error fetching notifications:', error);
                 setLoading(false);
             });
+    };
+
+    useEffect(() => {
+        // Initial fetch
+        fetchNotifications();
+
+        // Polling for new notifications every second
+        const intervalId = setInterval(fetchNotifications, 1000);
+
+        // Clear the interval when the component unmounts
+        return () => clearInterval(intervalId);
     }, []);
 
     const handleMarkAsRead = (notificationId) => {
@@ -27,11 +39,15 @@ const AdminNotifications = () => {
             .then((response) => response.json())
             .then((updatedNotification) => {
                 console.log('Notification marked as read:', updatedNotification);
+                // Update the specific notification's "isRead" status in the state
                 setNotifications((prevNotifications) =>
                     prevNotifications.map((notif) =>
                         notif._id === notificationId ? { ...notif, isRead: true } : notif
                     )
                 );
+                
+                // Re-fetch notifications after 1 second
+                setTimeout(fetchNotifications, 1000);
             })
             .catch((error) => {
                 console.error('Error marking as read:', error);

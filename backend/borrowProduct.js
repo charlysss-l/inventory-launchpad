@@ -295,7 +295,7 @@ Admin Team`;
         );
 
          // Create a notification for the admin using the borrower's name
-         const notificationMessage = `${req.body.borrowerName} has requested to borrow the product "${req.body.borrowName}" (Quantity: ${req.body.borrowQuantity}). Purpose: ${req.body.purpose}`;
+         const notificationMessage = `${req.body.borrowerName} has requested to borrow a ${req.body.borrowQuantity} "${req.body.borrowName}" for ${req.body.purpose}`;
          const newNotification = new Notification({
              message: notificationMessage,
          });
