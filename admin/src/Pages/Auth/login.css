@@ -1,8 +1,6 @@
 /* Container for centering the login form */
 .containerr {
     max-width: 800px; /* Increased width for a wider form */
-    width: 400px;
-    
     margin: 0 auto; /* Center horizontally */
     padding: 20px;
     height: auto; /* Adjust height to fit content */
@@ -34,15 +32,9 @@
 /* Style for the input boxes */
 .input-boxx {
     width: 100%;
-    width: 300px;
-    height: 90px;
     margin-bottom: 10px;
     /* Reduced margin */
     text-align: left;
-}
-
-.admin-page{
-    background-color: #bbdda5;
 }
 
 /* Adjusted spacing and appearance for labels */
