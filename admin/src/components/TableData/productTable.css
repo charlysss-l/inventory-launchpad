@@ -141,6 +141,11 @@
   .delete:hover {
     background-image: linear-gradient(180deg, #ac3f2c, #ac3f2c);
     }
+button.delete {
+  width: 70%;
+  margin: 15%;
+}
+  
 
 .borrow-button{
   width: 100%;
@@ -163,8 +168,8 @@
   background-image: linear-gradient(180deg,#378f53, #378f53);
 }
 
-.accept-button{
-  width: 100%;
+button.accept-button{
+  width: 80px;
   height: 29px;
   background-image: linear-gradient(180deg,#46b369, #378f53);
   color: #ffffff;
@@ -182,4 +187,79 @@
 }
 .accept-button:hover {
   background-image: linear-gradient(180deg,#378f53, #378f53);
+}
+
+a.editprod {
+  transition: transform 0.3s ease;
+}
+
+a.editprod:hover{
+    background-image: linear-gradient(180deg, #345779, #5995ce);
+}
+
+button.delete-button{
+  margin: 10px;
+  height: 29px;
+  width: 80px;
+  border: none;
+  box-shadow: 0px 4px 4px rgba(111, 106, 106, 0.575);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  transition: 0.3 ease;
+  text-decoration: none;
+  border-radius: 7px;
+
+  background-image: linear-gradient(180deg, #ad1421, #ce6d8d);
+}
+
+button.delete-button:hover{
+  background-image: linear-gradient(180deg, #bd3a45, #d38da4);
+
+}
+
+button.return-button-good{
+  height: 29px;
+  width: 80px;
+  border: none;
+  margin: 10px;
+  box-shadow: 0px 4px 4px rgba(111, 106, 106, 0.575);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  transition: 0.3 ease;
+  text-decoration: none;
+  border-radius: 7px;
+  background-image: linear-gradient(180deg,#46b369, #378f53);
+
+}
+
+button.return-button-good:hover{
+  background-image: linear-gradient(180deg,#378f53, #378f53);
+
+}
+
+
+button.return-button-damaged{
+  height: 29px;
+  width: 80px;
+  border: none;
+  box-shadow: 0px 4px 4px rgba(111, 106, 106, 0.575);
+  display: flex;
+  margin: 10px;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  transition: 0.3 ease;
+  text-decoration: none;
+  border-radius: 7px;
+  background-image: linear-gradient(180deg, #ad1421, #ce6d8d);
+
+}
+
+button.return-button-damaged:hover{
+  background-image: linear-gradient(180deg, #bd3a45, #d38da4);
+
 }
