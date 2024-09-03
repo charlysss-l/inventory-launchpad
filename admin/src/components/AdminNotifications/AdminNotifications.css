@@ -10,7 +10,7 @@
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     border: 1px solid #ccc;
     border-radius: 8px;
-    background-color: #f9f9f9;
+    background-color: #CFDFC7;
     padding: 20px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
@@ -40,7 +40,7 @@
 }
 
 .notification-popup li.read {
-    background-color: #f0f0f0;
+    background-color: whitesmoke;
 }
 
 .notification-popup li.unread {
@@ -48,7 +48,7 @@
 }
 
 .notification-popup li:hover {
-    background-color: #e0e0e0;
+    background-color: #91c298;
 }
 
 .notification-popup button {
@@ -61,4 +61,12 @@
 
 .notification-popup button:hover {
     text-decoration: underline;
+}
+
+.notification-container h2 {
+    font-weight: bold;
+    color: #5c645b;
+    
+    background-color: #CFDFC7;
+    border-bottom: none;
 }
