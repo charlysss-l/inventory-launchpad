@@ -39,13 +39,9 @@ const handleSubmitButton = async (e) => {
   return (
     <>
       <section className='containerr'>
-        
         <div>Login</div>
 
-        
-
         <div className="contentt">
-          
         <form>
 
           <div className="input-boxx">

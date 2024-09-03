@@ -262,8 +262,8 @@ const borrowProductTable = ({ products }) => {
                                         <button onClick={() => acceptBorrowProduct(item.borrowId)} className="accept-button">Accept</button>
                                     ) : !item.isReturn ? (
                                         <>
-                                            <button onClick={() => updateReturnStatus(item.borrowId, 'Good')} className="return-button-good">Good</button>
-                                            <button onClick={() => updateReturnStatus(item.borrowId, 'Damaged')} className="return-button-damaged">Damaged</button>
+                                            <button onClick={() => updateReturnStatus(item.borrowId, 'Good')} className="return-button">Good</button>
+                                            <button onClick={() => updateReturnStatus(item.borrowId, 'Damaged')} className="return-button">Damaged</button>
                                         </>
                                     ) : (
                                         item.isReturn
