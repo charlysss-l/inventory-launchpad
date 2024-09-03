@@ -2,9 +2,8 @@ import React, { useState, useEffect } from 'react';
 import './productTable.css';
 import { NavLink } from 'react-router-dom';
 import { Pagination } from '@mui/material';
-import { ToastContainer, toast,Bounce } from 'react-toastify';
+import { ToastContainer, toast, Bounce } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-
 
 const removeProduct = async (product_id) => {
     const userResponse = prompt('Type "yes" to confirm product removal and "no" to cancel').toLowerCase();
@@ -30,7 +29,7 @@ const removeProduct = async (product_id) => {
                     progress: undefined,
                     theme: "light",
                     transition: Bounce,
-                    });
+                });
             } else {
                 toast.warn('🦄 Failed to remove the product!', {
                     position: "top-center",
@@ -42,7 +41,7 @@ const removeProduct = async (product_id) => {
                     progress: undefined,
                     theme: "light",
                     transition: Bounce,
-                    });
+                });
             }
         } catch (error) {
             console.error('Error:', error);
@@ -56,10 +55,9 @@ const removeProduct = async (product_id) => {
                 progress: undefined,
                 theme: "light",
                 transition: Bounce,
-                });
+            });
         }
-    }
-    else {
+    } else {
         toast.error('🦄 Product Removal Failed!', {
             position: "top-center",
             autoClose: 5000,
@@ -70,7 +68,7 @@ const removeProduct = async (product_id) => {
             progress: undefined,
             theme: "light",
             transition: Bounce,
-            });
+        });
     }
 };
 
@@ -92,6 +90,15 @@ const productTable = ({ products }) => {
 
     const handlePageChange = (event, value) => {
         setCurrentPage(value);
+    };
+
+    const formatDate = (dateString) => {
+        if (!dateString) return 'Ongoing';
+        const date = new Date(dateString);
+        const month = date.getMonth() + 1;
+        const day = date.getDate();
+        const year = date.getFullYear().toString().slice(-2);
+        return `${month.toString().padStart(2, '0')}-${day.toString().padStart(2, '0')}-${year}`;
     };
 
     return (
@@ -126,7 +133,7 @@ const productTable = ({ products }) => {
                                 <td className="data">{item.product_brand}</td>
                                 <td className="data number-hover">{item.product_quantity}</td>
                                 <td className="data">{item.product_category}</td>
-                                <td className="data">{item.product_datePurchased}</td>
+                                <td className="data">{formatDate(item.product_datePurchased)}</td>
                                 <td className="data">{item.product_price}</td>
                                 <td className="data">{item.product_totalPrice}</td>
                                 <td className="data">{item.product_supplier}</td>
@@ -161,31 +168,110 @@ const productTable = ({ products }) => {
 export default productTable;
 
 
-// import './productTable.css'
+// import React, { useState, useEffect } from 'react';
+// import './productTable.css';
 // import { NavLink } from 'react-router-dom';
-// const removeProduct = async (product_id) => {
-//     await fetch('http://localhost:3000/removeproduct', {
-//         method: 'POST',
-//         headers: {
-//             Accept: 'application/json',
-//             'Content-Type': 'application/json',
-//         },
-//         body: JSON.stringify({product_id:product_id})
-        
-//     }).then((resp)=> {
-//         resp.ok? alert('Are you sure you want to remove the product?') : alert("Failed to remove the product")
-//     })
-// }
-//     const productTable = ({ products }) => {
-//         return (
-//             <div className="conn">
-//   <div className="inventory-container">
+// import { Pagination } from '@mui/material';
+// import { ToastContainer, toast,Bounce } from 'react-toastify';
+// import 'react-toastify/dist/ReactToastify.css';
 
-//         <div className="inventory-heading">
-//             <h3>Products</h3>
-//             <NavLink to={'/admin/addProduct'} className="pages">Add Product</NavLink>
-//         </div>
-//             <table className="inventory-table">
+
+// const removeProduct = async (product_id) => {
+//     const userResponse = prompt('Type "yes" to confirm product removal and "no" to cancel').toLowerCase();
+//     if (userResponse === 'yes') {
+//         try {
+//             const response = await fetch('http://localhost:3000/removeproduct', {
+//                 method: 'POST',
+//                 headers: {
+//                     Accept: 'application/json',
+//                     'Content-Type': 'application/json',
+//                 },
+//                 body: JSON.stringify({ product_id: product_id }),
+//             });
+
+//             if (response.ok) {
+//                 toast.success('🦄 Product Removed Successfully!', {
+//                     position: "top-center",
+//                     autoClose: 5000,
+//                     hideProgressBar: false,
+//                     closeOnClick: true,
+//                     pauseOnHover: true,
+//                     draggable: true,
+//                     progress: undefined,
+//                     theme: "light",
+//                     transition: Bounce,
+//                     });
+//             } else {
+//                 toast.warn('🦄 Failed to remove the product!', {
+//                     position: "top-center",
+//                     autoClose: 5000,
+//                     hideProgressBar: false,
+//                     closeOnClick: true,
+//                     pauseOnHover: true,
+//                     draggable: true,
+//                     progress: undefined,
+//                     theme: "light",
+//                     transition: Bounce,
+//                     });
+//             }
+//         } catch (error) {
+//             console.error('Error:', error);
+//             toast.warn('🦄 An error occurred while trying to remove the product!', {
+//                 position: "top-center",
+//                 autoClose: 5000,
+//                 hideProgressBar: false,
+//                 closeOnClick: true,
+//                 pauseOnHover: true,
+//                 draggable: true,
+//                 progress: undefined,
+//                 theme: "light",
+//                 transition: Bounce,
+//                 });
+//         }
+//     }
+//     else {
+//         toast.error('🦄 Product Removal Failed!', {
+//             position: "top-center",
+//             autoClose: 5000,
+//             hideProgressBar: false,
+//             closeOnClick: true,
+//             pauseOnHover: true,
+//             draggable: true,
+//             progress: undefined,
+//             theme: "light",
+//             transition: Bounce,
+//             });
+//     }
+// };
+
+// const productTable = ({ products }) => {
+//     const [currentPage, setCurrentPage] = useState(1);
+//     const [productsPerPage] = useState(5);
+//     const [sortedProducts, setSortedProducts] = useState([]);
+
+//     // Sort products by purchase date (newest first)
+//     useEffect(() => {
+//         const sorted = [...products].sort((a, b) => new Date(b.product_datePurchased) - new Date(a.product_datePurchased));
+//         setSortedProducts(sorted);
+//     }, [products]);
+
+//     // Get current products for pagination
+//     const indexOfLastProduct = currentPage * productsPerPage;
+//     const indexOfFirstProduct = indexOfLastProduct - productsPerPage;
+//     const currentProducts = sortedProducts.slice(indexOfFirstProduct, indexOfLastProduct);
+
+//     const handlePageChange = (event, value) => {
+//         setCurrentPage(value);
+//     };
+
+//     return (
+//         <div className="conn">
+//             <div className="inventory-container">
+//                 <div className="inventory-heading">
+//                     <h3>Products</h3>
+//                     <NavLink to={'/admin/addProduct'} className="pages">Add Product</NavLink>
+//                 </div>
+//                 <table className="inventory-table">
 //                     <thead>
 //                         <tr>
 //                             <th className="title">Product_ID</th>
@@ -194,35 +280,52 @@ export default productTable;
 //                             <th className="title">Quantity</th>
 //                             <th className="title">Category</th>
 //                             <th className="title">Date Purchased</th>
+//                             <th className="title">Price</th>
+//                             <th className="title">Total Price</th>
+//                             <th className="title">Supplier</th>
 //                             <th className="title">Update</th>
 //                             <th className="title">Delete</th>
 //                             <th className="title">Borrow</th>
 //                         </tr>
 //                     </thead>
 //                     <tbody>
-//                         {products.map((item, index) => (
+//                         {currentProducts.map((item, index) => (
 //                             <tr key={index}>
 //                                 <td className="data">{item.product_id}</td>
 //                                 <td className="data">{item.product_name}</td>
 //                                 <td className="data">{item.product_brand}</td>
-//                                 <td className="data">{item.product_quantity}</td>
+//                                 <td className="data number-hover">{item.product_quantity}</td>
 //                                 <td className="data">{item.product_category}</td>
 //                                 <td className="data">{item.product_datePurchased}</td>
-//                                 <td className="data"><NavLink to={`/admin/editProduct/${item.product_id}`} className="editprod">Edit</NavLink></td>
-//                                 <td className="data"><button type="submit" onClick={() => {removeProduct(item.product_id)}} className="delete">Delete</button></td>
-//                                 <td>
-//                                 <NavLink to={`/admin/addBorrowProduct/${item.product_id}`} className="borrow-button">Borrow</NavLink>   
+//                                 <td className="data">{item.product_price}</td>
+//                                 <td className="data">{item.product_totalPrice}</td>
+//                                 <td className="data">{item.product_supplier}</td>
+//                                 <td className="data">
+//                                     <NavLink to={`/admin/editProduct/${item.product_id}`} className="editprod">Edit</NavLink>
 //                                 </td>
-
+//                                 <td className="data">
+//                                     <button type="submit" onClick={() => { removeProduct(item.product_id); }} className="delete">Delete</button>
+//                                 </td>
+//                                 <td className="data">
+//                                     <NavLink to={`/admin/addBorrowProduct/${item.product_id}`} className="borrow-button">Borrow</NavLink>
+//                                 </td>
 //                             </tr>
 //                         ))}
 //                     </tbody>
 //                 </table>
+//                 <Pagination
+//                     count={Math.ceil(products.length / productsPerPage)}
+//                     page={currentPage}
+//                     onChange={handlePageChange}
+//                     color="primary"
+//                     variant="outlined"
+//                     shape="rounded"
+//                     style={{ marginTop: '20px', display: 'flex', justifyContent: 'center' }}
+//                 />
 //             </div>
+//             <ToastContainer />
 //         </div>
-          
-//         );
-//     };
-    
-//     export default productTable;
+//     );
+// };
 
+// export default productTable;

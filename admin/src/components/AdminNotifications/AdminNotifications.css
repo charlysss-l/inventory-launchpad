@@ -10,7 +10,7 @@
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     border: 1px solid #ccc;
     border-radius: 8px;
-    background-color: #CFDFC7;
+    background-color: #c7dfc7;
     padding: 20px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
@@ -41,6 +41,7 @@
 
 .notification-popup li.read {
     background-color: whitesmoke;
+    
 }
 
 .notification-popup li.unread {

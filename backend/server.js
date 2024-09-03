@@ -1,6 +1,6 @@
 import { addProduct, removeProduct, fetchProduct, editProduct, findProductByID, prodCategory,getTotalProducts, getSumofProducts } from './products.js';
 import { addBorrowProduct, removeBorrowProduct, fetchBorrowProduct, acceptborrowProduct, updateReturnStatus } from './borrowProduct.js';
-import { fetchNotifs, markNotifs } from './adminNotfication.js';
+import { fetchNotifs, markNotifs, removeNotification } from './adminNotfication.js';
 
 import express from 'express';
 import mongoose from 'mongoose';
@@ -74,6 +74,8 @@ app.get('/prodCat/:category', prodCategory);
 //dashboard
 app.get('/totalProducts', getTotalProducts)
 app.get('/totalInventory', getSumofProducts)
+app.delete('/admin/notifications/:id', removeNotification); // Delete a notification
+
 
 
 // const { MongoClient, ServerApiVersion } = require('mongodb');

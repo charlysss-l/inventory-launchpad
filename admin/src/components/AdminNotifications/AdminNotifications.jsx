@@ -7,11 +7,9 @@ const AdminNotifications = () => {
 
     // Function to fetch notifications
     const fetchNotifications = () => {
-        console.log('Fetching notifications...');
         fetch('http://localhost:3000/admin/notifications')
             .then((response) => response.json())
             .then((data) => {
-                console.log('Fetched notifications:', data);
                 setNotifications(data);
                 setLoading(false);
             })
@@ -38,19 +36,32 @@ const AdminNotifications = () => {
         })
             .then((response) => response.json())
             .then((updatedNotification) => {
-                console.log('Notification marked as read:', updatedNotification);
-                // Update the specific notification's "isRead" status in the state
                 setNotifications((prevNotifications) =>
                     prevNotifications.map((notif) =>
                         notif._id === notificationId ? { ...notif, isRead: true } : notif
                     )
                 );
-                
-                // Re-fetch notifications after 1 second
-                setTimeout(fetchNotifications, 1000);
             })
             .catch((error) => {
                 console.error('Error marking as read:', error);
+            });
+    };
+
+    const handleDeleteNotification = (notificationId) => {
+        fetch(`http://localhost:3000/admin/notifications/${notificationId}`, {
+            method: 'DELETE',
+        })
+            .then((response) => {
+                if (response.ok) {
+                    setNotifications((prevNotifications) =>
+                        prevNotifications.filter((notif) => notif._id !== notificationId)
+                    );
+                } else {
+                    console.error('Failed to delete notification');
+                }
+            })
+            .catch((error) => {
+                console.error('Error deleting notification:', error);
             });
     };
 
@@ -65,8 +76,10 @@ const AdminNotifications = () => {
                         {notifications.map((notification) => (
                             <li key={notification._id} className={notification.isRead ? 'read' : 'unread'}>
                                 {notification.message}
-                                {!notification.isRead && (
+                                {!notification.isRead ? (
                                     <button onClick={() => handleMarkAsRead(notification._id)}>Mark as Read</button>
+                                ) : (
+                                    <button onClick={() => handleDeleteNotification(notification._id)}>Delete</button>
                                 )}
                             </li>
                         ))}
@@ -78,6 +91,7 @@ const AdminNotifications = () => {
 };
 
 export default AdminNotifications;
+
 
 
 // import React, { useState, useEffect } from 'react';
