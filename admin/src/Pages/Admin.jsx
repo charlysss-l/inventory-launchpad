@@ -21,9 +21,11 @@ const Admin = () => {
 
 <main className="admin-page">
 
-{location.pathname !== '/admin/login' && <Sidebar />}
+{/* {location.pathname !== '/admin/login' && <Sidebar />} */}
+{location.pathname !== '/' && <Sidebar />}
      <Routes>
-        <Route path='/admin/login' element={<Login />}></Route>
+        {/* <Route path='/admin/login' element={<Login />}></Route> */}
+        <Route path='/' element={<Login />}></Route>
         <Route path="/admin/dashboard" element={<Admin_Dashboard />}/>
         <Route path="/admin/inventory" element={<Admin_Inventory />}/>
         <Route path="/admin/borrow" element={<Admin_Borrow/>}/>
