@@ -5,7 +5,9 @@ import { fetchNotifs, markNotifs, removeNotification } from './adminNotfication.
 import express from 'express';
 import mongoose from 'mongoose';
 import cors from 'cors'
+import dotenv from 'dotenv';
 
+dotenv.config();
 //adminAccount
 import createAdminAccount from './src/scripts/admin.js';
 createAdminAccount()
@@ -36,7 +38,7 @@ app.get('/admin/notifications', fetchNotifs)
 app.put('/admin/notifications/:id/markAsRead', markNotifs)
 
 //mongoDB connection using mongoose
-mongoose.connect('mongodb+srv://teamlaunchpadinventory:teamlaunchpadinventory@cluster0.bdcqs.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0').then(() => console.log('Connected to MongoDB'))
+mongoose.connect(process.env.MONGO_URL).then(() => console.log('Connected to MongoDB'))
 .catch((err) => console.error('Failed to connect to MongoDB', err));
 
 
