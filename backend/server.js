@@ -42,7 +42,7 @@ mongoose.connect(process.env.MONGO_URL).then(() => console.log('Connected to Mon
 .catch((err) => console.error('Failed to connect to MongoDB', err));
 
 
-app.get('/ROUTE', (req, res) => {
+app.get('/', (req, res) => {
   res.send('Express app is running');
 });
 
