@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import './AdminNotifications.css';
+const apiUrl = import.meta.env.VITE_API_URL;
+
 
 const AdminNotifications = () => {
     const [notifications, setNotifications] = useState([]);
@@ -7,7 +9,7 @@ const AdminNotifications = () => {
 
     // Function to fetch notifications
     const fetchNotifications = () => {
-        fetch('http://localhost:3000/admin/notifications')
+        fetch(`${apiUrl}/admin/notifications`)
             .then((response) => response.json())
             .then((data) => {
                 setNotifications(data);
@@ -31,7 +33,7 @@ const AdminNotifications = () => {
     }, []);
 
     const handleMarkAsRead = (notificationId) => {
-        fetch(`http://localhost:3000/admin/notifications/${notificationId}/markAsRead`, {
+        fetch(`${apiUrl}/notifications/${notificationId}/markAsRead`, {
             method: 'PUT',
         })
             .then((response) => response.json())
@@ -48,7 +50,7 @@ const AdminNotifications = () => {
     };
 
     const handleDeleteNotification = (notificationId) => {
-        fetch(`http://localhost:3000/admin/notifications/${notificationId}`, {
+        fetch(`${apiUrl}/admin/notifications/${notificationId}`, {
             method: 'DELETE',
         })
             .then((response) => {

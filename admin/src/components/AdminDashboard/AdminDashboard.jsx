@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import './AdminDashboard.css'; // Make sure to create this CSS file for styling
 import AdminNotifications from '../AdminNotifications/AdminNotifications'; // Import the AdminNotifications component
+const apiUrl = import.meta.env.VITE_API_URL;
+
 
 const AdminDashboard = () => {
     const [totalProducts, setTotalProducts] = useState(0);
@@ -9,7 +11,7 @@ const AdminDashboard = () => {
 
     useEffect(() => {
         // Fetch total number of products
-        fetch('http://localhost:3000/totalProducts')
+        fetch(`${apiUrl}/totalProducts`)
             .then((resp) => resp.json())
             .then((data) => {
                 setTotalProducts(data.totalProducts);
@@ -19,7 +21,7 @@ const AdminDashboard = () => {
             });
 
         // Fetch total inventory count
-        fetch('http://localhost:3000/totalInventory')
+        fetch(`${apiUrl}/totalInventory`)
             .then((resp) => resp.json())
             .then((data) => {
                 setTotalInventory(data.totalInventory);

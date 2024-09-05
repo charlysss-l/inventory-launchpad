@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import axios from 'axios';
 import Table from '../../components/TableData/productTable';
+const apiUrl = import.meta.env.VITE_API_URL;
 
 const Admin_Inventory = () => {
   const [loading, setLoading] = useState(true);
@@ -10,7 +11,7 @@ const Admin_Inventory = () => {
     const fetchData = async () => {
       setLoading(true);
       try {
-        const { data: response } = await axios.get('http://localhost:3000/allproducts');
+        const { data: response } = await axios.get(`${apiUrl}/allproducts`);
         setData(response);
       } catch (error) {
         console.error(error.message);

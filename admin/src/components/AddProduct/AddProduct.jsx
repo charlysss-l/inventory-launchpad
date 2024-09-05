@@ -3,6 +3,7 @@ import './AddProduct.css'
 import axios from 'axios'
 import { ToastContainer, toast,Bounce } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+const apiUrl = import.meta.env.VITE_API_URL;
 
 const AddProduct = () => {
     const [addProducts, setAddProducts] = useState({
@@ -21,7 +22,7 @@ const AddProduct = () => {
 
     const submitHandler = async(e) => {
         e.preventDefault()
-        axios.post('http://localhost:3000/add-product', addProducts).then(res =>{
+        axios.post(`${apiUrl}/add-product`, addProducts).then(res =>{
             console.log(res)
             // alert('product added')
             setAddProducts({

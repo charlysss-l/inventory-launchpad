@@ -4,12 +4,13 @@ import { NavLink } from 'react-router-dom';
 import { Pagination } from '@mui/material';
 import { ToastContainer, toast, Bounce } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+const apiUrl = import.meta.env.VITE_API_URL;
 
 const removeProduct = async (product_id) => {
     const userResponse = prompt('Type "yes" to confirm product removal and "no" to cancel').toLowerCase();
     if (userResponse === 'yes') {
         try {
-            const response = await fetch('http://localhost:3000/removeproduct', {
+            const response = await fetch(`${apiUrl}/removeproduct`, {
                 method: 'POST',
                 headers: {
                     Accept: 'application/json',

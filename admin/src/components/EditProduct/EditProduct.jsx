@@ -3,6 +3,7 @@ import axios from 'axios';
 import { useParams } from 'react-router-dom';
 import { ToastContainer, toast,Bounce } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+const apiUrl = import.meta.env.VITE_API_URL;
 
 const EditProduct = () => {
     const { product_id } = useParams();
@@ -23,7 +24,7 @@ const EditProduct = () => {
   
     const submitHandler = async (e) => {
       e.preventDefault();
-      axios.put(`http://localhost:3000/editProduct`, { ...editProduct, product_id }).then((res) => {
+      axios.put(`${apiUrl}/editProduct`, { ...editProduct, product_id }).then((res) => {
         console.log(res);
         setEditProduct({
           product_name: "",
@@ -63,7 +64,7 @@ const EditProduct = () => {
     };
   
     const getProduct = async () => {
-        axios.get(`http://localhost:3000/fetchProduct/${product_id}`)
+        axios.get(`${apiUrl}/fetchProduct/${product_id}`)
           .then((res) => {
             // Extract the product data from the response
             const productData = res.data;

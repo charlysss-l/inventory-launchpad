@@ -3,13 +3,14 @@ import './productTable.css';
 import { Pagination } from '@mui/material';
 import { ToastContainer, toast,Bounce } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+const apiUrl = import.meta.env.VITE_API_URL;
 
 const removeBorrowProduct = async (borrowId) => {
     const userResponse = prompt('Type "yes" to confirm product removal and "no" to cancel').toLowerCase();
 
     if (userResponse === 'yes') {
         try {
-            const response = await fetch('http://localhost:3000/remove-borrow-products', {
+            const response = await fetch(`${apiUrl}/remove-borrow-products`, {
                 method: 'POST',
                 headers: {
                     Accept: 'application/json',
@@ -89,7 +90,7 @@ const removeBorrowProduct = async (borrowId) => {
 
 const acceptBorrowProduct = async (borrowId) => {
     try {
-        const response = await fetch('http://localhost:3000/accept-borrow-product', {
+        const response = await fetch(`${apiUrl}/accept-borrow-product`, {
             method: 'POST',
             headers: {
                 Accept: 'application/json',
@@ -133,7 +134,7 @@ const acceptBorrowProduct = async (borrowId) => {
 
 const updateReturnStatus = async (borrowId, status) => {
     try {
-        const response = await fetch('http://localhost:3000/update-return-status', {
+        const response = await fetch(`${apiUrl}/update-return-status`, {
             method: 'POST',
             headers: {
                 Accept: 'application/json',

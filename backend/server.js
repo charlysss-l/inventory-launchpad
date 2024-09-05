@@ -23,7 +23,11 @@ const port = process.env.PORT || 3000;
 app.use(express.json());
 
 //sign roure
-app.use(cors())
+app.use(cors({
+  origin: 'https://inventory-launchpad-admin.vercel.app', 
+  methods: ['GET', 'POST', 'PUT', 'DELETE'],
+  credentials: true
+}))
 app.use(bodyParser.json());
 app.use('/user', signupRoute);
 
