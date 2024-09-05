@@ -1,7 +1,7 @@
 // const User = require('../models/user')
 // const bcrypt = require('bcrypt')
 
-import bcrypt from 'bcrypt';
+import bcrypt from 'bcryptjs';
 import User from '../models/user.js';
 
 export const createUser = async (userData) => {
