@@ -42,7 +42,10 @@ app.get('/admin/notifications', fetchNotifs)
 app.put('/admin/notifications/:id/markAsRead', markNotifs)
 
 //mongoDB connection using mongoose
-mongoose.connect(process.env.MONGO_URL).then(() => console.log('Connected to MongoDB'))
+mongoose.connect(process.env.MONGO_URL, {
+  useNewUrlParser: true,
+  useUnifiedTopology:true
+}).then(() => console.log('Connected to MongoDB'))
 .catch((err) => console.error('Failed to connect to MongoDB', err));
 
 
