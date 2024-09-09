@@ -1,32 +1,9 @@
-import React from 'react';
-import './Header.css'; 
-import { NavLink, useNavigate } from 'react-router-dom';
+import React from 'react'
 
-import Search from '../../assets/Search.png';
-
-
-const Header = () => {
-
-
-
+const asdasdasdasdsadsadas = () => {
   return (
-    <header className="header">
-      <div className="search-container">
-      
-        <button>  <img src={Search} alt="Search" className="search-icon" />
-        </button>
-        <input type="text" placeholder="Search Product, Employee..." />
-      </div>
-      <div className="notification-container">
- <NavLink to="/notifications">
- </NavLink>
- </div>
-      <div className="profile-container">
- <NavLink to="/profile">
- </NavLink>
- </div>
-    </header>
-  );
-};
+    <div>asdasdasdasdsadsadas</div>
+  )
+}
 
-export default Header;
+export default asdasdasdasdsadsadas

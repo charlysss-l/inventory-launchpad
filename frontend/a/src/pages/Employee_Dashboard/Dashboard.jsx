@@ -2,7 +2,7 @@ import React from 'react'
 
 const Dashboard = () => {
   return (
-    <div>INVENTORY OF LAUNCHPAD COWORKING</div>
+    <h1>agaaagasgaga</h1>
   )
 }
 
