@@ -49,7 +49,7 @@ import './Sidebar.css';
 const Sidebar = () => {
   return (
     <div className="navbar">
-        <h1 className="logo">Launchpad</h1>
+        <h1 className="logo">Launchpad Coworking</h1>
       <div className="choices">
         {/* <NavLink to={'/'} className="pages">Dashboard</NavLink> */}
         <NavLink to={'/inventory'} className="pages">Inventory</NavLink>
