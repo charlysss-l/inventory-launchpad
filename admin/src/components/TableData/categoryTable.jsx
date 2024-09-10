@@ -32,6 +32,9 @@ const removeProduct = async (product_id) => {
                     theme: "light",
                     transition: Bounce
                 });
+                setTimeout(() => {
+                    window.location.reload();  // Reload the page after a short delay
+                }, 5000); 
             } else {
                 toast.warn('⚠️ Failed to remove the product!', {
                     position: "top-center",
@@ -44,6 +47,9 @@ const removeProduct = async (product_id) => {
                     theme: "light",
                     transition: Bounce
                 });
+                setTimeout(() => {
+                    window.location.reload();  // Reload the page after a short delay
+                }, 5000); 
             }
         } catch (error) {
             console.error('Error:', error);
@@ -58,6 +64,9 @@ const removeProduct = async (product_id) => {
                 theme: "light",
                 transition: Bounce
             });
+            setTimeout(() => {
+                window.location.reload();  // Reload the page after a short delay
+            }, 5000); 
         }
     } else {
         toast.error('❌ Invalid response. Product removal canceled.', {
@@ -71,6 +80,9 @@ const removeProduct = async (product_id) => {
             theme: "light",
             transition: Bounce
         });
+        setTimeout(() => {
+            window.location.reload();  // Reload the page after a short delay
+        }, 5000); 
     }
 };
 
