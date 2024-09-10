@@ -24,7 +24,7 @@ app.use(express.json());
 
 //sign roure
 app.use(cors({
-  origin: 'https://inventory-launchpad-admin.vercel.app', 
+  origin: 'https://inventory-launchpad-admin-kappa.vercel.app/', 
   methods: ['GET', 'POST', 'PUT', 'DELETE'],
   credentials: true
 }))
