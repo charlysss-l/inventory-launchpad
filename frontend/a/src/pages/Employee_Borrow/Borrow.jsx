@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import BorrowProductTablee from "../../components/TableData/borrowProductTable"
+const apiUrl = import.meta.env.VITE_API_URL;
 
 const Borrow = () => {
   const [loading, setLoading] = useState(true);
@@ -10,7 +11,7 @@ const Borrow = () => {
     const fetchData = async () => {
       setLoading(true);
       try {
-        const { data: response } = await axios.get('http://localhost:3000/all-borrow-products');
+        const { data: response } = await axios.get(`${apiUrl}/all-borrow-products`);
         setData(response);
       } catch (error) {
         console.error(error.message);

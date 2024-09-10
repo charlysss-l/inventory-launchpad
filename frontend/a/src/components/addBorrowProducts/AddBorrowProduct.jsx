@@ -4,7 +4,7 @@ import './AddBorrowProduct.css';
 import axios from 'axios';
 import { ToastContainer, toast,Bounce } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-
+const apiUrl = import.meta.env.VITE_API_URL;
 
 const AddBorrowProduct = () => {
     const { product_id } = useParams(); // Get the product ID from the URL
@@ -25,7 +25,7 @@ console.log('Product ID:', product_id); // Log the product_id
 
     useEffect(() => {
         if (product_id) {
-            axios.get(`http://localhost:3000/allproducts/${product_id}`)
+            axios.get(`${apiUrl}/allproducts/${product_id}`)
                 .then((response) => {
                     const product = response.data;
                     setAddBorrowProducts({

@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import './Table.css';
 import { NavLink, useParams } from 'react-router-dom';
 import { Pagination } from '@mui/material'; // Import MUI Pagination
+const apiUrl = import.meta.env.VITE_API_URL;
 
 const formatDate = (dateString) => {
     if (!dateString) return 'Ongoing';
@@ -23,7 +24,7 @@ const CategoryTable = () => {
         console.log('Fetching category:', category); // Debugging output
         // Fetch products by category
         setLoading(true); // Start loading
-        fetch(`http://localhost:3000/prodCat/${category}`)
+        fetch(`${apiUrl}/prodCat/${category}`)
             .then((resp) => {
                 if (!resp.ok) {
                     throw new Error('Network response was not ok');
