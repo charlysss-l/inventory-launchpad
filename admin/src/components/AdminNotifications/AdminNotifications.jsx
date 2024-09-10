@@ -33,7 +33,9 @@ const AdminNotifications = () => {
     }, []);
 
     const handleMarkAsRead = (notificationId) => {
-        fetch(`${apiUrl}/admin/notifications/${notificationId}/markAsRead`)
+        fetch(`${apiUrl}/admin/notifications/${notificationId}/markAsRead`,{
+            method: 'PUT',
+        })
             .then((response) => response.json())
             .then((updatedNotification) => {
                 setNotifications((prevNotifications) =>
@@ -48,7 +50,9 @@ const AdminNotifications = () => {
     };
 
     const handleDeleteNotification = (notificationId) => {
-        fetch(`${apiUrl}/admin/notifications/${notificationId}`)
+        fetch(`${apiUrl}/admin/notifications/${notificationId}`,{
+            method: 'DELETE',
+        })
             .then((response) => {
                 if (response.ok) {
                     setNotifications((prevNotifications) =>
