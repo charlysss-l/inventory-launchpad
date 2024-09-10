@@ -48,9 +48,7 @@ const AdminNotifications = () => {
     };
 
     const handleDeleteNotification = (notificationId) => {
-        fetch(`${apiUrl}/admin/notifications/${notificationId}`, {
-            method: 'DELETE',
-        })
+        fetch(`${apiUrl}/admin/notifications/${notificationId}`)
             .then((response) => {
                 if (response.ok) {
                     setNotifications((prevNotifications) =>
