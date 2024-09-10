@@ -47,9 +47,6 @@ const EditProduct = () => {
           theme: "light",
           transition: Bounce,
           });
-          setTimeout(() => {
-            window.location.reload();  // Reload the page after a short delay
-        }, 5000); 
       }).catch((err) => {
         console.log(err);
         toast.error('🦄 Updating Product Failed!', {
