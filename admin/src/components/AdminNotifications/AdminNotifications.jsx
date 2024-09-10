@@ -33,9 +33,7 @@ const AdminNotifications = () => {
     }, []);
 
     const handleMarkAsRead = (notificationId) => {
-        fetch(`${apiUrl}/notifications/${notificationId}/markAsRead`, {
-            method: 'PUT',
-        })
+        fetch(`${apiUrl}/notifications/${notificationId}/markAsRead`)
             .then((response) => response.json())
             .then((updatedNotification) => {
                 setNotifications((prevNotifications) =>
