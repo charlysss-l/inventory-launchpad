@@ -110,9 +110,9 @@ const acceptBorrowProduct = async (borrowId) => {
                 theme: "light",
                 transition: Bounce, // Use the Bounce transition for the toast
             });
-            setTimeout(() => {
-                window.location.reload();  // Reload the page after a short delay
-            }, 5000); 
+            // setTimeout(() => {
+            //     window.location.reload();  // Reload the page after a short delay
+            // }, 5000); 
         } else {
             toast.error('🦄 Borrow Product Failed Accepted!', {
                 position: "top-center",
@@ -154,9 +154,6 @@ const updateReturnStatus = async (borrowId, status) => {
                 theme: "light",
                 transition: Bounce, // Use the Bounce transition for the toast
             });
-            setTimeout(() => {
-                window.location.reload();  // Reload the page after a short delay
-            }, 5000); 
         } else {
             toast.error(`🦄 Product Marked as ${status} Successfully`, {
                 position: "top-center",
@@ -169,9 +166,6 @@ const updateReturnStatus = async (borrowId, status) => {
                 theme: "light",
                 transition: Bounce, // Use the Bounce transition for the toast
             });
-            setTimeout(() => {
-                window.location.reload();  // Reload the page after a short delay
-            }, 5000);
         }
     } catch (error) {
         console.error('Error:', error);
@@ -186,9 +180,6 @@ const updateReturnStatus = async (borrowId, status) => {
             theme: "light",
             transition: Bounce, // Use the Bounce transition for the toast
         });
-        setTimeout(() => {
-            window.location.reload();  // Reload the page after a short delay
-        }, 5000);
     }
 };
 
