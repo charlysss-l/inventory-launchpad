@@ -58,7 +58,7 @@ console.log('Product ID:', product_id); // Log the product_id
 
     const submitHandler = async (e) => {
         e.preventDefault();
-        axios.post('http://localhost:3000/add-borrow-products', addBorrowProducts)
+        axios.post(`${apiUrl}/add-borrow-products`, addBorrowProducts)
             .then(res => {
                 console.log(res);
                 setAddBorrowProducts({
