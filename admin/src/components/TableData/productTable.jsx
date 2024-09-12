@@ -81,7 +81,8 @@ const productTable = ({ products }) => {
     // Sort products by purchase date (newest first)
     useEffect(() => {
         const sorted = [...products].sort((a, b) => new Date(b.product_datePurchased) - new Date(a.product_datePurchased));
-        setSortedProducts(sorted);
+        setSortedP
+        roducts(sorted);
     }, [products]);
 
     // Get current products for pagination
