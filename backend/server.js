@@ -23,11 +23,26 @@ const port = process.env.PORT || 3000;
 app.use(express.json());
 
 //sign roure
+const allowedOrigins = [
+  'https://inventory-launchpad-admin-kappa.vercel.app',
+  'https://inventory-launchpad.vercel.app'
+];
 app.use(cors({
-  origin: 'https://inventory-launchpad-admin-kappa.vercel.app',,
+  origin: function (origin, callback) {
+    if (allowedOrigins.indexOf(origin) !== -1 || !origin) {
+      callback(null, true);
+    } else {
+      callback(new Error('Not allowed by CORS'));
+    }
+  },
   methods: ['GET', 'POST', 'PUT', 'DELETE'],
   credentials: true
-}))
+}));
+// app.use(cors({
+//   origin: 'https://inventory-launchpad-admin-kappa.vercel.app',, 
+//   methods: ['GET', 'POST', 'PUT', 'DELETE'],
+//   credentials: true
+// }))
 app.use(bodyParser.json());
 app.use('/user', signupRoute);
 
