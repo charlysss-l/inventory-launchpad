@@ -17,6 +17,10 @@ import Admin_Category from './Category/Admin_Category'
 
 const Admin = () => {
   const location = useLocation();
+  const tokenExist = localStorage.getItem('token')
+  if(!tokenExist){
+    return <Login />
+  }
   return (
 
 <main className="admin-page">
