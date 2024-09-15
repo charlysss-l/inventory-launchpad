@@ -13,13 +13,16 @@ import AddBorrowProduct from '../components/AddBorrowProduct/AddBorrowProduct'
 import './Admin.css'
 import Login from './Auth/login'
 import Admin_Category from './Category/Admin_Category'
+import MaybeShowNavbar from '../components/MaybeShowNavbar/MaybeShowNavbar'
+import Footer from '../components/Footer/Footer'
 
 
 const Admin = () => {
   const location = useLocation();
   const tokenExist = localStorage.getItem('token')
   if(!tokenExist){
-    return <Login />
+    return <Login />;
+
   }
   return (
 
@@ -27,6 +30,7 @@ const Admin = () => {
 
 {/* {location.pathname !== '/admin/login' && <Sidebar />} */}
 {location.pathname !== '/' && <Sidebar />}
+
      <Routes>
         {/* <Route path='/admin/login' element={<Login />}></Route> */}
         <Route path='/' element={<Login />}></Route>
@@ -41,6 +45,10 @@ const Admin = () => {
     
         {/* <Route path="/admin/hardwares" element={<Admin_Category category="hardwares" />}></Route> */}
      </Routes>
+
+     <MaybeShowNavbar>
+          <Footer />
+        </MaybeShowNavbar>
 </main>
     
   )

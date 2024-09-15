@@ -10,12 +10,17 @@ import AddBorrowProduct from './components/addBorrowProducts/AddBorrowProduct';
 // import Login from './pages/Auth/login/login';
 // import Signup from './pages/Auth/signup/signup';
 import Employe_Category from './pages/Employee_Category/Employee_Category';
+import Footer from './components/Footer/Footer';
+import MaybeShowNavbar from './components/MaybeShowNavbar/MaybeShowNavbar';
+
 
 const App = () => {
   return (
     <BrowserRouter>
       <AppContent />
+
     </BrowserRouter>
+    
   );
 };
 
@@ -36,6 +41,10 @@ const AppContent = () => {
         <Route path="/addBorrowProduct/:product_id" element={<AddBorrowProduct />} />
         <Route path="/userCategory/:category" element={<Employe_Category />} />
       </Routes>
+      <MaybeShowNavbar>
+          <Footer />
+        </MaybeShowNavbar>
+
     </main>
   );
 };
