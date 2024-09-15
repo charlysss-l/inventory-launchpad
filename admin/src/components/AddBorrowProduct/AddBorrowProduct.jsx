@@ -148,9 +148,9 @@ const AddBorrowProduct = () => {
                         </select>
                     </div>
                     <div className="input-box">
-                        <label htmlFor="purpose"> Sino ka sir: </label>
+                        <label htmlFor="purpose"> Role: </label>
                         <select name="clientStaff" id='clientStaff' onChange={changeHanlder} value={addBorrowProducts.clientStaff}>
-                        <option >Please Select Sino ka sir?</option>
+                        <option >Please Select Role</option>
                             <option value="Client">Client</option>
                             <option value="Staff">Staff</option>
                         </select>

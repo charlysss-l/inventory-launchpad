@@ -151,9 +151,9 @@ console.log('Product ID:', product_id); // Log the product_id
                         </select>
                     </div>
                     <div className="input-box">
-                        <label htmlFor="purpose"> Sino ka: </label>
+                        <label htmlFor="purpose"> Role: </label>
                         <select name="clientStaff" id='clientStaff' onChange={changeHanlder} value={addBorrowProducts.clientStaff}>
-                            <option >Sino ka</option>
+                            <option >Please Select Role</option>
                             <option value="Client">Client</option>
                             <option value="Staff">Staff</option>
                         </select>

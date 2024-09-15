@@ -7,7 +7,7 @@
     padding: 20px;
     height: auto; /* Adjust height to fit content */
     border-radius: 8px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
     text-align: center;
     box-sizing: border-box;
     position: absolute; /* Positioning for centering */
