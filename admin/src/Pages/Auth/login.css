@@ -68,21 +68,45 @@
     outline: none;
 }
 
-/* Style for the login button */
-button[type='submitt'] {
+/* Button style matching the image */
+.contentt button[type='submit'] {
     width: 100%;
     padding: 10px;
-    background-image: linear-gradient(180deg, #3482cc, #1c466d);
+    background-image: linear-gradient(180deg, #3482cc, #1c466d); /* Blue gradient */
     color: #fff;
     border: none;
     border-radius: 4px;
     font-size: 16px;
     cursor: pointer;
     transition: background-color 0.3s ease;
+    text-transform: uppercase;
 }
 
 /* Button hover effect */
-button[type='submitt']:hover {
-    background-image: linear-gradient(180deg, #ac3f2c, #6d281c);
-    /* Adjusted hover color for better contrast */
+.contentt button[type='submit']:hover {
+    background-image: linear-gradient(180deg, #2872b1, #154063); /* Slightly darker on hover */
+}
+
+/* Disabled state for button */
+.contentt button[type='submit']:disabled {
+    opacity: 0.7;
+    cursor: not-allowed;
+}
+
+/* Spinner style */
+.spinner {
+    border: 3px solid rgba(255, 255, 255, 0.3); 
+    border-top: 3px solid #fff;
+    border-radius: 50%;
+    width: 14px;
+    height: 14px;
+    animation: spin 1s linear infinite;
+    display: inline-block;
+    margin-right: 10px;
+    vertical-align: middle;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
 }
